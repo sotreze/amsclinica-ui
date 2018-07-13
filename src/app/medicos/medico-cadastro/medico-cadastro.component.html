@@ -1,0 +1,99 @@
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Médico</h2>
+          <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
+        </div>
+  
+        <!--{{ classe.value === 'CLIENTE' ? 'Cliente' : 'Funcionário' }}-->
+  
+        <!--<div class="ui-g-12">
+          <p-selectButton name="classe" [options]="classes"
+            [(ngModel)]="pessoa.tipo"
+            #classe></p-selectButton>
+        </div>-->
+  
+  
+        <!--<div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
+            <label>Pessoa Física</label>
+                <p-radioButton name="groupname" value="FISICA" [(ngModel)]="selectedValue"></p-radioButton>
+        </div>
+        <div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
+            <label>Pessoa Jurídica</label>
+                <p-radioButton name="groupname" value="JURIDICA" [(ngModel)]="selectedValue"></p-radioButton>
+        </div>-->
+
+        <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>CPF</label>
+         <p-inputMask name="cpf" mask="999.999.999-99"
+           [(ngModel)]="pessoa.cpf" #cpf="ngModel" required></p-inputMask>
+
+           <app-message [control]="cpf" error="required"
+           text="Informe o CPF"></app-message>
+        </div>-->
+
+        <div class="ui-g-12 ui-md-5 ui-fluid">
+          <label>CPF</label>
+          <p-dropdown name="pessoa" [options]="pessoas"
+            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+            [(ngModel)]="medico.pessoa.codigo"
+            required></p-dropdown>
+        </div>
+  
+  
+        <div class="ui-g-12 ui-md-10 ui-fluid">
+          <label>Nome</label>
+          <input pInputText type="text" name="nome"
+            [(ngModel)]="medico.nome"
+            #nome="ngModel" required>
+  
+          <app-message [control]="nome" error="required"
+            text="Informe o nome do médico"></app-message>
+        </div>
+  
+  
+  
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Especialização</label>
+          <input pInputText type="text" name="especializacao"
+            [(ngModel)]="medico.especializacao"
+            #especializacao="ngModel" required>
+  
+          <!--<app-message [control]="cargo" error="required"
+            text="Informe a especialização"></app-message>-->
+        </div>
+  
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>CRM</label>
+          <input pInputText type="text" name="crm"
+          [(ngModel)]="medico.crm" #crm="ngModel">
+        </div>
+  
+        <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Data de Admissão</label>
+          <p-calendar name="dataAdmissao" dateFormat="dd/mm/yy" [locale]="pt_BR"
+            [inline]="false" [readonlyInput]="false" [showIcon]="false"
+            [(ngModel)]="funcionario.dataAdmissao"
+            #dataadmissao="ngModel" required></p-calendar>
+  
+          <app-message [control]="dataadmissao" error="required"
+            text="Informe a data de admissão"></app-message>
+        </div>-->
+  
+
+  
+  
+  
+        <div class="ui-g-12">
+          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          <button pButton type="button" label="Novo" class="ui-button-info"
+          (click)="novo(f)"></button>
+          <a routerLink="/medicos">Voltar para a pesquisa</a>
+        </div>
+      </div>
+  
+    </form>
+  </div>
+  

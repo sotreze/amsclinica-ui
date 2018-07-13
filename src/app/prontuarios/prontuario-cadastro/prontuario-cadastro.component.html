@@ -1,0 +1,82 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Prontuário</h2>
+        <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
+      </div>
+
+      <!--{{ classe.value === 'CLIENTE' ? 'Cliente' : 'Funcionário' }}-->
+
+      <!--<div class="ui-g-12">
+        <p-selectButton name="classe" [options]="classes"
+          [(ngModel)]="pessoa.tipo"
+          #classe></p-selectButton>
+      </div>-->
+
+
+      <!--<div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
+          <label>Pessoa Física</label>
+              <p-radioButton name="groupname" value="FISICA" [(ngModel)]="selectedValue"></p-radioButton>
+      </div>
+      <div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
+          <label>Pessoa Jurídica</label>
+              <p-radioButton name="groupname" value="JURIDICA" [(ngModel)]="selectedValue"></p-radioButton>
+      </div>-->
+
+
+      <!--<div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="funcionario.pessoa.nome"
+          #nome="ngModel" required minlength="5">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>-->
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Exame</label>
+        <input pInputText type="text" name="exame"
+          [(ngModel)]="prontuario.exame"
+          #exame="ngModel" required>
+
+        <!--<app-message [control]="cargo" error="required"
+          text="Informe o cargo"></app-message>-->
+      </div>
+
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Receita</label>
+        <input pInputText type="text" name="receita"
+          [(ngModel)]="prontuario.receita"
+          #receita="ngModel" required>
+
+        <!--<app-message [control]="cargo" error="required"
+          text="Informe o cargo"></app-message>-->
+      </div>
+
+    
+      <div class="ui-g-12 ui-fluid">
+        <!-- <label [hidden]="lancamento.tipo === 'NORMALIZADO'">Composição Química</label>-->
+        <!--<label [hidden]="formulario.get('tipo').value === 'NORMALIZADO'">Composição Química</label>-->
+         <!--<p-editor [hidden]="lancamento.tipo === 'NORMALIZADO'" name="composicao"-->
+         <label>Relatório</label>
+         <p-editor  name="relatorio" [(ngModel)]="prontuario.relatorio"
+         #relatorio="ngModel" styleClass="editor-dimensions"
+         ></p-editor>
+     </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"
+        (click)="novo(f)"></button>
+        <a routerLink="/prontuarios">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>

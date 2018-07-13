@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="ui-g">
+
+    <form autocomplete="on" (ngSubmit)="pesquisar()">
+
+      <div class="ui-g-12">
+        <h2>Pesquisa de Pacientes - AMS Clínica </h2>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="filtro.nome">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-table [value]="pacientes" [responsive]="true"
+          emptyMessage="Nenhum funcionário encontrado"
+          [paginator]="true" [rows]="filtro.itensPorPagina"
+          [lazy]="true" [totalRecords]="totalRegistros"
+          (onLazyLoad)="aoMudarPagina($event)"
+          #tabela>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Paciente</th>
+            <th>CPF</th>
+            <th>Categoria</th>
+            <th class="col-acoes-header"></th>
+          </tr>
+        </ng-template>
+
+        <!--<p-column field="pessoa.nome" header="Pessoa"></p-column>
+        <p-column field="userImds" header="Usuário IMDS"></p-column>
+        <p-column field="passwdImds" header="Password IMDS"></p-column>
+        <p-column field="idClienteImds" header="ID Cliente IMDS"></p-column>
+        <p-column field="cpfCnpj" header="CPF/CNPJ"></p-column>-->
+
+
+        <ng-template pTemplate="body" let-paciente>
+            <tr>
+              <td>{{ paciente.nome }}</td>
+              <td>{{ paciente.pessoa.cpf }}</td>
+              <td>{{ paciente.categoria.nome }}</td>
+              <td class="col-acoes">
+                <button pButton icon="fa-pencil" pTooltip="Editar"
+                  tooltipPosition="top"
+                  [routerLink]="['/pacientes', paciente.codigo]"></button>
+                <button pButton icon="fa-trash"
+                  pTooltip="Excluir" tooltipPosition="top"
+                  (click)="confirmarExclusao(paciente)"
+                  [disabled]="!auth.temPermissao('ROLE_REMOVER_PACIENTE')"></button>
+              </td>
+            </tr>
+          </ng-template>
+
+        <!--<p-column styleClass="col-acoes">
+            <ng-template let-cli="rowData" pTemplate="body">
+              <a pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"
+              [routerLink]="['/clientes', cli.codigo]"></a>
+              <button pButton icon="fa-trash"
+                pTooltip="Excluir" tooltipPosition="top"
+                (click)="confirmarExclusao(cli)"
+                [disabled]="!auth.temPermissao('ROLE_REMOVER_CLIENTE')"></button>
+            </ng-template>
+        </p-column>-->
+
+          <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="6">
+                  Nenhum paciente encontrado
+                </td>
+              </tr>
+          </ng-template>
+
+      </p-table>
+    </div>
+
+    <div class="ui-g-12">
+      <a pButton label="Novo Paciente" routerLink="/pacientes/novo"></a>
+    </div>
+
+  </div>
+
+</div>
+

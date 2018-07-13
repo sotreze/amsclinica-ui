@@ -1,0 +1,53 @@
+
+<!-- analisar início -->
+<nav class="navbar">
+   <div class="container">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <p class="p2"><i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp; <a href="https://atendimentoams.herokuapp.com/cadastro" >Não possui uma conta?</a></p>
+          <!--<p class="p2"><i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp;  Não possui uma conta? <a href="http://localhost:8081/cadastro" >Cadastre-se</a></p>-->
+          <!--<p class="p2"><i class="fa fa-bars"></i>&nbsp;&nbsp;&nbsp; <a href="http://localhost:8081/cadastro" >Não possui uma conta?</a></p>-->
+        </div>
+      </div>
+    </div>
+</nav>
+<!--  analisar fim  -->
+
+<div class="container"  style="max-width: 400px; margin: 05% auto">
+
+  <form autocomplete="on" #f="ngForm">
+    <div class="ui-g ui-fluid">
+
+      <div class="ui-g-12">
+        <b>AMS Clínica</b> | Login
+      </div>
+
+      <div class="ui-g-12">
+          <p class="login-box-msg">Por favor, efetue o login para continuar</p>
+        <input pInputText type="email" name="usuario" placeholder="E-mail"
+          ngModel required #usuario>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+
+      <div class="ui-g-12" [hidden]="conexaoEmAndamento">
+        <input pInputText type="password" name="senha" placeholder="Senha"
+          ngModel required #senha>
+      </div>
+      <p-progressSpinner [hidden]="!conexaoEmAndamento"  [style]="{width: '40px', height: '40px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Entrar" [disabled]="!f.valid"
+          (click)="login(usuario.value, senha.value); senha.value = '';"></button>
+         <p class="p3"><a class="p3" href="https://atendimentoams.herokuapp.com/esqueceu-senha">Esqueceu a senha?</a></p>
+         <!-- <p class="p3"><a class="p3" href="http://localhost:8081/esqueceu-senha">Esqueceu a senha?</a></p>-->
+      </div>
+
+
+        <!--<p-progressSpinner [hidden]="!conexaoEmAndamento"
+        [style]="{ width: '50px', height: '50px' }"></p-progressSpinner>-->
+        <!--<p-progressSpinner [hidden]="!conexaoEmAndamento"  [style]="{width: '50px', height: '50px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>-->
+
+    </div>
+  </form>
+</div>
+

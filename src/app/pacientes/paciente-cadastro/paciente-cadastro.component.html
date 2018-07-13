@@ -1,0 +1,100 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div id="content" #content class="ui-g">
+      <div class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pacientes - AMS Clínica </h2>
+      </div>
+
+      <!--<div class="ui-g-12">
+        <p-selectButton name="tipo" [options]="tipos"
+          [(ngModel)]="cliente.tipo"
+          #tipo></p-selectButton>
+      </div>-->
+
+
+      <!--<div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="funcionario.pessoa.nome"
+          #nome="ngModel" required minlength="5">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>-->
+
+      <div class="ui-g-12 ui-md-5 ui-fluid">
+        <label>CPF</label>
+        <p-dropdown name="pessoa" [options]="pessoas"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="paciente.pessoa.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-10 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="paciente.nome"
+          #nome="ngModel" required>
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome do paciente"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-10 ui-fluid">
+        <label>Categoria</label>
+        <p-dropdown name="categoria" [options]="categorias"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="paciente.categoria.codigo"
+          required></p-dropdown>
+      </div>
+
+      <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+        <label [hidden]="cliente.tipo === 'JURIDICA'">CPF</label>
+       <p-inputMask name="cpf" mask="999.999.999-99" [hidden]="cliente.tipo === 'JURIDICA'"
+         [(ngModel)]="pessoa.cpf" #cpf="ngModel" required></p-inputMask>
+
+         <app-message [control]="cpf" error="required"
+         text="Informe o CPF"></app-message>
+     </div>-->
+
+
+      <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+         <label [hidden]="cliente.tipo === 'FISICA'">CNPJ</label>
+        <p-inputMask name="cnpj" mask="999?.999.999/??99"
+          [(ngModel)]="cliente.cnpj" [hidden]="cliente.tipo === 'FISICA'"
+          #cnpj="ngModel" ></p-inputMask>
+      </div>-->
+
+      <!--<div class="ui-g-12 ui-fluid">
+          <div class="ui-g-12 ui-md-3 ui-fluid">
+            <p-radioButton name="mask" value="CPF" label="CPF" [(ngModel)]="format"></p-radioButton>
+            &nbsp;&nbsp;&nbsp;
+            <p-radioButton name="mask" value="CNPJ" label="CNPJ" [(ngModel)]="format"></p-radioButton>
+          </div>
+
+          <div class="ui-g-12 ui-md-4 ui-fluid"  *ngIf="format == 'CPF'">
+                <p-inputMask mask="999.999.999-99" [(ngModel)]="cliente.cpfCnpj" placeholder="999.999.999-99"
+                  name="cpfcnpj"  #cpfcnpj="ngModel"></p-inputMask>
+          </div>
+          <div class="ui-g-12 ui-md-4 ui-fluid"  *ngIf="format == 'CNPJ'">
+                <p-inputMask mask="99.999.999/9999-99" [(ngModel)]="cliente.cpfCnpj" placeholder="99.999.999/9999-99"
+                  name="cpfcnpj" #cpfcnpj="ngModel"></p-inputMask>
+          </div>
+      </div>-->
+
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"
+        (click)="novo(f)"></button>
+        <button pButton type="button" label="PDF" class="ui-button-info" (click)="downloadPDF()"></button>
+        <a routerLink="/pacientes">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+

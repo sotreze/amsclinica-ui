@@ -1,0 +1,102 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Emissão de ' }} Receitas - AMS Clínica </h2>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Médico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="receita.medico.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Paciente:</label>
+        <p-dropdown name="paciente" [options]="pacientes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="receita.paciente.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Medicação (Marca - Nome Genérico - Fabricante):</label>
+        <p-dropdown name="medicacao" [options]="medicacoes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="receita.medicacao.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição:</label>
+          <p-editor name="descricao" [style]="{'height':'320px'}"
+          [(ngModel)]="receita.descricao"
+          #descricao="ngModel" styleClass="editor-dimensions"
+          ></p-editor>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"
+        (click)="nova(f)"></button>
+        <a routerLink="/receitas">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<!--
+<div class="container">
+    <form autocomplete="on" (ngSubmit)="salvar()" [formGroup]="formulario">
+  
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <h2>{{ editando ? 'Edição de ' : 'Emissão de ' }} Receitas - AMS Clínica </h2>
+        </div>
+  
+        <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="medico">
+          <label>Médico:</label>
+          <p-dropdown name="medico" [options]="medicos"
+            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+            formControlName="codigo"
+            required></p-dropdown>
+        </div>
+  
+        <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="paciente">
+          <label>Paciente:</label>
+          <p-dropdown name="paciente" [options]="pacientes"
+            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+            formControlName="codigo"
+            required></p-dropdown>
+        </div>
+  
+        <div class="ui-g-12 ui-md-8 ui-fluid" formGroupName="medicacao">
+          <label>Medicação (Marca - Nome Genérico - Fabricante):</label>
+          <p-dropdown name="medicacao" [options]="medicacoes"
+            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+            formControlName="codigo"
+            required></p-dropdown>
+        </div>
+  
+        <div class="ui-g-12 ui-fluid">
+           <label>Descrição:</label>
+           <p-editor name="descricao"
+           formControlName="descricao" styleClass="editor-dimensions"
+           ></p-editor>
+       </div>
+  
+        <div class="ui-g-12">
+          <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
+          <button pButton type="button" label="Nova" class="ui-button-info"
+          (click)="nova()"></button>
+          <a routerLink="/receitas">Voltar para a pesquisa</a>
+        </div>
+      </div>
+  
+    </form>
+  </div>
+-->
