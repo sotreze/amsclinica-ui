@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 
 import { environment } from './../../environments/environment';
-import { Receita } from './../core/model';
+import { Receita, Paciente } from './../core/model';
 
 export class ReceitaFiltro {
   descricao: string;

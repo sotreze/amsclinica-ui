@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import {RadioButtonModule} from 'primeng/radiobutton';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';

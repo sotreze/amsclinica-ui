@@ -1,9 +1,11 @@
+import { element } from 'protractor';
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
+import * as jsPDF from 'jspdf';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { MedicoService } from './../../medicos/medico.service';
@@ -55,6 +57,37 @@ export class ReceitaCadastroComponent implements OnInit {
     this.carregarPacientes();
     this.carregarMedicacoes();
 
+  }
+
+  @ViewChild('content') content: ElementRef;
+
+  public downloadPDF() {
+
+    
+    let doc = new jsPDF({
+      orientation: 'landscape',
+      format: [216, 279]});
+    let specialElementHandlers = {
+      '#editor': function(element, renderer) {
+        return true;
+      }
+    };
+    let content = this.content.nativeElement;
+    doc.text(130, 40, 'AMS Clínica - Especialidades Integradas', null, null, 'center');
+    doc.text(130, 200, 'Rua Adolpho Setúbal , 235 - Parque Bela Vista - CEP 13214-820 - Jundiaí - SP', null, null, 'center');
+    doc.text(130, 210, 'amsclinica.herokuapp.com', null, null, 'center');
+    doc.fromHTML(content.innerHTML, 75, 75, {
+      'width': 190,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('download.pdf');
+
+    /*const doc = new jsPDF();
+    doc.text(105, 80, 'This is centred text.', null, null, 'center');
+    doc.text('"paciente.nome"', 10, 10);
+
+    doc.save('Teste.pdf');*/
   }
 
   get editando() {

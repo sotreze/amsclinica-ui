@@ -2,10 +2,11 @@
   <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
-      <div class="ui-g-12">
+      <div id="title" class="ui-g-12">
         <h2>{{ editando ? 'Edição de ' : 'Emissão de ' }} Receitas - AMS Clínica </h2>
       </div>
 
+    <div id="content" #content  class="ui-g">
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Médico:</label>
         <p-dropdown name="medico" [options]="medicos"
@@ -40,10 +41,11 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
-        (click)="nova(f)"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="nova(f)"></button>
+        <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
         <a routerLink="/receitas">Voltar para a pesquisa</a>
       </div>
+    </div>
     </div>
 
   </form>

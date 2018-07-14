@@ -1,11 +1,9 @@
-import { element } from 'protractor';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
-import * as jsPDF from 'jspdf';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PacienteService } from './../paciente.service';
@@ -31,7 +29,7 @@ export class PacienteCadastroComponent implements OnInit {
   paciente = new Paciente();
   pessoa = new Pessoa();
   categoria = new Categoria();
-  format = 'CPF';
+  //format = 'CPF';
 
   constructor(
     private pacienteService: PacienteService,
@@ -57,34 +55,6 @@ export class PacienteCadastroComponent implements OnInit {
     this.carregarPessoas();
     this.carregarCategorias();
 
-  }
-
-  @ViewChild('content') content: ElementRef;
-
-  public downloadPDF() {
-
-    
-    let doc = new jsPDF();
-    let specialElementHandlers = {
-      '#editor': function(element, renderer) {
-        return true;
-      }
-    };
-
-    let content = this.content.nativeElement;
-    doc.text(105, 10, 'This is centred text.', null, null, 'center');
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementHandlers
-    });
-
-    doc.save('download.pdf');
-
-    /*const doc = new jsPDF();
-    doc.text(105, 80, 'This is centred text.', null, null, 'center');
-    doc.text('"paciente.nome"', 10, 10);
-
-    doc.save('Teste.pdf');*/
   }
 
   get editando() {

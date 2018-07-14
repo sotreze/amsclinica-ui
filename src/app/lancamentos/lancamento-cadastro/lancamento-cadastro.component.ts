@@ -26,7 +26,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
   exames = [];
   pacientes = [];
-  prontuarios = [];
+  //prontuarios = [];
   // lancamento = new Lancamento();
   formulario: FormGroup;
   pt_BR: any;
@@ -61,7 +61,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
     this.carregarExames();
     this.carregarPacientes();
-    this.carregarProntuarios();
+    //this.carregarProntuarios();
   }
 
   antesUploadAnexo(event) {
@@ -124,10 +124,10 @@ export class LancamentoCadastroComponent implements OnInit {
         codigo: [ null, Validators.required ],
         nome: []
       }),
-      prontuario: this.formBuilder.group({
+      /*prontuario: this.formBuilder.group({
         codigo: [ null, Validators.required ],
         relatorio: []
-      }),
+      }),*/
       observacao: [],
       anexo: [],
       urlAnexo: []
@@ -210,14 +210,14 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  carregarProntuarios() {
+  /*carregarProntuarios() {
     this.prontuarioService.listarTodos()
       .then(prontuarios => {
         this.prontuarios = prontuarios
           .map(p => ({ label: p.nome, value: p.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }
+  }*/
 
   novo() {
     this.formulario.reset();
