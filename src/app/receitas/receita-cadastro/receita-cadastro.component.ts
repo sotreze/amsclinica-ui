@@ -73,15 +73,31 @@ export class ReceitaCadastroComponent implements OnInit {
       }
     };
     let content = this.content.nativeElement;
-    doc.text(130, 40, 'AMS Clínica - Especialidades Integradas', null, null, 'center');
+
+    doc.line(0, 30, 280, 30);
+    doc.line(0, 190, 280, 190);
+
+    doc.setFontSize(22);
+    doc.setFont("courier");
+    doc.setFontType("bold");
+    doc.text(130, 20, 'AMS Clínica - Especialidades Integradas', null, null, 'center');
+
+    doc.setFont("times");
+    doc.setFontType("normal");
+    doc.setFontSize(16);
     doc.text(130, 200, 'Rua Adolpho Setúbal , 235 - Parque Bela Vista - CEP 13214-820 - Jundiaí - SP', null, null, 'center');
+
+    doc.setFont("times");
+    doc.setFontType("normal");
+    doc.setFontSize(14);
     doc.text(130, 210, 'amsclinica.herokuapp.com', null, null, 'center');
-    doc.fromHTML(content.innerHTML, 75, 75, {
+    doc.fromHTML(content.innerHTML, 50, 50, {
       'width': 190,
+      'font': 'courier',
       'elementHandlers': specialElementHandlers
     });
 
-    doc.save('download.pdf');
+    doc.save('receita.pdf');
 
     /*const doc = new jsPDF();
     doc.text(105, 80, 'This is centred text.', null, null, 'center');

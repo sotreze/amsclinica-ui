@@ -7,19 +7,21 @@
       </div>
 
     <div id="content" #content  class="ui-g">
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Médico:</label>
-        <p-dropdown name="medico" [options]="medicos"
-          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-          [(ngModel)]="receita.medico.codigo"
-          required></p-dropdown>
-      </div>
 
+      
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Paciente:</label>
         <p-dropdown name="paciente" [options]="pacientes"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
           [(ngModel)]="receita.paciente.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Médico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="receita.medico.codigo"
           required></p-dropdown>
       </div>
 
@@ -39,13 +41,16 @@
           ></p-editor>
       </div>
 
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info" (click)="nova(f)"></button>
-        <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
-        <a routerLink="/receitas">Voltar para a pesquisa</a>
-      </div>
+
     </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Novo" class="ui-button-info" (click)="nova(f)"></button>
+      <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
+      <a routerLink="/receitas">Voltar para a pesquisa</a>
+    </div>
+
     </div>
 
   </form>

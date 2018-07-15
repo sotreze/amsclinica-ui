@@ -33,7 +33,7 @@
               <th>Médico</th>
               <th>Paciente</th>
               <th>Medicação</th>
-              <th>Descriçao</th>
+              <!--<th>Descriçao</th>-->
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
@@ -42,7 +42,7 @@
             <td>{{ receita.medico.nome }}</td>
             <td>{{ receita.paciente.nome }}</td>
             <td>{{ receita.medicacao.descricao }}</td>
-            <td [innerHTML]="receita.descricao">{{ receita.descricao }}</td>
+            <!--<td [innerHTML]="receita.descricao">{{ receita.descricao }}</td>-->
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
