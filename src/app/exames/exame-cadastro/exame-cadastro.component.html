@@ -1,0 +1,57 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div id="title" class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Emissão de ' }} Exames - AMS Clínica </h2>
+      </div>
+
+    <div id="content" #content  class="ui-g">
+
+      
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Paciente:</label>
+        <p-dropdown name="paciente" [options]="pacientes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="exame.paciente.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Médico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="exame.medico.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Exame:</label>
+        <p-dropdown name="tipoExame" [options]="tiposexames"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="exame.tipoExame.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição:</label>
+          <p-editor name="descricao" [style]="{'height':'320px'}"
+          [(ngModel)]="exame.descricao"
+          #descricao="ngModel" styleClass="editor-dimensions"
+          ></p-editor>
+      </div>
+
+
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+      <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
+      <a routerLink="/exames">Voltar para a pesquisa</a>
+    </div>
+
+    </div>
+
+  </form>
+</div>

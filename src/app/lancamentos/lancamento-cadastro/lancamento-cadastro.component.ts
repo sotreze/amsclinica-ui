@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ExameService } from './../../exames/exame.service';
+import { TipoExameService } from './../../tipos-exames/tipo-exame.service';
 import { PacienteService } from './../../pacientes/paciente.service';
 import { ProntuarioService } from './../../prontuarios/prontuario.service';
 import { Lancamento } from './../../core/model';
@@ -24,7 +24,7 @@ export class LancamentoCadastroComponent implements OnInit {
     { label: 'Exame', value: 'EXAME' },
   ];
 
-  exames = [];
+  tiposexames = [];
   pacientes = [];
   //prontuarios = [];
   // lancamento = new Lancamento();
@@ -33,7 +33,7 @@ export class LancamentoCadastroComponent implements OnInit {
   uploadEmAndamento = false;
 
   constructor(
-    private exameService: ExameService,
+    private tipoExameService: TipoExameService,
     private pacienteService: PacienteService,
     private prontuarioService: ProntuarioService,
     private lancamentoService: LancamentoService,
@@ -193,10 +193,10 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   carregarExames() {
-    return this.exameService.listarTodos()
-      .then(exames => {
-        this.exames = exames
-          .map(c => ({ label: c.nome, value: c.codigo }));
+    return this.tipoExameService.listarTodos()
+      .then(tiposexames => {
+        this.tiposexames = tiposexames
+          .map(e => ({ label: e.nome, value: e.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

@@ -9,7 +9,9 @@ import { LancamentoPesquisaComponent } from './lancamentos/lancamento-pesquisa/l
 import { ProntuarioCadastroComponent } from './prontuarios/prontuario-cadastro/prontuario-cadastro.component';
 import { ProntuarioPesquisaComponent } from './prontuarios/prontuario-pesquisa/prontuario-pesquisa.component';
 import { MedicoPesquisaComponent } from './medicos/medico-pesquisa/medico-pesquisa.component';
-import { ReceitaCadastroComponent } from './receitas/receita-cadastro/receita-cadastro.component';
+//import { ExamePesquisaComponent } from './exames/exame-pesquisa/exame-pesquisa.component';
+//import { ExameCadastroComponent } from './exames/exame-cadastro/exame-cadastro.component';
+
 
 const routes: Routes = [
 
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'prontuarios', loadChildren: 'app/prontuarios/prontuarios.module#ProntuariosModule' },
   { path: 'medicos', loadChildren: 'app/medicos/medicos.module#MedicosModule' },
   { path: 'receitas', loadChildren: 'app/receitas/receitas.module#ReceitasModule' },
+  { path: 'exames', loadChildren: 'app/exames/exames.module#ExamesModule' },
   { path: 'relatorios', loadChildren: 'app/relatorios/relatorios.module#RelatoriosModule' },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

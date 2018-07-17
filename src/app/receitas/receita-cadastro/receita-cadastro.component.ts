@@ -1,7 +1,7 @@
 import { element } from 'protractor';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
@@ -21,7 +21,6 @@ import { Receita, Medico, Paciente, Medicacao } from './../../core/model';
 })
 export class ReceitaCadastroComponent implements OnInit {
 
-  formulario: FormGroup;
   medicos = [];
   pacientes = [];
   medicacoes = [];
@@ -99,11 +98,11 @@ export class ReceitaCadastroComponent implements OnInit {
 
     doc.save('receita.pdf');
 
-    /*const doc = new jsPDF();
-    doc.text(105, 80, 'This is centred text.', null, null, 'center');
-    doc.text('"paciente.nome"', 10, 10);
+    //const doc = new jsPDF();
+    //doc.text(105, 80, 'This is centred text.', null, null, 'center');
+    //doc.text('"paciente.nome"', 10, 10);
 
-    doc.save('Teste.pdf');*/
+    //doc.save('Teste.pdf');
   }
 
   get editando() {

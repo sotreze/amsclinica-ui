@@ -44,7 +44,11 @@ export class Usuario {
   confirmeSenha: string;
 }
 
-export class Exame {
+export class Medicacao {
+  codigo: number;
+}
+
+export class TipoExame {
   codigo: number;
 }
 
@@ -52,15 +56,18 @@ export class Categoria {
   codigo: number;
 }
 
-export class Medicacao {
-  codigo: number;
-  descricao: string;
-}
-
 export class Receita {
   codigo: number;
   descricao: string;
   medicacao = new Medicacao();
+  medico = new Medico();
+  paciente = new Paciente();
+}
+
+export class Exame {
+  codigo: number;
+  descricao: string;
+  tipoExame = new TipoExame();
   medico = new Medico();
   paciente = new Paciente();
 }

@@ -4,7 +4,7 @@
     <form autocomplete="on" (ngSubmit)="pesquisar()">
 
       <div class="ui-g-12">
-        <h2>Pesquisar Receitas</h2>
+        <h2>Pesquisar Exames</h2>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -22,8 +22,8 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="receitas" [responsive]="true"
-          emptyMessage="Nenhum receita encontrada"
+      <p-table [value]="exames" [responsive]="true"
+          emptyMessage="Nenhum exame encontrado"
           [paginator]="true" [rows]="filtro.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)"
@@ -32,25 +32,25 @@
             <tr>
               <th>Paciente</th>
               <th>Médico</th>
-              <th>Medicação</th>
+              <th>Exame</th>
               <!--<th>Descriçao</th>-->
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
-        <ng-template pTemplate="body" let-receita>
+        <ng-template pTemplate="body" let-exame>
           <tr>
-            <td>{{ receita.paciente.nome }}</td>
-            <td>{{ receita.medico.nome }}</td>
-            <td>{{ receita.medicacao.descricao }}</td>
-            <!--<td [innerHTML]="receita.descricao">{{ receita.descricao }}</td>-->
+            <td>{{ exame.paciente.nome }}</td>
+            <td>{{ exame.medico.nome }}</td>
+            <td>{{ exame.tipoExame.nome }}</td>
+            <!--<td [innerHTML]="receita.descricao">{{ exame.descricao }}</td>-->
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
-                [routerLink]="['/receitas', receita.codigo]"></button>
+                [routerLink]="['/exames', exame.codigo]"></button>
               <button pButton icon="fa-trash"
                 pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(receita)"
-                [disabled]="!auth.temPermissao('ROLE_REMOVER_RECEITA')"></button>
+                (click)="confirmarExclusao(exame)"
+                [disabled]="!auth.temPermissao('ROLE_REMOVER_EXAME')"></button>
             </td>
           </tr>
         </ng-template>
@@ -58,7 +58,7 @@
         <ng-template pTemplate="emptymessage">
           <tr>
             <td colspan="4">
-              Nenhuma receita encontrada
+              Nenhuma exame encontrado
             </td>
           </tr>
         </ng-template>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Nova Receita" routerLink="/receitas/nova"></a>
+      <a pButton label="Novo Exame" routerLink="/exames/novo"></a>
     </div>
 
   </div>

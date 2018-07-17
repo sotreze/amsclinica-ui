@@ -33,6 +33,8 @@
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_RECEITA')"><a routerLink="/receitas" (click)="exibindoMenu = !exibindoMenu">Receitas</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('ROLE_PESQUISAR_EXAME')"><a routerLink="/exames" (click)="exibindoMenu = !exibindoMenu">Exames</a></li>
+      <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/relatorios/lancamentos" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
   </ul>

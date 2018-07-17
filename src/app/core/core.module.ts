@@ -18,12 +18,13 @@ import { FuncionarioService } from './../funcionarios/funcionario.service';
 import { PacienteService } from './../pacientes/paciente.service';
 import { UsuarioService } from './../usuarios/usuario.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
-import { ExameService } from './../exames/exame.service';
+import { TipoExameService } from './../tipos-exames/tipo-exame.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { MedicacaoService } from './../medicacoes/medicacao.service';
+import { ReceitaService } from './../receitas/receita.service';
+import { ExameService } from './../exames/exame.service';
 import { ProntuarioService } from './../prontuarios/prontuario.service';
 import { MedicoService } from './../medicos/medico.service';
-import { ReceitaService } from './../receitas/receita.service';
 import { DashboardService } from './../dashboard/dashboard.service';
 import { RelatoriosService } from './../relatorios/relatorios.service';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -64,15 +65,16 @@ registerLocaleData(localePt);
     PessoaService,
     CategoriaService,
     UsuarioService,
-    ExameService,
+    TipoExameService,
     DashboardService,
     RelatoriosService,
     FuncionarioService,
     PacienteService,
     ProntuarioService,
     MedicoService,
-    ReceitaService,
     MedicacaoService,
+    ExameService,
+    ReceitaService,
     ErrorHandlerService,
     AuthService,
 

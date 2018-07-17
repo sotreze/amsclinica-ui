@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 import { Receita, Paciente } from './../core/model';
 
 export class ReceitaFiltro {
-  descricao: string;
+  paciente: string;
   pagina = 0;
   itensPorPagina = 10;
 }
@@ -29,8 +29,8 @@ export class ReceitaService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.descricao) {
-      params.set('descricao', filtro.descricao);
+    if (filtro.paciente) {
+      params.set('paciente', filtro.paciente);
     }
 
     /*return this.http.get(`${this.receitasUrl}?resumo`,
