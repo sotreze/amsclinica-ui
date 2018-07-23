@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
       {label: 'Médicos', routerLink: ['medicos'], icon: 'fas fa-briefcase'},
       {label: 'Receitas', routerLink: ['receitas'], icon: 'fas fa-briefcase'},
       {label: 'Exames', routerLink: ['exames'], icon: 'fas fa-briefcase'},
+      {label: 'Agendas', routerLink: ['agendas'], icon: 'fas fa-briefcase'},
       {label: 'Relatórios', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'},
       //{label: 'Social', icon: 'fa-twitter'}
   ];

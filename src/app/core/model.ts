@@ -1,3 +1,5 @@
+import { Time } from "../../../node_modules/@angular/common";
+
 export class Estado {
   codigo: number;
   nome: string;
@@ -54,6 +56,20 @@ export class TipoExame {
 
 export class Categoria {
   codigo: number;
+}
+
+export class Horario {
+  codigo: number;
+}
+
+export class Agenda {
+  codigo: number;
+  ativo = true;
+  data: Date;
+  hora: string;
+  medico = new Medico();
+  paciente = new Paciente();
+  //horario = new Horario();
 }
 
 export class Receita {

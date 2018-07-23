@@ -1,0 +1,83 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g-12">
+      <div id="title" class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Consultas Médicas - AMS Clínica </h2>
+      </div>
+
+      <div class="ui-g-12 ui-md-7 ui-fluid">
+        <label>Médico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="agenda.medico.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Data:</label>
+          <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="today" [maxDate]="dataLimite"
+          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
+          placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Hora:</label>
+        <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
+        [filter]="true"  [autoWidth]="false"></p-dropdown>
+      </div>
+
+      <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Hora</label>  [disabledDates]="invalidDates"
+          <p-calendar name="hora" showTime="true" hourFormat="24" [locale]="pt_BR" 
+          [(ngModel)]="agenda.hora" #hora="ngModel" required></p-calendar>
+      </div>-->
+      
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Paciente:</label>
+        <p-dropdown name="paciente" [options]="pacientes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="agenda.paciente.codigo"
+          required></p-dropdown>
+      </div>
+
+      <!--<div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Horario:</label>
+        <p-dropdown name="horario" [options]="horarios"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true" [disabled]="(this.agenda.ativo === 'false') "
+          [(ngModel)]="agenda.horario.hora" 
+          required></p-dropdown>
+          <td class="col-data" [style.color]="agenda.ativo === 'false' ? 'red' : 'blue'">{{ agenda.horario.hora }}</td>
+      </div>-->
+
+      <!--<div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Hora:</label>
+        <p-calendar name="hora" #hora="ngModel" [defaultDate]="agenda.hora" [timeOnly]="true" [(ngModel)]="agenda.hora" 
+        [hourFormat]="24"></p-calendar>
+      </div>-->
+
+      <!-- <div class="ui-g-12">
+        
+         <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora">
+              <ng-template let-hora pTemplate="selectedHora"> 
+                  <span style="vertical-align:middle">{{item.label}}</span>
+                  {{item.label}}
+              </ng-template> 
+              <ng-template let-hora pTemplate="item"> 
+                  <div class="ui-helper-clearfix" style="position: relative;height:25px;">
+                  <div style="font-size:14px;float:right;margin-top:4px">{{hora.label}}</div> </div>
+                  {{hora.label}}
+              </ng-template>
+          </p-dropdown>
+    </div>-->
+    
+    <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+      <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
+      <a routerLink="/agendas">Voltar para a pesquisa</a>
+    </div>
+
+    </div>
+
+  </form>
+</div>

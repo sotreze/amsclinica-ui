@@ -1,0 +1,203 @@
+import { Title } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { ToastyService } from 'ng2-toasty';
+
+import {SelectItem} from 'primeng/api';
+
+import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AgendaService } from './../agenda.service';
+import { MedicoService } from './../../medicos/medico.service';
+//import { HorarioService } from './../../horarios/horario.service';
+import { PacienteService } from './../../pacientes/paciente.service';
+import { Agenda, Medico, Paciente } from './../../core/model';
+
+
+@Component({
+  selector: 'app-agenda-cadastro',
+  templateUrl: './agenda-cadastro.component.html',
+  styleUrls: ['./agenda-cadastro.component.css']
+})
+export class AgendaCadastroComponent implements OnInit {
+
+  medicos = [];
+  pacientes = [];
+  //horarios = [];
+  medico = new Medico();
+  paciente = new Paciente();
+  agenda = new Agenda();
+  //horario = new this.horario();
+  //horario = new Horario();
+
+  dataLimite = new Date();
+
+  disableHorarioDropdown: boolean;
+  horas: SelectItem[];
+  selectedHora: string;
+
+  today = new Date();
+  pt_BR: any;
+
+
+  // selectedValue: string = 'FISICA';
+
+  constructor(
+    //private horarioService: HorarioService,
+    private medicoService: MedicoService,
+    private pacienteService: PacienteService,
+    private agendaService: AgendaService,
+    private toasty: ToastyService,
+    private errorHandler: ErrorHandlerService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private title: Title
+  ) { }
+
+  ngOnInit() {
+
+    this.calendarPtbr();
+
+    this.dataLimite.setDate(this.dataLimite.getDate() + 90);   
+
+    this.horarios();
+
+    const codigoAgenda = this.route.snapshot.params['codigo'];
+
+    this.title.setTitle('Nova Agenda');
+
+    if (codigoAgenda) {
+      this.carregarAgenda(codigoAgenda);
+    }
+
+    this.carregarMedicos();
+    this.carregarPacientes();
+    //this.carregarHorarios();
+
+  }
+
+  get editando() {
+    return Boolean(this.agenda.codigo)
+  }
+
+  carregarAgenda(codigo: number) {
+    this.agendaService.buscarPorCodigo(codigo)
+      .then(agenda => {
+        this.agenda = agenda;
+        this.atualizarTituloEdicao();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarAgenda(form);
+    } else {
+      this.adicionarAgenda(form);
+    }
+  }
+
+  adicionarAgenda(form: FormControl) {
+    this.agendaService.adicionar(this.agenda)
+      .then(agendaAdicionada => {
+        this.toasty.success('Agenda adicionada com sucesso!');
+        this.router.navigate(['/agendas', agendaAdicionada.codigo]);
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  atualizarAgenda(form: FormControl) {
+    this.agendaService.atualizar(this.agenda)
+      .then(agenda => {
+        this.agenda = agenda;
+
+        this.toasty.success('Agenda alterada com sucesso!');
+        this.atualizarTituloEdicao();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarMedicos() {
+    this.medicoService.listarTodos()
+      .then(medicos => {
+        this.medicos = medicos
+          .map(m => ({ label: m.nome, value: m.codigo }));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarPacientes() {
+    this.pacienteService.listarTodos()
+      .then(pacientes => {
+        this.pacientes = pacientes
+          .map(p => ({ label: p.nome, value: p.codigo }));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  /*carregarHorarios() {
+    this.horarioService.listarTodos()
+      .then(horarios => {
+        this.horarios = horarios
+          .map(h => ({ label: h.hora, value: h.hora }));
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }*/
+
+  nova(form: FormControl) {
+    form.reset();
+
+    setTimeout(function() {
+      this.agenda = new Agenda();
+    }.bind(this), 1);
+
+    this.router.navigate(['/agendas/nova']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição de agendas: ${this.agenda.codigo}`);
+  }
+
+  calendarPtbr() {
+
+    this.pt_BR = {
+    firstDayOfWeek: 0,
+    dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+    dayNamesShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb' ],
+    dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+    monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto','Setembro','Outubro','Novembro','Dezembro' ],
+    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+    today: 'Hoje',
+    clear: 'Limpar'
+    }
+  }
+
+  horarios() {
+    this.horas = [
+        {label: 'Selecione', value: 'Selecione'},
+        {label: '08:00', value: '08:00'},
+        {label: '08:30', value: '08:30'},
+        {label: '09:00', value: '09:00'},
+        {label: '09:30', value: '09:30'},
+        {label: '10:00', value: '10:00'},
+        {label: '10:30', value: '10:30'},
+        {label: '11:00', value: '11:00'},
+        {label: '11:30', value: '11:30'},
+        {label: '12:00', value: '12:00'},
+        {label: '13:00', value: '13:00'},
+        {label: '13:30', value: '13:30'},
+        {label: '14:00', value: '14:00'},
+        {label: '14:30', value: '14:30'},
+        {label: '15:00', value: '15:00'},
+        {label: '15:30', value: '15:30'},
+        {label: '16:00', value: '16:00'},
+        {label: '16:30', value: '16:30'},
+        {label: '17:00', value: '17:00'},
+        {label: '17:30', value: '17:30'},
+        {label: '18:00', value: '18:00'},
+    ];
+}
+
+}
+

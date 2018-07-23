@@ -57,7 +57,7 @@
                 <td class="col-data">{{ lancamento.dataConsulta | date:'dd/MM/yyyy' }}</td>
                 <td class="col-data">{{ lancamento.dataExame | date:'dd/MM/yyyy' }}</td>
                 <td class="col-exame" [style.color]="lancamento.tipo === 'EXAME' ? 'red' : 'blue'">
-                  {{ lancamento.exame.nome }}</td>
+                  {{ lancamento.exame.descricao }}</td>
                 <td>{{ lancamento.observacao }}</td>
                 <td class="col-data">{{ lancamento.valor | number:'1.2-2' }}</td>
                 <td class="col-acoes">

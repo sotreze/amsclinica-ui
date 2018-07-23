@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="ui-g">
+  
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
+  
+        <div class="ui-g-12">
+          <h2>Agendamento de Consultas - Pesquisa de médicos</h2>
+        </div>
+  
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Médico:</label>
+          <input pInputText type="text" name="medico"
+            [(ngModel)]="filtro.medico">
+        </div>
+
+        <div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Data:</label>
+          <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
+          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
+          placeholder="Selecione" #data="ngModel" readonlyInput="true"
+          [(ngModel)]="filtro.dataAgendada"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Hora:</label>
+          <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel"
+          [filter]="true"  [autoWidth]="false" showClear="true"></p-dropdown>
+        </div>
+  
+        <div class="ui-g-12">
+          <button pButton type="submit" label="Pesquisar"></button>
+        </div>
+  
+      </form>
+    </div>
+  
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <p-table [value]="agendas" [responsive]="true"
+            emptyMessage="Nenhuma agenda encontrada"
+            [paginator]="true" [rows]="filtro.itensPorPagina"
+            [lazy]="true" [totalRecords]="totalRegistros"
+            (onLazyLoad)="aoMudarPagina($event)"
+            #tabela>
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Médico</th>
+                <th class="col-data-header">Data</th>
+                <th  class="col-data-header">Hora</th>
+                <th>Paciente</th> 
+                <!--<th>Descriçao</th>-->
+                <th class="col-acoes-header"></th>
+              </tr>
+            </ng-template>
+          <ng-template pTemplate="body" let-agenda>
+            <tr>
+              <td>{{ agenda.medico.nome }}</td>
+              <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
+              <!--<td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.horario.hora }}</td>-->
+              <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
+              <td>{{ agenda.paciente.nome }}</td>
+              
+              
+              <!--<td [innerHTML]="receita.descricao">{{ exame.descricao }}</td>-->
+              <td class="col-acoes">
+                <button pButton icon="fa-pencil" pTooltip="Editar"
+                  tooltipPosition="top"
+                  [routerLink]="['/agendas', agenda.codigo]"></button>
+                <button pButton icon="fa-trash"
+                  pTooltip="Excluir" tooltipPosition="top"
+                  (click)="confirmarExclusao(agenda)"
+                  [disabled]="!auth.temPermissao('ROLE_REMOVER_AGENDA')"></button>
+              </td>
+            </tr>
+          </ng-template>
+  
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="4">
+                Nenhuma agenda encontrada
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+  
+      <div class="ui-g-12">
+        <a pButton label="Nova Agenda" routerLink="/agendas/nova"></a>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+  

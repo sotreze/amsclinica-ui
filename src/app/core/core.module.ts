@@ -21,8 +21,10 @@ import { LancamentoService } from './../lancamentos/lancamento.service';
 import { TipoExameService } from './../tipos-exames/tipo-exame.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { MedicacaoService } from './../medicacoes/medicacao.service';
+//import { HorarioService } from './../horarios/horario.service';
 import { ReceitaService } from './../receitas/receita.service';
 import { ExameService } from './../exames/exame.service';
+import { AgendaService } from './../agendas/agenda.service';
 import { ProntuarioService } from './../prontuarios/prontuario.service';
 import { MedicoService } from './../medicos/medico.service';
 import { DashboardService } from './../dashboard/dashboard.service';
@@ -64,6 +66,7 @@ registerLocaleData(localePt);
     LancamentoService,
     PessoaService,
     CategoriaService,
+    //HorarioService,
     UsuarioService,
     TipoExameService,
     DashboardService,
@@ -74,6 +77,7 @@ registerLocaleData(localePt);
     MedicoService,
     MedicacaoService,
     ExameService,
+    AgendaService,
     ReceitaService,
     ErrorHandlerService,
     AuthService,

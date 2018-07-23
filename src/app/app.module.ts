@@ -8,6 +8,8 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SegurancaModule } from 'app/seguranca/seguranca.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { AgendaCadastroComponent } from './agendas/agenda-cadastro/agenda-cadastro.component';
+import { AgendaPesquisaComponent } from './agendas/agenda-pesquisa/agenda-pesquisa.component';
 
 
 
