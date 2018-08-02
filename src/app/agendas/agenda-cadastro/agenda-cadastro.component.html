@@ -17,14 +17,14 @@
       <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Data:</label>
           <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="today" [maxDate]="dataLimite"
-          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
+          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
           placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Hora:</label>
         <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
-        [filter]="true"  [autoWidth]="false"></p-dropdown>
+        [filter]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
       </div>
 
       <!--<div class="ui-g-12 ui-md-3 ui-fluid">
@@ -76,7 +76,6 @@
       <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
       <a routerLink="/agendas">Voltar para a pesquisa</a>
     </div>
-
     </div>
 
   </form>

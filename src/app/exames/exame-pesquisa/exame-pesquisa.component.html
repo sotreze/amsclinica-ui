@@ -50,7 +50,7 @@
               <button pButton icon="fa-trash"
                 pTooltip="Excluir" tooltipPosition="top"
                 (click)="confirmarExclusao(exame)"
-                [disabled]="!auth.temPermissao('ROLE_REMOVER_EXAME')"></button>
+                [disabled]="!auth.temPermissao('ROLE_FUNCIONARIO')"></button>
             </td>
           </tr>
         </ng-template>

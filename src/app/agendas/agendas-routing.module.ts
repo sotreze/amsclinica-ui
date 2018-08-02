@@ -10,19 +10,19 @@ const routes: Routes = [
     path: '',
     component: AgendaPesquisaComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PESQUISAR_AGENDA'] }
+    data: { roles: ['ROLE_USUARIO'] }
   },
   {
     path: 'nova',
     component: AgendaCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_AGENDA'] }
+    data: { roles: ['ROLE_USUARIO'] }
   },
   {
     path: ':codigo',
     component: AgendaCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_AGENDA'] }
+    data: { roles: ['ROLE_USUARIO'] }
   }
 ];
 

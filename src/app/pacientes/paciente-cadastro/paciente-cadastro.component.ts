@@ -10,10 +10,7 @@ import { PacienteService } from './../paciente.service';
 import { CategoriaService } from './../../categorias/categoria.service';
 import { ProntuarioService } from './../../prontuarios/prontuario.service';
 import { PessoaService } from './../../pessoas/pessoa.service';
-import { Paciente } from './../../core/model';
-import { Categoria } from './../../core/model';
-import { Pessoa } from './../../core/model';
-import { Prontuario } from './../../core/model';
+import { Paciente, Categoria, Pessoa } from './../../core/model';
 
 import { SelectItem } from 'primeng/components/common/api';
 
@@ -29,7 +26,7 @@ export class PacienteCadastroComponent implements OnInit {
   paciente = new Paciente();
   pessoa = new Pessoa();
   categoria = new Categoria();
-  //format = 'CPF';
+  // format = 'CPF';
 
   constructor(
     private pacienteService: PacienteService,

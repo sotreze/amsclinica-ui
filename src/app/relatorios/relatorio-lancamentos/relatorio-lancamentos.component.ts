@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 import { RelatoriosService } from './../relatorios.service';
@@ -13,9 +14,12 @@ export class RelatorioLancamentosComponent implements OnInit {
   periodoInicio: Date;
   periodoFim: Date;
 
-  constructor(private relatoriosService: RelatoriosService) { }
+  constructor(
+    private title: Title,
+    private relatoriosService: RelatoriosService) { }
 
   ngOnInit() {
+    this.title.setTitle('Relatórios');
     this.calendarPtbr();
   }
 
@@ -36,7 +40,9 @@ export class RelatorioLancamentosComponent implements OnInit {
     dayNamesShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb' ],
     dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
     monthNames: [ 'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro' ],
-    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ]
+    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+    today: 'Hoje',
+    clear: 'Limpar'
     }
   };
 }

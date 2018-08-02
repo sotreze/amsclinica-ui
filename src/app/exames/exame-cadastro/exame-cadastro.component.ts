@@ -28,6 +28,7 @@ export class ExameCadastroComponent implements OnInit  {
   paciente = new Paciente();
   tipoexame = new TipoExame();
   exame = new Exame();
+  today = new Date();
 
 
   constructor(

@@ -6,22 +6,22 @@ import { ToastyService } from 'ng2-toasty';
 
 import { AuthService } from 'app/seguranca/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ProntuarioFiltro, ProntuarioService } from './../prontuario.service';
+import { PerfilFiltro, PerfilService } from './../perfil.service';
 
 @Component({
-  selector: 'app-prontuario-pesquisa',
-  templateUrl: './prontuario-pesquisa.component.html',
-  styleUrls: ['./prontuario-pesquisa.component.css']
+  selector: 'app-perfil-pesquisa',
+  templateUrl: './perfil-pesquisa.component.html',
+  styleUrls: ['./perfil-pesquisa.component.css']
 })
-export class ProntuarioPesquisaComponent implements OnInit  {
+export class PerfilPesquisaComponent implements OnInit {
 
   totalRegistros = 0;
-  filtro = new ProntuarioFiltro();
-  prontuarios = [];
+  filtro = new PerfilFiltro();
+  perfis = [];
   @ViewChild('tabela') grid;
 
   constructor(
-    private prontuarioService: ProntuarioService,
+    private perfilService: PerfilService,
     private errorHandler: ErrorHandlerService,
     private auth: AuthService,
     private confirmation: ConfirmationService,
@@ -30,16 +30,16 @@ export class ProntuarioPesquisaComponent implements OnInit  {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Pesquisa de prontuários');
+    this.title.setTitle('Pesquisa de perfis');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
 
-    this.prontuarioService.pesquisar(this.filtro)
+    this.perfilService.pesquisar(this.filtro)
       .then(resultado => {
         this.totalRegistros = resultado.total;
-        this.prontuarios = resultado.prontuarios;
+        this.perfis = resultado.perfis;
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -49,39 +49,27 @@ export class ProntuarioPesquisaComponent implements OnInit  {
     this.pesquisar(pagina);
   }
 
-  confirmarExclusao(prontuario: any) {
+  confirmarExclusao(perfil: any) {
     this.confirmation.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.excluir(prontuario);
+        this.excluir(perfil);
       }
     });
   }
 
-  excluir(prontuario: any) {
-    this.prontuarioService.excluir(prontuario.codigo)
+  excluir(perfil: any) {
+    this.perfilService.excluir(perfil.codigo)
       .then(() => {
         if (this.grid.first === 0) {
           this.pesquisar();
         } else {
           this.grid.first = 0;
         }
-        this.toasty.success('Anotação excluída com sucesso!');
+        this.toasty.success('Perfil excluído com sucesso!');
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  /*alternarStatus(prontuario: any): void {
-    const novoStatus = !prontuario.ativo;
-
-    this.prontuarioService.mudarStatus(prontuario.codigo, novoStatus)
-      .then(() => {
-        const acao = novoStatus ? 'ativada' : 'desativada';
-
-        prontuario.ativo = novoStatus;
-        this.toasty.success(`Prontuario ${acao} com sucesso!`);
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }*/
-
 }
+

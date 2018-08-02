@@ -1,51 +1,16 @@
-<div class="container">
+<!--<div class="container">
   <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
         <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Prontuário</h2>
-        <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
       </div>
-
-      <!--{{ classe.value === 'CLIENTE' ? 'Cliente' : 'Funcionário' }}-->
-
-      <!--<div class="ui-g-12">
-        <p-selectButton name="classe" [options]="classes"
-          [(ngModel)]="pessoa.tipo"
-          #classe></p-selectButton>
-      </div>-->
-
-
-      <!--<div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
-          <label>Pessoa Física</label>
-              <p-radioButton name="groupname" value="FISICA" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>
-      <div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
-          <label>Pessoa Jurídica</label>
-              <p-radioButton name="groupname" value="JURIDICA" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>-->
-
-
-      <!--<div class="ui-g-12 ui-fluid">
-        <label>Nome</label>
-        <input pInputText type="text" name="nome"
-          [(ngModel)]="funcionario.pessoa.nome"
-          #nome="ngModel" required minlength="5">
-
-        <app-message [control]="nome" error="required"
-          text="Informe o nome"></app-message>
-        <app-message [control]="nome" error="minlength"
-          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
-      </div>-->
 
       <div class="ui-g-12 ui-fluid">
         <label>Exame</label>
         <input pInputText type="text" name="exame"
           [(ngModel)]="prontuario.exame"
           #exame="ngModel" required>
-
-        <!--<app-message [control]="cargo" error="required"
-          text="Informe o cargo"></app-message>-->
       </div>
 
 
@@ -54,16 +19,10 @@
         <input pInputText type="text" name="receita"
           [(ngModel)]="prontuario.receita"
           #receita="ngModel" required>
-
-        <!--<app-message [control]="cargo" error="required"
-          text="Informe o cargo"></app-message>-->
       </div>
 
     
       <div class="ui-g-12 ui-fluid">
-        <!-- <label [hidden]="lancamento.tipo === 'NORMALIZADO'">Composição Química</label>-->
-        <!--<label [hidden]="formulario.get('tipo').value === 'NORMALIZADO'">Composição Química</label>-->
-         <!--<p-editor [hidden]="lancamento.tipo === 'NORMALIZADO'" name="composicao"-->
          <label>Relatório</label>
          <p-editor  name="relatorio" [(ngModel)]="prontuario.relatorio"
          #relatorio="ngModel" styleClass="editor-dimensions"
@@ -79,4 +38,85 @@
     </div>
 
   </form>
+</div>-->
+
+<div class="container">
+  <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Nova' }} Prontuário</h2>
+
+      </div>
+
+      <div class="ui-g-12 ui-md-10 ui-fluid">
+        <label>Receita</label>
+        <input pInputText type="text" name="receita"
+        formControlName="receita">
+
+        <app-message [control]="formulario.get('relatorio')" error="obrigatoriedade"
+          text="Relatório obrigatório"></app-message>
+        <app-message [control]="formulario.get('relatorio')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('relatorio').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="paciente">
+          <label>Paciente</label>
+          <p-dropdown name="paciente" [options]="pacientes"
+            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+            formControlName="codigo"></p-dropdown>
+        </div>
+
+        <!--<div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="prontuario">
+            <label>Prontuario</label>
+            <p-dropdown name="prontuario" [options]="prontuarios"
+              placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+              formControlName="codigo"></p-dropdown>
+          </div>-->
+
+      <div class="ui-g-12 ui-fluid">
+         <!-- <label [hidden]="lancamento.tipo === 'NORMALIZADO'">Composição Química</label>-->
+         <!--<label [hidden]="formulario.get('tipo').value === 'NORMALIZADO'">Composição Química</label>-->
+          <!--<p-editor [hidden]="lancamento.tipo === 'NORMALIZADO'" name="composicao"-->
+          <label>Relatório</label>
+          <p-editor name="relatorio"
+          formControlName="relatorio" [style]="{'height':'320px'}" styleClass="editor-dimensions"
+          ></p-editor>
+      </div>
+
+      <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid"
+      *ngIf="!formulario.get('anexo').value">
+        <p-fileUpload name="anexo" mode="basic" auto="true" maxFileSize="100000000"
+          chooseLabel="Anexar" accept="image/*,application/*"
+          [url]="urlUploadAnexo"
+          (onBeforeSend)="antesUploadAnexo($event)"
+          (onUpload)="aoTerminarUploadAnexo($event)"
+          (onError)="erroUpload($event)"
+          [hidden]="uploadEmAndamento"></p-fileUpload>
+
+        <p-progressSpinner [hidden]="!uploadEmAndamento"
+          [style]="{ width: '25px', height: '25px' }"></p-progressSpinner>
+      </div>
+
+      <div class="ui-g-12" dir="rtl"
+        *ngIf="formulario.get('anexo').value">
+        <button pButton type="button" class="ui-button-danger"
+        icon="fa-close" pTooltip="Remover anexo" tooltipPosition="top"
+        (click)="removerAnexo()"></button>
+
+        <a target="_blank" pTooltip="Baixar anexo" tooltipPosition="top"
+          [href]="formulario.get('urlAnexo').value">{{ nomeAnexo }}</a>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
+        <button pButton type="button" label="Nova" class="ui-button-info"
+        (click)="novo()"></button>
+        <a routerLink="/prontuarios">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
 </div>
+
+

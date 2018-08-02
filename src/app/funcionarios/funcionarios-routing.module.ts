@@ -10,19 +10,19 @@ const routes: Routes = [
     path: '',
     component: FuncionarioPesquisaComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PESQUISAR_FUNCIONARIO'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   },
   {
     path: 'novo',
     component: FuncionarioCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_FUNCIONARIO'] }
+    data: { roles: ['ROLE_ADMINISTRADOR'] }
   },
   {
     path: ':codigo',
     component: FuncionarioCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_FUNCIONARIO'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   }
 ];
 

@@ -39,16 +39,16 @@
           [(ngModel)]="exame.descricao"
           #descricao="ngModel" styleClass="editor-dimensions"
           ></p-editor>
+        <p>{{today | date:'dd/MM/yyyy'}}</p> 
       </div>
-
-
+      
     </div>
 
     <div class="ui-g-12">
       <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
       <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
       <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
-      <a routerLink="/exames">Voltar para a pesquisa</a>
+      <a routerLink="/exames">Voltar para a pesquisa</a> 
     </div>
 
     </div>

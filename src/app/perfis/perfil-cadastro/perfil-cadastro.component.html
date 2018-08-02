@@ -1,0 +1,34 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Perfis - AMS Clínica </h2>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Usuário</label>
+        <p-dropdown name="usuario" [options]="usuarios"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="perfil.usuario.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-8 ui-fluid">
+        <label>Permissão</label>
+        <p-dropdown name="permissao" [options]="permissoes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="perfil.permissao.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+        <a routerLink="/perfis">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+

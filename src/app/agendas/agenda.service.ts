@@ -9,6 +9,7 @@ import { environment } from './../../environments/environment';
 import { Agenda } from './../core/model';
 
 export class AgendaFiltro {
+  paciente: string;
   medico: string;
   dataAgendada: Date;
   horaAgendada: string;
@@ -31,6 +32,10 @@ export class AgendaService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
+    if (filtro.paciente) {
+      params.set('paciente', filtro.paciente);
+    }
+
     if (filtro.medico) {
       params.set('medico', filtro.medico);
     }
@@ -43,6 +48,12 @@ export class AgendaService {
     if (filtro.horaAgendada) {
       params.set('hora', filtro.horaAgendada);
     }
+
+    /*if (filtro.horaAgendada) {
+      params.set('hora',
+      moment(filtro.horaAgendada).format('HH:MM'));
+
+    }*/
 
     return this.http.get(`${this.agendasUrl}`, { search: params })
       .toPromise()
@@ -113,6 +124,5 @@ export class AgendaService {
       agenda.data = moment(agenda.data,
         'YYYY-MM-DD').toDate();
     }
-  }
-
+  } 
 }

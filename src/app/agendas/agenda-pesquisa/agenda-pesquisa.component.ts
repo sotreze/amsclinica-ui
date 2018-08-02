@@ -1,11 +1,11 @@
-import { Dropdown } from 'primeng/components/dropdown/dropdown';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
-import { ToastyService } from 'ng2-toasty';
-
+import { Dropdown } from 'primeng/components/dropdown/dropdown';
 import { SelectItem } from 'primeng/api';
+
+import { ToastyService } from 'ng2-toasty';
 
 import { AuthService } from 'app/seguranca/auth.service';
 import { ErrorHandlerService } from './../../core/error-handler.service';
@@ -20,13 +20,23 @@ export class AgendaPesquisaComponent implements OnInit  {
 
   pt_BR: any;
   dataLimite = new Date();
+  diaSeguinte = new Date();
   today = new Date();
-  horas: SelectItem[];
+  //horas: SelectItem[];
   selectedHora: string;
+  relogio = 'fa fa-fw fa-clock-o';
+
+  horas: any[];
+
+  timeValue: string;
 
   totalRegistros = 0;
   filtro = new AgendaFiltro();
   agendas = [];
+
+ 
+
+
   @ViewChild('tabela') grid;
 
   constructor(
@@ -42,11 +52,46 @@ export class AgendaPesquisaComponent implements OnInit  {
 
     this.calendarPtbr();
 
-    this.horarios();
+    //this.horarios();
+
+    //TODO this.newTeste();
 
     this.dataLimite.setDate(this.dataLimite.getDate() + 90);  
 
+    //TODO
+    this.diaSeguinte.setDate(this.diaSeguinte.getDate() + 1);
+
     this.title.setTitle('Pesquisa de agendas');
+
+    this.onSelect(this.timeValue);
+     
+ 
+      this.horas = [];
+      this.horas.push({label: 'Selecione', value: 'Selecione'});
+      this.horas.push({label: '08:00', value: '08:00'});
+      this.horas.push({label: '08:30', value: '08:30'});
+      this.horas.push({label: '09:00', value: '09:00'});
+      this.horas.push({label: '09:30', value: '09:30'});
+      this.horas.push({label: '10:00', value: '10:00'});
+      this.horas.push({label: '10:30', value: '10:30'});
+      this.horas.push({label: '11:00', value: '11:00'});
+      this.horas.push({label: '11:30', value: '11:30'});
+      this.horas.push({label: '12:00', value: '12:00'});
+      this.horas.push({label: '13:00', value: '13:00'});
+      this.horas.push({label: '13:30', value: '13:30'});
+      this.horas.push({label: '14:00', value: '14:00'});
+      this.horas.push({label: '14:30', value: '14:30'});
+      this.horas.push({label: '15:00', value: '15:00'});
+      this.horas.push({label: '15:30', value: '15:30'});
+      this.horas.push({label: '16:00', value: '16:00'});
+      this.horas.push({label: '16:30', value: '16:30'});
+      this.horas.push({label: '17:00', value: '17:00'});
+      this.horas.push({label: '17:30', value: '17:30'});
+      this.horas.push({label: '18:00', value: '18:00'});
+
+      //TODO  , disabled: this.newTeste
+     
+
   }
 
   pesquisar(pagina = 0) {
@@ -114,7 +159,7 @@ export class AgendaPesquisaComponent implements OnInit  {
     }
   }
 
-  horarios() {
+  /*horarios() {
     this.horas = [
         {label: 'Selecione', value: 'Selecione'},
         {label: '08:00', value: '08:00'},
@@ -139,11 +184,32 @@ export class AgendaPesquisaComponent implements OnInit  {
         {label: '18:00', value: '18:00'},
     ];
     
-  }
+  }*/
+
 
   clearFilter(dropdown: Dropdown) {
     dropdown.resetFilter();
-}
+  }
+
+  onClick(disabled: boolean) {
+    if(disabled) {
+        event.stopPropagation();
+    }
+  }
+
+  //TODO
+  /*newTeste(isDisable: boolean ) {
+    let hoje = new Date();
+    if(hoje) {
+      isDisable;
+    }
+  }*/
+
+  onSelect($event) {
+    let hour = new Date($event).getHours();
+    let min = new Date($event).getMinutes();
+    this.timeValue = `${hour}:${min}`;
+  }
 
 }
 

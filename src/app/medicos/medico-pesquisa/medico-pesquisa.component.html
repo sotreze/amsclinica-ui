@@ -45,11 +45,12 @@
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
-                [routerLink]="['/medicos', medico.codigo]"></button>
+                [routerLink]="['/medicos', medico.codigo]"
+                [disabled]="!auth.temPermissao('ROLE_ADMINISTRADOR')"></button>
               <button pButton icon="fa-trash"
                 pTooltip="Excluir" tooltipPosition="top"
                 (click)="confirmarExclusao(medico)"
-                [disabled]="!auth.temPermissao('ROLE_REMOVER_MEDICO')"></button>
+                [disabled]="!auth.temPermissao('ROLE_ADMINISTRADOR')"></button>
             </td>
           </tr>
         </ng-template>

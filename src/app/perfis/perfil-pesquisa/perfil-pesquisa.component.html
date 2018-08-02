@@ -4,13 +4,13 @@
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
       <div class="ui-g-12">
-        <h2>Pesquisar Prontuários</h2>
+        <h2>Pesquisar Perfis</h2>
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>Relatório</label>
-        <input pInputText type="text" name="relatorio"
-          [(ngModel)]="filtro.relatorio">
+        <label>Perfil</label>
+        <input pInputText type="text" name="usuario"
+          [(ngModel)]="filtro.usuario">
       </div>
 
       <div class="ui-g-12">
@@ -22,40 +22,39 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="prontuarios" [responsive]="true"
-          emptyMessage="Nenhum prontuário encontrado"
+      <p-table [value]="perfis" [responsive]="true"
+          emptyMessage="Nenhum perfil encontrado"
           [paginator]="true" [rows]="filtro.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)"
           #tabela>
           <ng-template pTemplate="header">
             <tr>
-              <th>Receita</th>
-              <th>Relatório</th>
+              <th>Usuario</th>
+              <th>Permissão</th>
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
-        <ng-template pTemplate="body" let-prontuario>
+        <ng-template pTemplate="body" let-perfil>
           <tr>
-            <td>{{ prontuario.receita }}</td>
-            <!--<td>{{ prontuario.relatorio }}</td>-->
-            <td [innerHTML]="prontuario.relatorio">{{ prontuario.relatorio }}</td>
+            <td>{{ perfil.usuario.primeiroNome }} {{ perfil.usuario.sobrenome }}</td>
+            <td>{{ perfil.permissao.descricao }}</td>
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
-                [routerLink]="['/prontuarios', prontuario.codigo]"></button>
+                [routerLink]="['/perfis', perfil.codigo]"></button>
               <button pButton icon="fa-trash"
                 pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(prontuario)"
-              ></button>
+                (click)="confirmarExclusao(perfil)"
+                [disabled]="!auth.temPermissao('ROLE_ADMINISTRADOR')"></button>
             </td>
           </tr>
         </ng-template>
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="5">
-              Nenhum prontuário encontrado
+            <td colspan="4">
+              Nenhuma perfil encontrado
             </td>
           </tr>
         </ng-template>
@@ -63,7 +62,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Nova Anotação" routerLink="/prontuarios/novo"></a>
+      <a pButton label="Novo Perfil" routerLink="/perfis/novo"></a>
     </div>
 
   </div>

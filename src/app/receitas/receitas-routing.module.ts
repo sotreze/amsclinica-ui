@@ -10,19 +10,19 @@ const routes: Routes = [
     path: '',
     component: ReceitaPesquisaComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PESQUISAR_RECEITA'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   },
   {
     path: 'nova',
     component: ReceitaCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_RECEITA'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   },
   {
     path: ':codigo',
     component: ReceitaCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_RECEITA'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   }
 ];
 

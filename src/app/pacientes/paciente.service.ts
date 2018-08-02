@@ -7,7 +7,6 @@ import * as moment from 'moment';
 
 import { environment } from './../../environments/environment';
 import { Paciente } from './../core/model';
-//import { Pessoa } from './../core/model';
 
 export class PacienteFiltro {
   nome: string;
@@ -19,7 +18,7 @@ export class PacienteFiltro {
 export class PacienteService {
 
   pacientesUrl: string;
-  //prontuariosUrl: string;
+  // prontuariosUrl: string;
 
   constructor(private http: AuthHttp) {
     this.pacientesUrl = `${environment.apiUrl}/pacientes`;
@@ -32,7 +31,7 @@ export class PacienteService {
     params.set('size', filtro.itensPorPagina.toString());
 
     if (filtro.nome) {
-      //ToDo
+      // ToDo
       params.set('nome', filtro.nome);
     }
 
@@ -49,22 +48,6 @@ export class PacienteService {
 
         return resultado;
       })
-
-    /*  return this.http.get(`${this.pacientesUrl}?resumo`,
-        { search: params })
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const pacientes = responseJson.content;
-
-        const resultado = {
-          pacientes,
-          total: responseJson.totalElements
-        };
-
-        return resultado;
-      });
-    }    */
 
   }
 

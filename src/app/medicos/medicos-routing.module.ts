@@ -10,19 +10,19 @@ const routes: Routes = [
     path: '',
     component: MedicoPesquisaComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PESQUISAR_MEDICO'] }
+    data: { roles: ['ROLE_USUARIO'] }
   },
   {
     path: 'novo',
     component: MedicoCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_MEDICO'] }
+    data: { roles: ['ROLE_ADMINISTRADOR'] }
   },
   {
     path: ':codigo',
     component: MedicoCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_MEDICO'] }
+    data: { roles: ['ROLE_ADMINISTRADOR'] }
   }
 ];
 

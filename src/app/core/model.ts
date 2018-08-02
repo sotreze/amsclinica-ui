@@ -1,4 +1,3 @@
-import { Time } from "../../../node_modules/@angular/common";
 
 export class Estado {
   codigo: number;
@@ -23,6 +22,7 @@ export class Endereco {
 export class Pessoa {
   codigo: number;
   nome: string;
+  rg: string;
   endereco = new Endereco();
   ativo = true;
   telefone: string;
@@ -30,10 +30,11 @@ export class Pessoa {
 
 export class Prontuario {
   codigo: number;
-  exame: string;
   receita: string;
   relatorio: string;
   paciente = new Paciente();
+  anexo: string;
+  urlAnexo: string;
 }
 
 export class Usuario {
@@ -44,6 +45,16 @@ export class Usuario {
   ativo = true;
   senha: string;
   confirmeSenha: string;
+}
+
+export class Permissao {
+  codigo: number;
+}
+
+export class Perfil {
+  codigo: number;
+  usuario = new Usuario();
+  permissao = new Permissao();
 }
 
 export class Medicacao {
@@ -69,7 +80,6 @@ export class Agenda {
   hora: string;
   medico = new Medico();
   paciente = new Paciente();
-  //horario = new Horario();
 }
 
 export class Receita {
@@ -92,6 +102,7 @@ export class Medico {
   codigo: number;
   pessoa = new Pessoa();
   nome: string;
+  cpf: string;
   especializacao: string;
   crm: string;
 }
@@ -100,6 +111,7 @@ export class Funcionario {
   codigo: number;
   pessoa = new Pessoa();
   nome: string;
+  cpf: string;
   cargo: string;
   setor: string;
   dataAdmissao: Date;
@@ -109,6 +121,7 @@ export class Paciente {
   codigo: number;
   pessoa = new Pessoa();
   nome: string;
+  cpf: string;
   categoria = new Categoria();
 }
 

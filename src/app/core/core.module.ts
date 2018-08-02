@@ -16,12 +16,13 @@ import { ErrorHandlerService } from './error-handler.service';
 import { PessoaService } from './../pessoas/pessoa.service';
 import { FuncionarioService } from './../funcionarios/funcionario.service';
 import { PacienteService } from './../pacientes/paciente.service';
+import { PerfilService } from './../perfis/perfil.service';
 import { UsuarioService } from './../usuarios/usuario.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
 import { TipoExameService } from './../tipos-exames/tipo-exame.service';
 import { CategoriaService } from './../categorias/categoria.service';
+import { PermissaoService } from './../permissoes/permissao.service';
 import { MedicacaoService } from './../medicacoes/medicacao.service';
-//import { HorarioService } from './../horarios/horario.service';
 import { ReceitaService } from './../receitas/receita.service';
 import { ExameService } from './../exames/exame.service';
 import { AgendaService } from './../agendas/agenda.service';
@@ -66,13 +67,14 @@ registerLocaleData(localePt);
     LancamentoService,
     PessoaService,
     CategoriaService,
-    //HorarioService,
+    PerfilService,
     UsuarioService,
     TipoExameService,
     DashboardService,
     RelatoriosService,
     FuncionarioService,
     PacienteService,
+    PermissaoService,
     ProntuarioService,
     MedicoService,
     MedicacaoService,

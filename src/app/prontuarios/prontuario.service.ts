@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 import { Prontuario } from './../core/model';
 
 export class ProntuarioFiltro {
-  exame: string;
+  //exame: string;
   receita: string;
   relatorio: string;
   pagina = 0;
@@ -25,15 +25,19 @@ export class ProntuarioService {
     this.prontuariosUrl = `${environment.apiUrl}/prontuarios`;
   }
 
+  urlUploadAnexo(): string {
+    return `${this.prontuariosUrl}/anexo`;
+  }
+
   pesquisar(filtro: ProntuarioFiltro): Promise<any> {
     const params = new URLSearchParams();
 
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.exame) {
+    /*if (filtro.exame) {
       params.set('exame', filtro.exame);
-    }
+    }*/
 
     if (filtro.receita) {
       params.set('receita', filtro.receita);
@@ -85,11 +89,11 @@ export class ProntuarioService {
       .then(() => null);
   }
 
-  mudarStatus(codigo: number, ativo: boolean): Promise<void> {
+  /*mudarStatus(codigo: number, ativo: boolean): Promise<void> {
     return this.http.put(`${this.prontuariosUrl}/${codigo}/ativo`, ativo)
       .toPromise()
       .then(() => null);
-  }
+  }*/
 
   adicionar(prontuario: Prontuario): Promise<Prontuario> {
     return this.http.post(this.prontuariosUrl, JSON.stringify(prontuario))
@@ -101,7 +105,11 @@ export class ProntuarioService {
     return this.http.put(`${this.prontuariosUrl}/${prontuario.codigo}`,
         JSON.stringify(prontuario))
       .toPromise()
-      .then(response => response.json() as Prontuario);
+      .then(response => {
+        const prontuarioAlterado = response.json() as Prontuario;
+
+        return prontuarioAlterado;
+      });
   }
 
   buscarPorCodigo(codigo: number): Promise<Prontuario> {

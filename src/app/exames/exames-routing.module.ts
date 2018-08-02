@@ -10,19 +10,19 @@ const routes: Routes = [
     path: '',
     component: ExamePesquisaComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_PESQUISAR_EXAME'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   },
   {
     path: 'novo',
     component: ExameCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_EXAME'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   },
   {
     path: ':codigo',
     component: ExameCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_EXAME'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   }
 ];
 

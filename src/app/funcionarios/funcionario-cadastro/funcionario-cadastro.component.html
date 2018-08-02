@@ -7,43 +7,23 @@
         <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
       </div>
 
-      <!--{{ classe.value === 'CLIENTE' ? 'Cliente' : 'Funcionário' }}-->
-
-      <!--<div class="ui-g-12">
-        <p-selectButton name="classe" [options]="classes"
-          [(ngModel)]="pessoa.tipo"
-          #classe></p-selectButton>
-      </div>-->
-
-
-      <!--<div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
-          <label>Pessoa Física</label>
-              <p-radioButton name="groupname" value="FISICA" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>
-      <div class="ui-g-12 ui-md-3 ui-fluid" [hidden]="pessoa.classe === 'FUNCIONARIO'">
-          <label>Pessoa Jurídica</label>
-              <p-radioButton name="groupname" value="JURIDICA" [(ngModel)]="selectedValue"></p-radioButton>
-      </div>-->
-
-
-      <!--<div class="ui-g-12 ui-fluid">
-        <label>Nome</label>
-        <input pInputText type="text" name="nome"
-          [(ngModel)]="funcionario.pessoa.nome"
-          #nome="ngModel" required minlength="5">
-
-        <app-message [control]="nome" error="required"
-          text="Informe o nome"></app-message>
-        <app-message [control]="nome" error="minlength"
-          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
-      </div>-->
-
-      <div class="ui-g-12 ui-md-9 ui-fluid">
-        <label>Nome</label>
+      <div class="ui-g-12 ui-md-5 ui-fluid">
+        <label>CPF</label>
         <p-dropdown name="pessoa" [options]="pessoas"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
           [(ngModel)]="funcionario.pessoa.codigo"
           required></p-dropdown>
+      </div>
+
+
+      <div class="ui-g-12 ui-md-10 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="funcionario.nome"
+          #nome="ngModel" required>
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome do funcionário"></app-message>
       </div>
 
 
@@ -79,16 +59,6 @@
           <p-calendar name="dataAdmissao" dateFormat="dd/mm/yy"  [locale]="pt_BR"
           [(ngModel)]="funcionario.dataAdmissao" #dataadmissao="ngModel" required></p-calendar>
         </div>
-
-        <div class="ui-g-12 ui-md-3 ui-fluid">
-          <label>CPF</label>
-         <p-inputMask name="cpf" mask="999.999.999-99"
-           [(ngModel)]="funcionario.cpf" #cpf="ngModel" required></p-inputMask>
-
-           <app-message [control]="cpf" error="required"
-           text="Informe o CPF"></app-message>
-       </div>
-
 
 
       <div class="ui-g-12">

@@ -8,9 +8,10 @@ import { ToastyService } from 'ng2-toasty';
 import {SelectItem} from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AuthService } from 'app/seguranca/auth.service';
 import { AgendaService } from './../agenda.service';
 import { MedicoService } from './../../medicos/medico.service';
-//import { HorarioService } from './../../horarios/horario.service';
+// import { HorarioService } from './../../horarios/horario.service';
 import { PacienteService } from './../../pacientes/paciente.service';
 import { Agenda, Medico, Paciente } from './../../core/model';
 
@@ -24,18 +25,19 @@ export class AgendaCadastroComponent implements OnInit {
 
   medicos = [];
   pacientes = [];
-  //horarios = [];
+  // horarios = [];
   medico = new Medico();
   paciente = new Paciente();
   agenda = new Agenda();
-  //horario = new this.horario();
-  //horario = new Horario();
+  // horario = new this.horario();
+  // horario = new Horario();
 
   dataLimite = new Date();
 
   disableHorarioDropdown: boolean;
   horas: SelectItem[];
   selectedHora: string;
+  relogio = 'fa fa-fw fa-clock-o';
 
   today = new Date();
   pt_BR: any;
@@ -44,9 +46,10 @@ export class AgendaCadastroComponent implements OnInit {
   // selectedValue: string = 'FISICA';
 
   constructor(
-    //private horarioService: HorarioService,
+    // private horarioService: HorarioService,
     private medicoService: MedicoService,
     private pacienteService: PacienteService,
+    private auth: AuthService,
     private agendaService: AgendaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
@@ -59,7 +62,7 @@ export class AgendaCadastroComponent implements OnInit {
 
     this.calendarPtbr();
 
-    this.dataLimite.setDate(this.dataLimite.getDate() + 90);   
+    this.dataLimite.setDate(this.dataLimite.getDate() + 90);
 
     this.horarios();
 
@@ -73,7 +76,7 @@ export class AgendaCadastroComponent implements OnInit {
 
     this.carregarMedicos();
     this.carregarPacientes();
-    //this.carregarHorarios();
+    // this.carregarHorarios();
 
   }
 

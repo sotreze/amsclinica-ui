@@ -28,7 +28,7 @@ export class ReceitaCadastroComponent implements OnInit {
   paciente = new Paciente();
   medicacao = new Medicacao();
   receita = new Receita();
-
+  today = new Date();
 
   constructor(
     private medicoService: MedicoService,
@@ -62,7 +62,7 @@ export class ReceitaCadastroComponent implements OnInit {
 
   public downloadPDF() {
 
-    
+
     let doc = new jsPDF({
       orientation: 'landscape',
       format: [216, 279]});
@@ -98,11 +98,11 @@ export class ReceitaCadastroComponent implements OnInit {
 
     doc.save('receita.pdf');
 
-    //const doc = new jsPDF();
-    //doc.text(105, 80, 'This is centred text.', null, null, 'center');
-    //doc.text('"paciente.nome"', 10, 10);
+    // const doc = new jsPDF();
+    // doc.text(105, 80, 'This is centred text.', null, null, 'center');
+    // doc.text('"paciente.nome"', 10, 10);
 
-    //doc.save('Teste.pdf');
+    // doc.save('Teste.pdf');
   }
 
   get editando() {
@@ -246,7 +246,7 @@ export class ReceitaCadastroComponent implements OnInit {
     this.carregarMedicacoes();
     this.carregarMedicos();
     this.carregarPacientes();
-  
+
   }
 
   configurarFormulario() {

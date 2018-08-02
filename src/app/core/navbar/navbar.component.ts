@@ -28,20 +28,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
+      {label: 'Agendas', routerLink: ['agendas'], icon: 'far fa-address-book'},
       {label: 'Painel de Controle', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
-      {label: 'Consultas', routerLink: ['lancamentos'], icon: 'fa-search'},
-      //{label: 'Nova', routerLink: ['lancamentos/novo'], icon: 'fa-edit'},
-      {label: 'Pessoal', routerLink: ['pessoas'], icon: 'fas fa-address-card'},
-      {label: 'Usuários', routerLink: ['usuarios'], icon: 'fas fa-user-circle'},
-      {label: 'Funcionários', routerLink: ['funcionarios'], icon: 'fas fa-users'},
-      {label: 'Pacientes', routerLink: ['pacientes'], icon: 'fas fa-briefcase'},
-      {label: 'Prontuários', routerLink: ['prontuarios'], icon: 'fas fa-briefcase'},
-      {label: 'Médicos', routerLink: ['medicos'], icon: 'fas fa-briefcase'},
-      {label: 'Receitas', routerLink: ['receitas'], icon: 'fas fa-briefcase'},
+      {label: 'Pacientes', routerLink: ['pacientes'], icon: 'fas fa-users'},
+      {label: 'Prontuários', routerLink: ['prontuarios'], icon: 'fas fa-book'},
+      {label: 'Médicos', routerLink: ['medicos'], icon: 'fas fa-user-md'},
+      {label: 'Receitas', routerLink: ['receitas'], icon: 'fas fa-align-center'},
       {label: 'Exames', routerLink: ['exames'], icon: 'fas fa-briefcase'},
-      {label: 'Agendas', routerLink: ['agendas'], icon: 'fas fa-briefcase'},
-      {label: 'Relatórios', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'},
-      //{label: 'Social', icon: 'fa-twitter'}
+      {label: 'Relatórios', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'}
   ];
 
   this.activeItem = this.items[2];
