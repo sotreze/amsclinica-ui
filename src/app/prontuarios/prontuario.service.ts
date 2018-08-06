@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 import { Prontuario } from './../core/model';
 
 export class ProntuarioFiltro {
-  //exame: string;
+  
   receita: string;
   relatorio: string;
   pagina = 0;
@@ -46,21 +46,6 @@ export class ProntuarioService {
     if (filtro.relatorio) {
       params.set('relatorio', filtro.relatorio);
     }
-
-    /*return this.http.get(`${this.prontuariosUrl}?resumo`,
-        { search: params })
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const prontuarios = responseJson.content;
-
-        const resultado = {
-          prontuarios,
-          total: responseJson.totalElements
-        };
-
-        return resultado;
-      });*/
 
     return this.http.get(`${this.prontuariosUrl}`, { search: params })
       .toPromise()

@@ -34,6 +34,7 @@ export class AgendaPesquisaComponent implements OnInit  {
   filtro = new AgendaFiltro();
   agendas = [];
 
+  imagens: any[];
  
 
 
@@ -90,7 +91,6 @@ export class AgendaPesquisaComponent implements OnInit  {
       this.horas.push({label: '18:00', value: '18:00'});
 
       //TODO  , disabled: this.newTeste
-     
 
   }
 
@@ -154,7 +154,7 @@ export class AgendaPesquisaComponent implements OnInit  {
     dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
     monthNames: [ 'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro' ],
     monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-    today: 'Hoje',
+    today: 'Próxima',
     clear: 'Limpar'
     }
   }

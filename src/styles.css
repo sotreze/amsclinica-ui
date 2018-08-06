@@ -67,3 +67,19 @@ label {
   background-color: #1e94d2;
   margin-bottom: -6px;
 }
+
+
+#title {
+    text-align: center;
+    color: #337ab7;
+}
+
+
+.custom .ui-scrollpanel-bar:hover {
+  background-color: #135ba1;
+}
+
+.p-header {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}

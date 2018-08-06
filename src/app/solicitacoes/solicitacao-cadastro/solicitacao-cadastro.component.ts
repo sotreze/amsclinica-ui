@@ -6,28 +6,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
-import { ProntuarioService } from './../prontuario.service';
+import { SolicitacaoService } from './../solicitacao.service';
 import { PacienteService } from './../../pacientes/paciente.service';
-import { Prontuario } from './../../core/model';
+import { AgendaService } from './../../agendas/agenda.service';
+import { Solicitacao } from './../../core/model';
 
 
 @Component({
-  selector: 'app-prontuario-cadastro',
-  templateUrl: './prontuario-cadastro.component.html',
-  styleUrls: ['./prontuario-cadastro.component.css']
+  selector: 'app-solicitacao-cadastro',
+  templateUrl: './solicitacao-cadastro.component.html',
+  styleUrls: ['./solicitacao-cadastro.component.css']
 })
-export class ProntuarioCadastroComponent implements OnInit {
+export class SolicitacaoCadastroComponent implements OnInit {
 
+  tipos = [
+    { label: 'Cancelamento', value: 'CANCELAMENTO' },
+    { label: 'Solicitação', value: 'SOLICITACAO' },
+  ];
 
+  tipo='CANCELAMENTO';
+  agendas = []
   pacientes = [];
-  //prontuario = new Prontuario();
   formulario: FormGroup;
   pt_BR: any;
   uploadEmAndamento = false;
 
   constructor(
+    private agendaService: AgendaService,
     private pacienteService: PacienteService,
-    private prontuarioService: ProntuarioService,
+    private solicitacaoService: SolicitacaoService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
@@ -42,14 +49,15 @@ export class ProntuarioCadastroComponent implements OnInit {
 
     //this.calendarPtbr();
 
-    const codigoProntuario = this.route.snapshot.params['codigo'];
+    const codigoSolicitacao = this.route.snapshot.params['codigo'];
 
-    this.title.setTitle('Novo prontuário');
+    this.title.setTitle('Nova solicitação');
 
-    if (codigoProntuario) {
-      this.carregarProntuario(codigoProntuario);
+    if (codigoSolicitacao) {
+      this.carregarSolicitacao(codigoSolicitacao);
     }
 
+    this.carregarAgendas();
     this.carregarPacientes();
   }
 
@@ -94,22 +102,21 @@ export class ProntuarioCadastroComponent implements OnInit {
   }
 
   get urlUploadAnexo() {
-    return this.prontuarioService.urlUploadAnexo();
+    return this.solicitacaoService.urlUploadAnexo();
   }
 
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
-      receita: [],
+      tipo: [ 'CANCELAMENTO', Validators.required ],
+      agenda: this.formBuilder.group({
+        codigo: [ null, Validators.required ]
+      }),
       paciente: this.formBuilder.group({
         codigo: [ null, Validators.required ],
         nome: []
       }),
-      /*prontuario: this.formBuilder.group({
-        codigo: [ null, Validators.required ],
-        relatorio: []
-      }),*/
-      relatorio: [null, [ this.validarObrigatoriedade]],
+      descricao: [null, [ this.validarObrigatoriedade]],
       anexo: [],
       urlAnexo: []
     });
@@ -129,44 +136,51 @@ export class ProntuarioCadastroComponent implements OnInit {
     return Boolean(this.formulario.get('codigo').value);
   }
 
-  carregarProntuario(codigo: number) {
-    this.prontuarioService.buscarPorCodigo(codigo)
-      .then(prontuario => {
-       this.formulario.patchValue(prontuario);
+  carregarSolicitacao(codigo: number) {
+    this.solicitacaoService.buscarPorCodigo(codigo)
+      .then(solicitacao => {
+        // this.lancamento = lancamento;
+       this.formulario.setValue(solicitacao);
+       //this.formulario.patchValue(solicitacao);
         this.atualizarTituloEdicao();
       })
-      .catch(erro => this.errorHandler.handle(erro));
+     // .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar() {
     if (this.editando) {
-      this.atualizarProntuario();
+      this.atualizarSolicitacao();
     } else {
-      this.adicionarProntuario();
+      this.adicionarSolicitacao();
     }
   }
 
-  adicionarProntuario() {
-    this.prontuarioService.adicionar(this.formulario.value)
-      .then(prontuarioAdicionado => {
-        this.toasty.success('Prontuário adicionado com sucesso!');
+  adicionarSolicitacao() {
+    this.solicitacaoService.adicionar(this.formulario.value)
+      .then(solicitacaoAdicionada => {
+        this.toasty.success('Solicitação adicionada com sucesso!');
 
-        // form.reset();
-        // this.lancamento = new Lancamento();
-        this.router.navigate(['/prontuarios', prontuarioAdicionado.codigo]);
+        this.router.navigate(['/solicitacoes', solicitacaoAdicionada.codigo]);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  atualizarProntuario() {
-    this.prontuarioService.atualizar(this.formulario.value)
-      .then(prontuario => {
-        // this.lancamento = lancamento;
-        // this.formulario.setValue(lancamento);
-        this.formulario.patchValue(prontuario);
+  atualizarSolicitacao() {
+    this.solicitacaoService.atualizar(this.formulario.value)
+      .then(solicitacao => {
+        this.formulario.patchValue(solicitacao);
 
-        this.toasty.success('Prontuario alterado com sucesso!');
+        this.toasty.success('Solicitação alterada com sucesso!');
         this.atualizarTituloEdicao();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarAgendas() {
+    this.agendaService.listarTodas()
+      .then(agendas => {
+        this.agendas = agendas
+          .map(a => ({ label: a.codigo, value: a.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -180,38 +194,18 @@ export class ProntuarioCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  /*carregarProntuarios() {
-    this.prontuarioService.listarTodos()
-      .then(prontuarios => {
-        this.prontuarios = prontuarios
-          .map(p => ({ label: p.nome, value: p.codigo }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }*/
-
   novo() {
     this.formulario.reset();
 
     setTimeout(function() {
-      this.prontuario = new Prontuario();
+      this.solicitacao = new Solicitacao();
     }.bind(this), 1);
 
-    this.router.navigate(['/prontuarios/novo']);
+    this.router.navigate(['/solicitacoes/nova']);
   }
 
   atualizarTituloEdicao() {
-    this.title.setTitle(`Edição de prontuário: ${this.formulario.get('codigo').value}`);
+    this.title.setTitle(`Edição de solicitação: ${this.formulario.get('codigo').value}`);
   }
 
-  /*calendarPtbr() {
-
-    this.pt_BR = {
-    firstDayOfWeek: 0,
-    dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
-    dayNamesShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb' ],
-    dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
-    monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto','Setembro','Outubro','Novembro','Dezembro' ],
-    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ]
-    }
-  };*/
 }

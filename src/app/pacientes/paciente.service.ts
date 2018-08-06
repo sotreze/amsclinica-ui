@@ -18,7 +18,6 @@ export class PacienteFiltro {
 export class PacienteService {
 
   pacientesUrl: string;
-  // prontuariosUrl: string;
 
   constructor(private http: AuthHttp) {
     this.pacientesUrl = `${environment.apiUrl}/pacientes`;

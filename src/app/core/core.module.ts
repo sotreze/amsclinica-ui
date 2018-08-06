@@ -27,6 +27,7 @@ import { ReceitaService } from './../receitas/receita.service';
 import { ExameService } from './../exames/exame.service';
 import { AgendaService } from './../agendas/agenda.service';
 import { ProntuarioService } from './../prontuarios/prontuario.service';
+import { SolicitacaoService } from './../solicitacoes/solicitacao.service';
 import { MedicoService } from './../medicos/medico.service';
 import { DashboardService } from './../dashboard/dashboard.service';
 import { RelatoriosService } from './../relatorios/relatorios.service';
@@ -76,6 +77,7 @@ registerLocaleData(localePt);
     PacienteService,
     PermissaoService,
     ProntuarioService,
+    SolicitacaoService,
     MedicoService,
     MedicacaoService,
     ExameService,

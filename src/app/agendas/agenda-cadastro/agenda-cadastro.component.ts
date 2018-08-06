@@ -33,6 +33,7 @@ export class AgendaCadastroComponent implements OnInit {
   // horario = new Horario();
 
   dataLimite = new Date();
+  diaSeguinte = new Date();
 
   disableHorarioDropdown: boolean;
   horas: SelectItem[];
@@ -41,6 +42,8 @@ export class AgendaCadastroComponent implements OnInit {
 
   today = new Date();
   pt_BR: any;
+
+  imagens: any[];
 
 
   // selectedValue: string = 'FISICA';
@@ -63,6 +66,7 @@ export class AgendaCadastroComponent implements OnInit {
     this.calendarPtbr();
 
     this.dataLimite.setDate(this.dataLimite.getDate() + 90);
+    this.diaSeguinte.setDate(this.diaSeguinte.getDate() + 1);
 
     this.horarios();
 
@@ -76,7 +80,6 @@ export class AgendaCadastroComponent implements OnInit {
 
     this.carregarMedicos();
     this.carregarPacientes();
-    // this.carregarHorarios();
 
   }
 
@@ -171,7 +174,7 @@ export class AgendaCadastroComponent implements OnInit {
     dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
     monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto','Setembro','Outubro','Novembro','Dezembro' ],
     monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-    today: 'Hoje',
+    today: 'Próxima',
     clear: 'Limpar'
     }
   }

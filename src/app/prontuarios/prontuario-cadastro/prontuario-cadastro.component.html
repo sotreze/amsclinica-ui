@@ -1,51 +1,9 @@
-<!--<div class="container">
-  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
-
-    <div class="ui-g">
-      <div class="ui-g-12">
-        <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Prontuário</h2>
-      </div>
-
-      <div class="ui-g-12 ui-fluid">
-        <label>Exame</label>
-        <input pInputText type="text" name="exame"
-          [(ngModel)]="prontuario.exame"
-          #exame="ngModel" required>
-      </div>
-
-
-      <div class="ui-g-12 ui-fluid">
-        <label>Receita</label>
-        <input pInputText type="text" name="receita"
-          [(ngModel)]="prontuario.receita"
-          #receita="ngModel" required>
-      </div>
-
-    
-      <div class="ui-g-12 ui-fluid">
-         <label>Relatório</label>
-         <p-editor  name="relatorio" [(ngModel)]="prontuario.relatorio"
-         #relatorio="ngModel" styleClass="editor-dimensions"
-         ></p-editor>
-     </div>
-
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
-        (click)="novo(f)"></button>
-        <a routerLink="/prontuarios">Voltar para a pesquisa</a>
-      </div>
-    </div>
-
-  </form>
-</div>-->
-
 <div class="container">
   <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
 
     <div class="ui-g">
-      <div class="ui-g-12">
-        <h2>{{ editando ? 'Edição de ' : 'Nova' }} Prontuário</h2>
+      <div id="title" class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Novo' }} Prontuário</h2>
 
       </div>
 
@@ -53,11 +11,6 @@
         <label>Receita</label>
         <input pInputText type="text" name="receita"
         formControlName="receita">
-
-        <app-message [control]="formulario.get('relatorio')" error="obrigatoriedade"
-          text="Relatório obrigatório"></app-message>
-        <app-message [control]="formulario.get('relatorio')" error="tamanhoMinimo"
-          text="Mínimo de {{ formulario.get('relatorio').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="paciente">
@@ -82,6 +35,8 @@
           <p-editor name="relatorio"
           formControlName="relatorio" [style]="{'height':'320px'}" styleClass="editor-dimensions"
           ></p-editor>
+          <app-message [control]="formulario.get('relatorio')" error="obrigatoriedade"
+          text="Relatório obrigatório"></app-message>
       </div>
 
       <div class="ui-g-6 ui-g-offset-6 ui-md-2 ui-md-offset-10 ui-fluid"
@@ -110,7 +65,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
-        <button pButton type="button" label="Nova" class="ui-button-info"
+        <button pButton type="button" label="Novo" class="ui-button-info"
         (click)="novo()"></button>
         <a routerLink="/prontuarios">Voltar para a pesquisa</a>
       </div>

@@ -3,7 +3,7 @@
   
       <form autocomplete="off" (ngSubmit)="pesquisar()">
   
-        <div class="ui-g-12">
+        <div id="title" class="ui-g-12">
           <h2>Agendamento de Consultas - Pesquisa de médicos</h2>
         </div>
   
@@ -15,7 +15,7 @@
 
         <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Data:</label>
-          <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
+          <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="diaSeguinte" [maxDate]="dataLimite"
           [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
           placeholder="Selecione" #data="ngModel" readonlyInput="true" showIcon="true"
           [(ngModel)]="filtro.dataAgendada"></p-calendar>

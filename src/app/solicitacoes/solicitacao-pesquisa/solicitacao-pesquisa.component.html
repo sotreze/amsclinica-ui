@@ -4,7 +4,7 @@
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
       <div id="title" class="ui-g-12">
-        <h2>Pesquisar Receitas</h2>
+        <h2>Pesquisar Solicitações</h2>
       </div>
 
       <div class="ui-g-12 ui-fluid">
@@ -22,43 +22,43 @@
 
   <div class="ui-g">
     <div class="ui-g-12">
-      <p-table [value]="receitas" [responsive]="true"
-          emptyMessage="Nenhum receita encontrada"
+      <p-table [value]="solicitacoes" [responsive]="true"
+          emptyMessage="Nenhum prontuário encontrado"
           [paginator]="true" [rows]="filtro.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)"
           #tabela>
           <ng-template pTemplate="header">
             <tr>
-              <th>Paciente</th>
-              <th>Médico</th>
-              <th>Medicação</th>
-              <!--<th>Descriçao</th>-->
+              <th>Agenda</th>
+              <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th>
+              <th>Descrição</th>
+              <th class="col-data-header">Data</th>
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
-        <ng-template pTemplate="body" let-receita>
+        <ng-template pTemplate="body" let-solicitacao>
           <tr>
-            <td>{{ receita.paciente.nome }}</td>
-            <td>{{ receita.medico.nome }}</td>
-            <td>{{ receita.medicacao.descricao }}</td>
-            <!--<td [innerHTML]="receita.descricao">{{ receita.descricao }}</td>-->
+            <td>{{ solicitacao.agenda.codigo }}</td>
+            <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ solicitacao.paciente.nome }}</td>
+            <td [innerHTML]="solicitacao.descricao">{{ solicitacao.descricao }}</td>
+            <td>{{ solicitacao.data | date:'dd/MM/yyyy' }}</td>
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
-                [routerLink]="['/receitas', receita.codigo]"></button>
+                [routerLink]="['/solicitacoes', solicitacao.codigo]"></button>
               <button pButton icon="fa-trash"
                 pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(receita)"
-                [disabled]="!auth.temPermissao('ROLE_FUNCIONARIO')"></button>
+                (click)="confirmarExclusao(solicitacao)"
+              ></button>
             </td>
           </tr>
         </ng-template>
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="4">
-              Nenhuma receita encontrada
+            <td colspan="5">
+              Nenhuma solicitacao encontrada
             </td>
           </tr>
         </ng-template>
@@ -66,7 +66,7 @@
     </div>
 
     <div class="ui-g-12">
-      <a pButton label="Nova Receita" routerLink="/receitas/nova"></a>
+      <a pButton label="Nova Solicitação" routerLink="/solicitacoes/nova"></a>
     </div>
 
   </div>

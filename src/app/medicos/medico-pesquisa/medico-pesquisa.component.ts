@@ -1,5 +1,6 @@
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
@@ -20,17 +21,28 @@ export class MedicoPesquisaComponent implements OnInit  {
   medicos = [];
   @ViewChild('tabela') grid;
 
+  images: any[];
+
   constructor(
     private medicoService: MedicoService,
     private errorHandler: ErrorHandlerService,
     private auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
+    private route: ActivatedRoute,
     private title: Title
   ) { }
 
   ngOnInit() {
     this.title.setTitle('Pesquisa de médicos');
+
+    this.images = [];
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/70716dc2-3f52-460a-9ffb-c0e3dd01b7f4_1.jpg', 
+    alt:'Dr. Pedro', 
+    title:'Dr. Pedro - Ginecologista'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/173704ed-b946-40d6-bb27-e08034b13f51_2.jpg', 
+    alt:'Dra. Isabela', 
+    title:'Dra. Isabela - Dermatologista'});
   }
 
   pesquisar(pagina = 0) {

@@ -1,55 +1,55 @@
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {RadioButtonModule} from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { CalendarModule } from 'primeng/calendar';
+import {RadioButtonModule} from 'primeng/radiobutton';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { EditorModule } from 'primeng/editor';
+import { FileUploadModule } from 'primeng/fileupload';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import {GalleriaModule} from 'primeng/galleria';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
-import {PanelModule} from 'primeng/panel';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
-
-import { MedicosRoutingModule } from './medicos-routing.module';
+import { SolicitacoesRoutingModule } from './solicitacoes-routing.module';
 import { SharedModule } from './../shared/shared.module';
-import { MedicoCadastroComponent } from './medico-cadastro/medico-cadastro.component';
-import { MedicoPesquisaComponent } from './medico-pesquisa/medico-pesquisa.component';
+import { SolicitacaoCadastroComponent } from './../solicitacoes/solicitacao-cadastro/solicitacao-cadastro.component';
+import { SolicitacaoPesquisaComponent } from './../solicitacoes/solicitacao-pesquisa/solicitacao-pesquisa.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
 
-    RadioButtonModule,
     InputTextModule,
-    CalendarModule,
+    EditorModule,
+    SelectButtonModule,
+    RadioButtonModule,
     ButtonModule,
     TableModule,
     TooltipModule,
     InputTextareaModule,
     InputMaskModule,
-    SelectButtonModule,
+    FileUploadModule,
     DropdownModule,
-    GalleriaModule,
-    ScrollPanelModule,
-    PanelModule,
+    ProgressSpinnerModule,
+
 
     SharedModule,
-    MedicosRoutingModule
+    SolicitacoesRoutingModule
   ],
   declarations: [
-    MedicoCadastroComponent,
-    MedicoPesquisaComponent
+    SolicitacaoCadastroComponent,
+    SolicitacaoPesquisaComponent
   ],
   exports: []
 })
-export class MedicosModule { }
+export class SolicitacoesModule { }
+

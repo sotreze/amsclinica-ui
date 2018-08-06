@@ -17,7 +17,9 @@ export class NavbarComponent implements OnInit {
   exibindoMenu = false;
 
   items: MenuItem[];
+  itemsUsuario: MenuItem[];
   activeItem: MenuItem;
+
 
   constructor(
     public auth: AuthService,
@@ -28,17 +30,23 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      {label: 'Agendas', routerLink: ['agendas'], icon: 'far fa-address-book'},
-      {label: 'Painel de Controle', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
-      {label: 'Pacientes', routerLink: ['pacientes'], icon: 'fas fa-users'},
-      {label: 'Prontuários', routerLink: ['prontuarios'], icon: 'fas fa-book'},
-      {label: 'Médicos', routerLink: ['medicos'], icon: 'fas fa-user-md'},
-      {label: 'Receitas', routerLink: ['receitas'], icon: 'fas fa-align-center'},
-      {label: 'Exames', routerLink: ['exames'], icon: 'fas fa-briefcase'},
-      {label: 'Relatórios', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'}
+      {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
+      {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
+      {label: 'Receita', routerLink: ['receitas'], icon: 'fas fa-align-center'},
+      {label: 'Exame', routerLink: ['exames'], icon: 'fas fa-briefcase'},
+      {label: 'Prontuário', routerLink: ['prontuarios'], icon: 'fas fa-book'},
+      {label: 'Solicitação', routerLink: ['solicitacoes'], icon: 'far fa-plus-square'},
+      {label: 'Painel', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
+      {label: 'Relatório', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'}
   ];
 
-  this.activeItem = this.items[2];
+    this.itemsUsuario = [
+      {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
+      {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
+      {label: 'Solicita', routerLink: ['solicitacoes/nova'], icon: 'far fa-plus-square'},
+];
+
+  this.activeItem = this.items[1];
   }
 
   logout() {

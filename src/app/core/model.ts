@@ -37,6 +37,17 @@ export class Prontuario {
   urlAnexo: string;
 }
 
+export class Solicitacao {
+  codigo: number;
+  descricao: string;
+  agenda = new Agenda();
+  paciente = new Paciente();
+  data: Date;
+  tipo = 'CANCELAMENTO';
+  anexo: string;
+  urlAnexo: string;
+}
+
 export class Usuario {
   codigo: number;
   primeiroNome: string;

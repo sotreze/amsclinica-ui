@@ -3,17 +3,17 @@
 
     <form autocomplete="on" (ngSubmit)="pesquisar()">
 
-      <div class="ui-g-12">
+      <div id="title"  class="ui-g-12"  [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
         <h2>Pesquisa de Pacientes - AMS Clínica </h2>
       </div>
 
-      <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12 ui-fluid"  [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
         <label>Nome</label>
         <input pInputText type="text" name="nome"
           [(ngModel)]="filtro.nome">
       </div>
 
-      <div class="ui-g-12">
+      <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
         <button pButton type="submit" label="Pesquisar"></button>
       </div>
 
@@ -31,8 +31,8 @@
 
         <ng-template pTemplate="header">
           <tr>
-            <th>Paciente</th>
-            <th>CPF</th>
+            <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th>
+            <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">CPF</th>
             <th>Categoria</th>
             <th class="col-acoes-header"></th>
           </tr>
@@ -47,8 +47,8 @@
 
         <ng-template pTemplate="body" let-paciente>
             <tr>
-              <td>{{ paciente.nome }}</td>
-              <td>{{ paciente.cpf }}</td>
+              <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ paciente.nome }}</td>
+              <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ paciente.cpf }}</td>
               <td>{{ paciente.categoria.nome }}</td>
               <td class="col-acoes">
                 <button pButton icon="fa-pencil" pTooltip="Editar"
@@ -85,7 +85,7 @@
       </p-table>
     </div>
 
-    <div class="ui-g-12">
+    <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
       <a pButton label="Novo Paciente" routerLink="/pacientes/novo"></a>
     </div>
 

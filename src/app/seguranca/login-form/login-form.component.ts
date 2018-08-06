@@ -27,7 +27,7 @@ export class LoginFormComponent {
 
     this.auth.login(usuario, senha)
       .then(() => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/agendas']);
       })
       .catch(erro => {
         this.errorHandler.handle(erro);

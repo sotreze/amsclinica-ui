@@ -12,8 +12,6 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent

@@ -3,3 +3,7 @@
     cursor: default;
     pointer-event: none;
 }
+
+#h2 {
+    color: #337ab7;
+}

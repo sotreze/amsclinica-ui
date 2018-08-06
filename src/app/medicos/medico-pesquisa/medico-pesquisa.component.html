@@ -1,9 +1,10 @@
 <div class="container">
   <div class="ui-g">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <form autocomplete="off" (ngSubmit)="pesquisar()" 
+    [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
 
-      <div class="ui-g-12">
+      <div id="title" class="ui-g-12">
         <h2>Pesquisar Médicos - AMS Clínica </h2>
       </div>
 
@@ -21,7 +22,7 @@
   </div>
 
   <div class="ui-g">
-    <div class="ui-g-12">
+    <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
       <p-table [value]="medicos" [responsive]="true"
           emptyMessage="Nenhum médico encontrado"
           [paginator]="true" [rows]="filtro.itensPorPagina"
@@ -65,10 +66,29 @@
       </p-table>
     </div>
 
-    <div class="ui-g-12">
+    <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_ADMINISTRADOR')">
       <a pButton label="Novo Médico" routerLink="/medicos/novo"></a>
     </div>
+  </div>
 
+  <div class="ui-g-12" style="margin: 03% auto" 
+  [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
+    <p-scrollPanel [style]="{width: '100%', height: '100px'}" styleClass="custom">
+        <p-panel>
+            <p-header>
+                Equipe Médica da AMS | Clínica
+            </p-header> 
+            This will render a list of car models within a data grid. The visual size of the grid will 
+            be limited to a 500 x 500 pixel view, and the content can be scrollable horizontally and vertically. 
+            By default, according to the selected UI theme, customized scrollbars will be rendered on the lines 
+            of the following image:
+        </p-panel>
+    </p-scrollPanel>
+  </div>
+
+  <div class="container" style="max-width: 600px; margin: 06% auto" 
+  [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
+    <p-galleria [images]="images" panelWidth="500" panelHeight="313" [showCaption]="true" [effectDuration]="100"></p-galleria>
   </div>
 
 </div>
