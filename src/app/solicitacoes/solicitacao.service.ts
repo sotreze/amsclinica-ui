@@ -10,9 +10,10 @@ import { Solicitacao } from './../core/model';
 
 export class SolicitacaoFiltro {
 
-  agenda: string;
-  data: Date;
+  descricao: string;
   paciente: string;
+  //agenda: string;
+  //data: Date;
   pagina = 0;
   itensPorPagina = 10;
 }
@@ -36,18 +37,22 @@ export class SolicitacaoService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
+    if (filtro.descricao) {
+      params.set('descricao', filtro.descricao);
+    }
+
     if (filtro.paciente) {
       params.set('paciente', filtro.paciente);
     }
 
-    if (filtro.agenda) {
+    /*if (filtro.agenda) {
       params.set('agenda', filtro.agenda);
-    }
+    }*?
 
-    if (filtro.data) {
+    /*if (filtro.data) {
       params.set('data',
         moment(filtro.data).format('YYYY-MM-DD'));
-    }
+    }*/
 
     return this.http.get(`${this.solicitacoesUrl}`, { search: params })
       .toPromise()
@@ -89,8 +94,6 @@ export class SolicitacaoService {
       .then(response => {
         const solicitacaoAlterada = response.json() as Solicitacao;
 
-        this.converterStringsParaDatas([solicitacaoAlterada]);
-
         return solicitacaoAlterada;
       });
   }
@@ -101,16 +104,7 @@ export class SolicitacaoService {
       .then(response => {
         const solicitacao = response.json() as Solicitacao;
 
-        this.converterStringsParaDatas([solicitacao]);
-
         return solicitacao;
       });
-  }
-
-  private converterStringsParaDatas(solicitacoes: Solicitacao[]) {
-    for (const solicitacao of solicitacoes) {
-      solicitacao.data = moment(solicitacao.data,
-        'YYYY-MM-DD').toDate();
-    }
   }
 }

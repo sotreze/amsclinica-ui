@@ -8,7 +8,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { SolicitacaoService } from './../solicitacao.service';
 import { PacienteService } from './../../pacientes/paciente.service';
-import { AgendaService } from './../../agendas/agenda.service';
+//import { AgendaService } from './../../agendas/agenda.service';
 import { Solicitacao } from './../../core/model';
 
 
@@ -25,14 +25,15 @@ export class SolicitacaoCadastroComponent implements OnInit {
   ];
 
   tipo='CANCELAMENTO';
-  agendas = []
+  //agendas = []
   pacientes = [];
   formulario: FormGroup;
   pt_BR: any;
   uploadEmAndamento = false;
+  today = new Date();
 
   constructor(
-    private agendaService: AgendaService,
+    //private agendaService: AgendaService,
     private pacienteService: PacienteService,
     private solicitacaoService: SolicitacaoService,
     private toasty: ToastyService,
@@ -57,7 +58,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
       this.carregarSolicitacao(codigoSolicitacao);
     }
 
-    this.carregarAgendas();
+    //this.carregarAgendas();
     this.carregarPacientes();
   }
 
@@ -109,13 +110,15 @@ export class SolicitacaoCadastroComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       codigo: [],
       tipo: [ 'CANCELAMENTO', Validators.required ],
-      agenda: this.formBuilder.group({
-        codigo: [ null, Validators.required ]
-      }),
+      email: [null, [ this.validarObrigatoriedade]],
       paciente: this.formBuilder.group({
         codigo: [ null, Validators.required ],
-        nome: []
+        nome: [],
+        cpf: [],
+        pessoa: [],
+        categoria: []
       }),
+      data: [],
       descricao: [null, [ this.validarObrigatoriedade]],
       anexo: [],
       urlAnexo: []
@@ -144,7 +147,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
        //this.formulario.patchValue(solicitacao);
         this.atualizarTituloEdicao();
       })
-     // .catch(erro => this.errorHandler.handle(erro));
+      .catch(erro => this.errorHandler.handle(erro));
   }
 
   salvar() {
@@ -176,14 +179,14 @@ export class SolicitacaoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  carregarAgendas() {
+  /*carregarAgendas() {
     this.agendaService.listarTodas()
       .then(agendas => {
         this.agendas = agendas
           .map(a => ({ label: a.codigo, value: a.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }
+  }*/
 
   carregarPacientes() {
     this.pacienteService.listarTodos()

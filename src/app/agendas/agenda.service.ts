@@ -11,6 +11,7 @@ import { Agenda } from './../core/model';
 export class AgendaFiltro {
   paciente: string;
   medico: string;
+  email:string;
   dataAgendada: Date;
   horaAgendada: string;
   pagina = 0;
@@ -31,6 +32,10 @@ export class AgendaService {
 
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
+
+    if (filtro.email) {
+      params.set('email', filtro.email);
+    }
 
     if (filtro.paciente) {
       params.set('paciente', filtro.paciente);

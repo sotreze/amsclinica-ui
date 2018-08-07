@@ -13,7 +13,7 @@ const routes: Routes = [
     data: { roles: ['ROLE_USUARIO'] }
   },
   {
-    path: 'novo',
+    path: 'nova',
     component: SolicitacaoCadastroComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_USUARIO'] }

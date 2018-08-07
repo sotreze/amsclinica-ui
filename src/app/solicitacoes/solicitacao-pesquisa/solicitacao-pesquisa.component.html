@@ -30,19 +30,17 @@
           #tabela>
           <ng-template pTemplate="header">
             <tr>
-              <th>Agenda</th>
               <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th>
               <th>Descrição</th>
-              <th class="col-data-header">Data</th>
+              <!--<th class="col-data-header">Data</th>-->
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
         <ng-template pTemplate="body" let-solicitacao>
           <tr>
-            <td>{{ solicitacao.agenda.codigo }}</td>
             <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ solicitacao.paciente.nome }}</td>
             <td [innerHTML]="solicitacao.descricao">{{ solicitacao.descricao }}</td>
-            <td>{{ solicitacao.data | date:'dd/MM/yyyy' }}</td>
+            <!--<td>{{ solicitacao.data | date:'dd/MM/yyyy' }}</td>-->
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"
@@ -57,7 +55,7 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="5">
+            <td colspan="2">
               Nenhuma solicitacao encontrada
             </td>
           </tr>

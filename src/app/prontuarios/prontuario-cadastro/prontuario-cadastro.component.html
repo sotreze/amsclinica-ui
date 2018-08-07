@@ -67,7 +67,7 @@
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"
         (click)="novo()"></button>
-        <a routerLink="/prontuarios">Voltar para a pesquisa</a>
+        <button pButton  routerLink="/prontuarios" label="Pesquisar" pTooltip="Pesquisar prontuários" tooltipPosition="top"></button>
       </div>
     </div>
 

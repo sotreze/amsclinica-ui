@@ -48,8 +48,8 @@
     <div class="ui-g-12">
       <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
       <button pButton type="button" label="Novo" class="ui-button-info" (click)="nova(f)"></button>
-      <button pButton type="button" label="Imprimir" class="ui-button-info" (click)="downloadPDF()"></button>
-      <a routerLink="/receitas">Voltar para a pesquisa</a>
+      <button pButton type="button" label="Gerar PDF" class="ui-button-info" (click)="downloadPDF()"></button>
+      <button pButton  routerLink="/receitas" label="Pesquisar" pTooltip="Pesquisar receitas" tooltipPosition="top"></button>
     </div>
 
     </div>

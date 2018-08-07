@@ -87,6 +87,7 @@ export class Horario {
 export class Agenda {
   codigo: number;
   ativo = true;
+  email: string;
   data: Date;
   hora: string;
   medico = new Medico();

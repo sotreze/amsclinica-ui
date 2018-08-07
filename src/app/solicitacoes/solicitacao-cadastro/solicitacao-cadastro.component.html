@@ -12,22 +12,31 @@
             formControlName="tipo"></p-selectButton>
         </div>
 
-        <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="agenda">
+        <!--<div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="agenda">
            <label>Agenda</label>
             <p-dropdown name="agenda" [options]="agendas"
               placeholder="Selecione" [autoWidth]="false"  [filter]="true"
               formControlName="codigo"></p-dropdown>
+        </div>-->
+
+        <div class="ui-g-12 ui-md-3 ui-fluid">
+          <label>Email:</label>
+          <input pInputText type="email" name="email" placeholder="E-mail" 
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          formControlName="email">
+          <app-message [control]="formulario.get('email')" error="obrigatoriedade"
+          text="O email é obrigatório"></app-message>
         </div>
   
         <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="paciente">
-            <label>Paciente</label>
+            <label>Paciente:</label>
             <p-dropdown name="paciente" [options]="pacientes"
               placeholder="Selecione" [autoWidth]="false"  [filter]="true"
               formControlName="codigo"></p-dropdown>
         </div>
   
         <div class="ui-g-12 ui-fluid">
-            <label>Descrição</label>
+            <label>Descrição:</label>
             <p-editor name="descricao"
             formControlName="descricao" [style]="{'height':'320px'}" styleClass="editor-dimensions"
             ></p-editor>
@@ -63,7 +72,7 @@
           <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
           <button pButton type="button" label="Nova" class="ui-button-info"
           (click)="nova()"></button>
-          <a routerLink="/agendas/nova">Voltar para o agendamento</a>
+          <button pButton type="button" routerLink="/agendas/nova" label="Agendar" pTooltip="Nova agenda" tooltipPosition="top"></button>
         </div>
       </div>
   

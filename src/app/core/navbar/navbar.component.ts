@@ -31,10 +31,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
-      {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
-      {label: 'Receita', routerLink: ['receitas'], icon: 'fas fa-align-center'},
-      {label: 'Exame', routerLink: ['exames'], icon: 'fas fa-briefcase'},
+      {label: 'Receita', routerLink: ['receitas/nova'], icon: 'fas fa-align-center'},
+      {label: 'Exame', routerLink: ['exames/novo'], icon: 'fas fa-briefcase'},
       {label: 'Prontuário', routerLink: ['prontuarios'], icon: 'fas fa-book'},
+      {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
       {label: 'Solicitação', routerLink: ['solicitacoes'], icon: 'far fa-plus-square'},
       {label: 'Painel', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
       {label: 'Relatório', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'}

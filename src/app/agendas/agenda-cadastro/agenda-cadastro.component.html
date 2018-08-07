@@ -1,9 +1,28 @@
 <div  class="container" style="max-width: 800px; margin: 02% auto">
-  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g-12">
       <div id="h2" class="ui-g-12">
         <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Consultas Médicas - AMS Clínica </h2>
+      </div>
+
+      <div class="ui-g-10 ui-md-10 ui-fluid">
+        <label>Paciente:</label>
+        <p-dropdown name="paciente" [options]="pacientes"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="agenda.paciente.codigo"
+          required></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-10 ui-fluid">
+        <label>Email</label>
+        <input pInputText type="email" name="email"
+         placeholder="E-mail"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="agenda.email"
+         #email="ngModel" required>
+
+         <app-message [control]="email" error="required"
+         text=" O email é obrigatório!"></app-message>
+
       </div>
 
       <div class="ui-g-10 ui-md-10 ui-fluid">
@@ -26,19 +45,11 @@
         <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
         [filter]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
       </div>
-      
-      <div class="ui-g-10 ui-md-10 ui-fluid">
-        <label>Paciente:</label>
-        <p-dropdown name="paciente" [options]="pacientes"
-          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-          [(ngModel)]="agenda.paciente.codigo"
-          required></p-dropdown>
-      </div>
     
     <div class="ui-g-10">
       <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
       <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
-      <a routerLink="/agendas">Voltar para a pesquisa</a>
+      <button pButton  routerLink="/agendas" label="Pesquisar" pTooltip="Pesquisar médicos" tooltipPosition="top"></button>
     </div>
     </div>
   </form>
