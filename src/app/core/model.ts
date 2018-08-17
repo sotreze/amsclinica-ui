@@ -1,7 +1,10 @@
-
 export class Estado {
   codigo: number;
   nome: string;
+}
+
+export class TipoSolicitacao {
+  codigo: number;
 }
 
 export class Cidade {
@@ -30,9 +33,9 @@ export class Pessoa {
 
 export class Prontuario {
   codigo: number;
-  receita: string;
   relatorio: string;
   paciente = new Paciente();
+  medico = new Medico();
   anexo: string;
   urlAnexo: string;
 }
@@ -40,12 +43,12 @@ export class Prontuario {
 export class Solicitacao {
   codigo: number;
   descricao: string;
-  agenda = new Agenda();
   paciente = new Paciente();
-  data: Date;
+  dataSolicitacao: Date;
   tipo = 'CANCELAMENTO';
   anexo: string;
   urlAnexo: string;
+  tipoSolicitacao = new TipoSolicitacao();
 }
 
 export class Usuario {

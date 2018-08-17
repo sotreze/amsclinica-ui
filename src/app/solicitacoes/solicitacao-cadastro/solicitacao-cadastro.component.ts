@@ -118,7 +118,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
         pessoa: [],
         categoria: []
       }),
-      data: [],
+      dataSolicitacao: [],
       descricao: [null, [ this.validarObrigatoriedade]],
       anexo: [],
       urlAnexo: []
@@ -142,9 +142,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
   carregarSolicitacao(codigo: number) {
     this.solicitacaoService.buscarPorCodigo(codigo)
       .then(solicitacao => {
-        // this.lancamento = lancamento;
        this.formulario.setValue(solicitacao);
-       //this.formulario.patchValue(solicitacao);
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -178,15 +176,6 @@ export class SolicitacaoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
-
-  /*carregarAgendas() {
-    this.agendaService.listarTodas()
-      .then(agendas => {
-        this.agendas = agendas
-          .map(a => ({ label: a.codigo, value: a.codigo }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }*/
 
   carregarPacientes() {
     this.pacienteService.listarTodos()

@@ -35,7 +35,7 @@
         </div>-->
 
         <div class="ui-g-12 ui-md-5 ui-fluid">
-          <label>CPF</label>
+          <label>RG</label>
           <p-dropdown name="pessoa" [options]="pessoas"
             placeholder="Selecione" [autoWidth]="false"  [filter]="true"
             [(ngModel)]="medico.pessoa.codigo"
@@ -90,7 +90,8 @@
           <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
           <button pButton type="button" label="Novo" class="ui-button-info"
           (click)="novo(f)"></button>
-          <a routerLink="/medicos">Voltar para a pesquisa</a>
+          <button pButton  routerLink="/medicos" label="Pesquisar" pTooltip="Pesquisar médicos" 
+          tooltipPosition="top"></button>
         </div>
       </div>
   

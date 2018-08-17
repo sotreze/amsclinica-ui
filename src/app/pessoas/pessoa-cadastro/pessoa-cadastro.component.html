@@ -114,7 +114,8 @@
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"
         (click)="nova(f)"></button>
-        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+        <button pButton  routerLink="/pessoas" label="Pesquisar" pTooltip="Pesquisar pessoas" 
+        tooltipPosition="top"></button>
       </div>
     </div>
 

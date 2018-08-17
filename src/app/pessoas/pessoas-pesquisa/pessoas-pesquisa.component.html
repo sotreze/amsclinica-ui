@@ -8,8 +8,8 @@
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>CPF</label>
-        <input pInputText type="text" name="cpf" [(ngModel)]="filtro.cpf">
+        <label>RG</label>
+        <input pInputText type="text" name="rg" [(ngModel)]="filtro.rg">
       </div>
 
       <div class="ui-g-12">
@@ -31,7 +31,7 @@
 
         <ng-template pTemplate="header">
             <tr>
-              <th  class="col-data-header">CPF</th>
+              <th  class="col-data-header">RG</th>
               <th  class="col-data-header">Cidade</th>
               <th  class="col-data-header">Estado</th>
               <th  class="col-data-header">Status</th>
@@ -68,7 +68,7 @@
 
           <ng-template pTemplate="body" let-pessoa>
               <tr>
-                <td class="col-data-header">{{ pessoa.cpf }}</td>
+                <td class="col-data-header">{{ pessoa.rg }}</td>
                 <td class="col-data-header">{{ pessoa.endereco.cidade?.nome }}</td>
                 <td class="col-data-header">{{ pessoa.endereco.cidade?.estado.nome }}</td>
                 <td class="col-data">

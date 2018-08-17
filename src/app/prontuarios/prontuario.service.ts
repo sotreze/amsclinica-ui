@@ -9,8 +9,7 @@ import { environment } from './../../environments/environment';
 import { Prontuario } from './../core/model';
 
 export class ProntuarioFiltro {
-  
-  receita: string;
+  paciente: string;
   relatorio: string;
   pagina = 0;
   itensPorPagina = 10;
@@ -35,12 +34,8 @@ export class ProntuarioService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    /*if (filtro.exame) {
-      params.set('exame', filtro.exame);
-    }*/
-
-    if (filtro.receita) {
-      params.set('receita', filtro.receita);
+    if (filtro.paciente) {
+      params.set('paciente', filtro.paciente);
     }
 
     if (filtro.relatorio) {
@@ -73,12 +68,6 @@ export class ProntuarioService {
       .toPromise()
       .then(() => null);
   }
-
-  /*mudarStatus(codigo: number, ativo: boolean): Promise<void> {
-    return this.http.put(`${this.prontuariosUrl}/${codigo}/ativo`, ativo)
-      .toPromise()
-      .then(() => null);
-  }*/
 
   adicionar(prontuario: Prontuario): Promise<Prontuario> {
     return this.http.post(this.prontuariosUrl, JSON.stringify(prontuario))

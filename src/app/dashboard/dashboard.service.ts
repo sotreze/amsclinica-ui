@@ -9,20 +9,28 @@ import { environment } from './../../environments/environment';
 @Injectable()
 export class DashboardService {
 
-  lancamentosUrl: string;
+  examesUrl: string;
+  solicitacoesUrl: string;
 
   constructor(private http: AuthHttp) {
-    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+    this.solicitacoesUrl = `${environment.apiUrl}/solicitacoes`;
+    this.examesUrl = `${environment.apiUrl}/exames`;
   }
 
-  lancamentosPorExame(): Promise<Array<any>> {
-    return this.http.get(`${this.lancamentosUrl}/estatisticas/por-exame`)
+  examesPorTipo(): Promise<Array<any>> {
+    return this.http.get(`${this.examesUrl}/estatisticas/por-exame`)
       .toPromise()
       .then(response => response.json());
   }
 
-  lancamentosPorDia(): Promise<Array<any>> {
-    return this.http.get(`${this.lancamentosUrl}/estatisticas/por-dia`)
+  /*solicitacoesPorTipo(): Promise<Array<any>> {
+    return this.http.get(`${this.solicitacoesUrl}/estatisticas/por-tipo`)
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  solicitacoesPorDia(): Promise<Array<any>> {
+    return this.http.get(`${this.solicitacoesUrl}/estatisticas/por-dia`)
       .toPromise()
       .then(response => {
         const dados = response.json();
@@ -36,5 +44,5 @@ export class DashboardService {
     for (const dado of dados) {
       dado.dia = moment(dado.dia, 'YYYY-MM-DD').toDate();
     }
-  }
+  }*/
 }

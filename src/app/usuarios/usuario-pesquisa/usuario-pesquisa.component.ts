@@ -4,6 +4,8 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
 
+import { AuthService } from 'app/seguranca/auth.service';
+
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { UsuarioFiltro, UsuarioService } from './../usuario.service';
 
@@ -20,6 +22,7 @@ export class UsuarioPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(
+    private auth: AuthService,
     private usuarioService: UsuarioService,
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,

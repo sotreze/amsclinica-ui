@@ -1,3 +1,4 @@
+import { TipoSolicitacao } from './../../core/model';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
@@ -36,15 +37,15 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.title.setTitle('Dashboard');
     this.configurarGraficoPizza();
-    this.configurarGraficoLinha();
+    //this.configurarGraficoLinha();
 
   }
 
   configurarGraficoPizza() {
-    this.dashboardService.lancamentosPorExame()
+    this.dashboardService.examesPorTipo()
       .then(dados => {
         this.pieChartData = {
-          labels: dados.map(dado => dado.exame.nome),
+          labels: dados.map(dado => dado.tipoExame.nome),
           datasets: [
             {
               data: dados.map(dado => dado.total),
@@ -56,33 +57,33 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  configurarGraficoLinha() {
-    this.dashboardService.lancamentosPorDia()
+  /*configurarGraficoLinha() {
+    this.dashboardService.solicitacoesPorDia()
       .then(dados => {
         const diasDoMes = this.configurarDiasMes();
-        const totaisConsultas = this.totaisPorCadaDiaMes(
-          dados.filter(dado => dado.tipo === 'CONSULTA'), diasDoMes);
-        const totaisExames = this.totaisPorCadaDiaMes(
-          dados.filter(dado => dado.tipo === 'EXAME'), diasDoMes);
+        const totaisCancelamentos = this.totaisPorCadaDiaMes(
+          dados.filter(dado => dado.tipo === 'CANCELAMENTO'), diasDoMes);
+        const totaisSolicitacoes = this.totaisPorCadaDiaMes(
+          dados.filter(dado => dado.tipo === 'SOLICITACAO'), diasDoMes);
 
         this.lineChartData = {
           labels: diasDoMes,
           datasets: [
             {
-              label: 'Consulta',
-              data: totaisConsultas,
+              label: 'Cancelamento',
+              data: totaisCancelamentos,
               borderColor: '#3366CC'
             }, {
-              label: 'Exame',
-              data: totaisExames,
+              label: 'Solicitação',
+              data: totaisSolicitacoes,
               borderColor: '#D62B00'
             }
           ]
         }
       });
-  }
+  }*/
 
-  private totaisPorCadaDiaMes(dados, diasDoMes) {
+  /*private totaisPorCadaDiaMes(dados, diasDoMes) {
     const totais: number[] = [];
     for (const dia of diasDoMes) {
       let total = 0;
@@ -115,6 +116,6 @@ export class DashboardComponent implements OnInit {
     }
 
     return dias;
-  }
+  }*/
 
 }

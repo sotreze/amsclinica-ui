@@ -1,21 +1,25 @@
-<div class="container">
+<!--<div class="container">-->
+<div  class="container" style="max-width: 800px; margin: 02% auto">
   <div class="ui-g">
     <div id="h2" class="ui-g-12">
-      <h2>Relatório de lançamentos por pessoa</h2>
+      <h2>Relatório de agendas por médico - AMS Clínica</h2>
     </div>
 
     <form #f="ngForm" (ngSubmit)="gerar()">
-      <div class="ui-g-12">
-        <label>Cadastro</label>
-        <p-calendar dateFormat="dd/mm/yy" [locale]="pt_BR" required touchUI="true"
-          [inputStyle]="{ 'width': '95px'}" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
+      <div class="ui-g-10 ui-md-10 ui-fluid">
+      <!--<div class="ui-g-12">-->
+        <div class="ui-g-10 ui-md-5 ui-fluid">
+          <label>Data inicial:</label>
+          <p-calendar dateFormat="dd/mm/yy" [locale]="pt_BR" required touchUI="true"
+          showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
           placeholder="Selecione" [(ngModel)]="periodoInicio" name="periodoInicio"></p-calendar>
-
-        <label>até</label>
-
-        <p-calendar dateFormat="dd/mm/yy" [locale]="pt_BR" required touchUI="true"
-          [inputStyle]="{ 'width': '95px'}" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
+        </div>
+        <div class="ui-g-10 ui-md-5 ui-fluid">
+          <label>Data final:</label>
+          <p-calendar dateFormat="dd/mm/yy" [locale]="pt_BR" required touchUI="true"
+          showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
           placeholder="Selecione" [(ngModel)]="periodoFim" name="periodoFim"></p-calendar>
+        </div>
       </div>
 
       <div class="ui-g-12">

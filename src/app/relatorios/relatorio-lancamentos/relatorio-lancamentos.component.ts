@@ -25,7 +25,7 @@ export class RelatorioLancamentosComponent implements OnInit {
 
 
   gerar() {
-    this.relatoriosService.relatorioLancamentosPorPessoa(this.periodoInicio, this.periodoFim)
+    this.relatoriosService.relatorioAgendasPorMedico(this.periodoInicio, this.periodoFim)
       .then(relatorio => {
         const url = window.URL.createObjectURL(relatorio);
 

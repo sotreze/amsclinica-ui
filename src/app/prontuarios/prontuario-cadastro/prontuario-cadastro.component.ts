@@ -8,6 +8,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { ProntuarioService } from './../prontuario.service';
 import { PacienteService } from './../../pacientes/paciente.service';
+import { MedicoService } from './../../medicos/medico.service';
 import { Prontuario } from './../../core/model';
 
 
@@ -20,13 +21,14 @@ export class ProntuarioCadastroComponent implements OnInit {
 
 
   pacientes = [];
-  //prontuario = new Prontuario();
+  medicos = [];
   formulario: FormGroup;
   pt_BR: any;
   uploadEmAndamento = false;
 
   constructor(
     private pacienteService: PacienteService,
+    private medicoService: MedicoService,
     private prontuarioService: ProntuarioService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
@@ -40,8 +42,6 @@ export class ProntuarioCadastroComponent implements OnInit {
 
     this.configurarFormulario();
 
-    //this.calendarPtbr();
-
     const codigoProntuario = this.route.snapshot.params['codigo'];
 
     this.title.setTitle('Novo prontuário');
@@ -51,6 +51,7 @@ export class ProntuarioCadastroComponent implements OnInit {
     }
 
     this.carregarPacientes();
+    this.carregarMedicos();
   }
 
   antesUploadAnexo(event) {
@@ -100,15 +101,14 @@ export class ProntuarioCadastroComponent implements OnInit {
   configurarFormulario() {
     this.formulario = this.formBuilder.group({
       codigo: [],
-      receita: [],
       paciente: this.formBuilder.group({
         codigo: [ null, Validators.required ],
         nome: []
       }),
-      /*prontuario: this.formBuilder.group({
+      medico: this.formBuilder.group({
         codigo: [ null, Validators.required ],
-        relatorio: []
-      }),*/
+        nome: []
+      }),
       relatorio: [null, [ this.validarObrigatoriedade]],
       anexo: [],
       urlAnexo: []
@@ -151,8 +151,6 @@ export class ProntuarioCadastroComponent implements OnInit {
       .then(prontuarioAdicionado => {
         this.toasty.success('Prontuário adicionado com sucesso!');
 
-        // form.reset();
-        // this.lancamento = new Lancamento();
         this.router.navigate(['/prontuarios', prontuarioAdicionado.codigo]);
       })
       .catch(erro => this.errorHandler.handle(erro));
@@ -161,8 +159,7 @@ export class ProntuarioCadastroComponent implements OnInit {
   atualizarProntuario() {
     this.prontuarioService.atualizar(this.formulario.value)
       .then(prontuario => {
-        // this.lancamento = lancamento;
-        // this.formulario.setValue(lancamento);
+
         this.formulario.patchValue(prontuario);
 
         this.toasty.success('Prontuario alterado com sucesso!');
@@ -180,14 +177,14 @@ export class ProntuarioCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  /*carregarProntuarios() {
-    this.prontuarioService.listarTodos()
-      .then(prontuarios => {
-        this.prontuarios = prontuarios
-          .map(p => ({ label: p.nome, value: p.codigo }));
+  carregarMedicos() {
+    this.medicoService.listarTodos()
+      .then(medicos => {
+        this.medicos = medicos
+          .map(m => ({ label: m.nome, value: m.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }*/
+  }
 
   novo() {
     this.formulario.reset();
@@ -202,16 +199,4 @@ export class ProntuarioCadastroComponent implements OnInit {
   atualizarTituloEdicao() {
     this.title.setTitle(`Edição de prontuário: ${this.formulario.get('codigo').value}`);
   }
-
-  /*calendarPtbr() {
-
-    this.pt_BR = {
-    firstDayOfWeek: 0,
-    dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
-    dayNamesShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb' ],
-    dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
-    monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto','Setembro','Outubro','Novembro','Dezembro' ],
-    monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ]
-    }
-  };*/
 }

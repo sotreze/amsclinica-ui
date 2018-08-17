@@ -6,10 +6,10 @@ import { AuthGuard } from '../seguranca/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'lancamentos',
+    path: 'agendas',
     component: RelatorioLancamentosComponent,
     canActivate: [ AuthGuard ],
-    data: { roles: ['ROLE_USUARIO'] }
+    data: { roles: ['ROLE_FUNCIONARIO'] }
   }
 ];
 

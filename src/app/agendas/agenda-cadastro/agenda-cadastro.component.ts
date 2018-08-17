@@ -35,6 +35,7 @@ export class AgendaCadastroComponent implements OnInit {
   dataLimite = new Date();
   diaSeguinte = new Date();
 
+
   disableHorarioDropdown: boolean;
   horas: SelectItem[];
   selectedHora: string;
@@ -46,10 +47,8 @@ export class AgendaCadastroComponent implements OnInit {
   imagens: any[];
 
 
-  // selectedValue: string = 'FISICA';
 
   constructor(
-    // private horarioService: HorarioService,
     private medicoService: MedicoService,
     private pacienteService: PacienteService,
     private auth: AuthService,
@@ -82,6 +81,7 @@ export class AgendaCadastroComponent implements OnInit {
     this.carregarPacientes();
 
   }
+
 
   get editando() {
     return Boolean(this.agenda.codigo)

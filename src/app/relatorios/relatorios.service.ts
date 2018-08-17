@@ -9,19 +9,19 @@ import { environment } from './../../environments/environment';
 @Injectable()
 export class RelatoriosService {
 
-  lancamentosUrl: string;
+  agendasUrl: string;
 
   constructor(private http: AuthHttp) {
-    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+    this.agendasUrl = `${environment.apiUrl}/agendas`;
   }
 
-  relatorioLancamentosPorPessoa(inicio: Date, fim: Date) {
+  relatorioAgendasPorMedico(inicio: Date, fim: Date) {
     const params = new URLSearchParams();
 
     params.set('inicio', moment(inicio).format('YYYY-MM-DD'));
     params.set('fim', moment(fim).format('YYYY-MM-DD'));
 
-    return this.http.get(`${this.lancamentosUrl}/relatorios/por-pessoa`,
+    return this.http.get(`${this.agendasUrl}/relatorios/por-medico`,
       { search: params, responseType: ResponseContentType.Blob })
       .toPromise()
       .then(response => response.blob());

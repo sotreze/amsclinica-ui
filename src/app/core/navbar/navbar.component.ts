@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
       {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
       {label: 'Solicitação', routerLink: ['solicitacoes'], icon: 'far fa-plus-square'},
       {label: 'Painel', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
-      {label: 'Relatório', routerLink: ['relatorios/lancamentos'], icon: 'far fa-clone'}
+      {label: 'Relatório', routerLink: ['relatorios/agendas'], icon: 'far fa-clone'}
   ];
 
     this.itemsUsuario = [

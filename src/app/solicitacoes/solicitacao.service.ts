@@ -45,10 +45,6 @@ export class SolicitacaoService {
       params.set('paciente', filtro.paciente);
     }
 
-    /*if (filtro.agenda) {
-      params.set('agenda', filtro.agenda);
-    }*?
-
     /*if (filtro.data) {
       params.set('data',
         moment(filtro.data).format('YYYY-MM-DD'));

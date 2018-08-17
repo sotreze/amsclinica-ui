@@ -8,9 +8,9 @@
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>Relatório</label>
-        <input pInputText type="text" name="relatorio"
-          [(ngModel)]="filtro.relatorio">
+        <label>Paciente</label>
+        <input pInputText type="text" name="paciente"
+          [(ngModel)]="filtro.paciente">
       </div>
 
       <div class="ui-g-12">
@@ -30,14 +30,14 @@
           #tabela>
           <ng-template pTemplate="header">
             <tr>
-              <th>Receita</th>
+              <th>Paciente</th>
               <th>Relatório</th>
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
         <ng-template pTemplate="body" let-prontuario>
           <tr>
-            <td>{{ prontuario.receita }}</td>
+            <td>{{ prontuario.paciente.nome }}</td>
             <!--<td>{{ prontuario.relatorio }}</td>-->
             <td [innerHTML]="prontuario.relatorio">{{ prontuario.relatorio }}</td>
             <td class="col-acoes">

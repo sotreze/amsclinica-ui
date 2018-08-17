@@ -7,34 +7,69 @@
 
       </div>
 
-      <div class="ui-g-12 ui-md-10 ui-fluid">
-        <label>Receita</label>
-        <input pInputText type="text" name="receita"
-        formControlName="receita">
-      </div>
-
       <div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="paciente">
-          <label>Paciente</label>
+          <label>Paciente:</label>
           <p-dropdown name="paciente" [options]="pacientes"
             placeholder="Selecione" [autoWidth]="false"  [filter]="true"
             formControlName="codigo"></p-dropdown>
-        </div>
+      </div>
 
-        <!--<div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="prontuario">
-            <label>Prontuario</label>
-            <p-dropdown name="prontuario" [options]="prontuarios"
-              placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-              formControlName="codigo"></p-dropdown>
-          </div>-->
+      <div class="ui-g-12 ui-md-5 ui-fluid" formGroupName="medico">
+        <label>Medico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          formControlName="codigo"></p-dropdown>
+    </div>
+
 
       <div class="ui-g-12 ui-fluid">
-         <!-- <label [hidden]="lancamento.tipo === 'NORMALIZADO'">Composição Química</label>-->
-         <!--<label [hidden]="formulario.get('tipo').value === 'NORMALIZADO'">Composição Química</label>-->
-          <!--<p-editor [hidden]="lancamento.tipo === 'NORMALIZADO'" name="composicao"-->
-          <label>Relatório</label>
-          <p-editor name="relatorio"
-          formControlName="relatorio" [style]="{'height':'320px'}" styleClass="editor-dimensions"
-          ></p-editor>
+          <label>Relatório:</label>
+        <p-editor formControlName="relatorio" [style]="{'height':'320px'}">
+          <p-header>
+            <span class="ql-formats">
+              <select class="ql-size">
+                <option value="small">Petit</option>
+                <option selected></option>
+                <option value="large">Sous-titre</option>
+                <option value="huge">Titre</option>
+              </select>
+            </span>
+            <span class="ql-formats">
+              <button type="button" class="ql-bold" aria-label="Bold"></button>
+              <button  type="button" class="ql-italic" aria-label="Italic"></button>
+              <button type="button" class="ql-underline" aria-label="Underline"></button>
+              <button  type="button" class="ql-strike" aria-label="Strike"></button>
+            </span>
+            <span class="ql-formats">
+              <select title="Text Color" class="ql-color" defaultValue="rgb(0, 0, 0)">
+                <option value="rgb(0, 0, 0)" label="rgb(0, 0, 0)"></option>
+                ...
+                <option value="rgb(61, 20, 102)" label="rgb(61, 20, 102)"></option>
+              </select>
+              <span class="ql-format-separator"></span>
+              <select title="Background Color" class="ql-background" defaultValue="rgb(255, 255, 255)">
+                <option value="rgb(0, 0, 0)" label="rgb(0, 0, 0)"></option>
+                ...
+                <option value="rgb(61, 20, 102)" label="rgb(61, 20, 102)"></option>
+              </select>
+          </span>
+            <span class="ql-formats">
+              <button type="button" class="ql-list" value="ordered"></button>
+              <button type="button" class="ql-list" value="bullet"></button>
+              <select title="Text Alignment" class="ql-align" >
+                <option selected>Gauche</option>
+                <option value="center" label="Center"></option>
+                <option value="right" label="Right"></option>
+                <option value="justify" label="Justify"></option>
+              </select>            
+            </span> 
+            <span class="ql-formats">
+              <button  type="button" aria-label="Link" class="ql-link"></button>
+              <button  type="button" aria-label="Image" class="ql-image"></button>
+            </span>
+          </p-header>
+        </p-editor>
+
           <app-message [control]="formulario.get('relatorio')" error="obrigatoriedade"
           text="Relatório obrigatório"></app-message>
       </div>

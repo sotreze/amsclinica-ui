@@ -33,23 +33,31 @@
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-10 ui-md-6 ui-fluid">
-          <label>Data:</label>
-          <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="diaSeguinte" [maxDate]="dataLimite"
-          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
-          placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
+      <div class="ui-g-10 ui-md-5 ui-fluid">
+        <label>Data:</label>
+        <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="diaSeguinte" [maxDate]="dataLimite"
+        [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
+        placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
       </div>
 
-      <div class="ui-g-10 ui-md-4 ui-fluid">
+      <div class="ui-g-10 ui-md-5 ui-fluid">
         <label>Hora:</label>
         <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
         [filter]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
       </div>
+
+      <!--<div class="ui-g-10 ui-md-6 ui-fluid">
+        <label>Hora:</label>
+        <p-calendar name="hora" dateFormat="dd/mm/yy"  [locale]="pt_BR" showTime="true" stepMinute=1
+        [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
+        placeholder="Selecione" [(ngModel)]="agenda.hora" #hora="ngModel" readonlyInput="true" required></p-calendar>
+      </div>-->
     
     <div class="ui-g-10">
       <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
       <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
-      <button pButton  routerLink="/agendas" label="Pesquisar" pTooltip="Pesquisar médicos" tooltipPosition="top"></button>
+      <button pButton  routerLink="/agendas" label="Pesquisar" pTooltip="Pesquisar médicos" 
+      tooltipPosition="top"></button>
     </div>
     </div>
   </form>

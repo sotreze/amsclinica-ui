@@ -26,6 +26,8 @@
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/lancamentos" (click)="exibindoMenu = !exibindoMenu">Lançamentos</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('ROLE_ADMINISTRADOR')"><a routerLink="/pessoas/nova" (click)="exibindoMenu = !exibindoMenu">Cadastro - Endereço e Pessoa</a></li>
+      <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/usuarios" (click)="exibindoMenu = !exibindoMenu">Usuários</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/funcionarios" (click)="exibindoMenu = !exibindoMenu">Funcionários</a></li>
@@ -44,7 +46,7 @@
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Painel</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/relatorios/lancamentos" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/relatorios/agendas" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
   </ul>
 

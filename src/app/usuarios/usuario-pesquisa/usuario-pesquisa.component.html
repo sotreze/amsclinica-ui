@@ -99,7 +99,7 @@
         </p-table>
       </div>
 
-      <div class="ui-g-12">
+      <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_ADMINISTRADOR')">
         <a pButton label="Novo Usuário" routerLink="/usuarios/novo"></a>
       </div>
     </div>
