@@ -25,7 +25,8 @@
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
-        <a routerLink="/perfis">Voltar para a pesquisa</a>
+        <button pButton  routerLink="/perfis" label="Pesquisar" pTooltip="Pesquisar perfis" 
+        tooltipPosition="top"></button>
       </div>
     </div>
 

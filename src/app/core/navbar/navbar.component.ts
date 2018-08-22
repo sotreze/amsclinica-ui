@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
 
   exibindoMenu = false;
 
-  items: MenuItem[];
+  itemsMedico: MenuItem[];
+  itemsFuncionario: MenuItem[];
   itemsUsuario: MenuItem[];
   activeItem: MenuItem;
 
@@ -29,16 +30,27 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.items = [
+    this.itemsMedico = [
       {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
       {label: 'Receita', routerLink: ['receitas/nova'], icon: 'fas fa-align-center'},
       {label: 'Exame', routerLink: ['exames/novo'], icon: 'fas fa-briefcase'},
-      {label: 'Prontuário', routerLink: ['prontuarios'], icon: 'fas fa-book'},
+      {label: 'Prontuário', routerLink: ['prontuarios/novo'], icon: 'fas fa-book'},
       {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
       {label: 'Solicitação', routerLink: ['solicitacoes'], icon: 'far fa-plus-square'},
       {label: 'Painel', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
       {label: 'Relatório', routerLink: ['relatorios/agendas'], icon: 'far fa-clone'}
   ];
+
+  this.itemsFuncionario = [
+    {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
+    {label: 'Receita', routerLink: ['receitas'], icon: 'fas fa-align-center'},
+    {label: 'Exame', routerLink: ['exames'], icon: 'fas fa-briefcase'},
+    {label: 'Prontuário', routerLink: ['prontuarios'], icon: 'fas fa-book'},
+    {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
+    {label: 'Solicitação', routerLink: ['solicitacoes'], icon: 'far fa-plus-square'},
+    {label: 'Painel', routerLink: ['dashboard'], icon: 'fas fa-binoculars'},
+    {label: 'Relatório', routerLink: ['relatorios/agendas'], icon: 'far fa-clone'}
+];
 
     this.itemsUsuario = [
       {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
@@ -46,7 +58,9 @@ export class NavbarComponent implements OnInit {
       {label: 'Solicita', routerLink: ['solicitacoes/nova'], icon: 'far fa-plus-square'},
 ];
 
-  this.activeItem = this.items[1];
+  this.activeItem = this.itemsMedico[1];
+  this.activeItem = this.itemsFuncionario[1];
+  this.activeItem = this.itemsUsuario[1];
   }
 
   logout() {

@@ -8,7 +8,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-5 ui-fluid">
-        <label>CPF</label>
+        <label>RG</label>
         <p-dropdown name="pessoa" [options]="pessoas"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
           [(ngModel)]="funcionario.pessoa.codigo"
@@ -16,7 +16,7 @@
       </div>
 
 
-      <div class="ui-g-12 ui-md-10 ui-fluid">
+      <div class="ui-g-12 ui-md-8 ui-fluid">
         <label>Nome</label>
         <input pInputText type="text" name="nome"
           [(ngModel)]="funcionario.nome"
@@ -26,6 +26,15 @@
           text="Informe o nome do funcionário"></app-message>
       </div>
 
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>CPF</label>
+        <p-inputMask name="cpf" mask="999.999.999-99"
+          [(ngModel)]="funcionario.cpf"
+          #cpf="ngModel" required></p-inputMask>
+
+        <app-message [control]="cpf" error="required"
+          text="Informe o CPF"></app-message>
+      </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Cargo</label>
@@ -65,7 +74,7 @@
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info"
         (click)="novo(f)"></button>
-        <a routerLink="/funcionarios">Voltar para a pesquisa</a>
+        <button pButton  routerLink="/funcionarios" label="Pesquisar" pTooltip="Pesquisar funcionários" tooltipPosition="top"></button>
       </div>
     </div>
 

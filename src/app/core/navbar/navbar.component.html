@@ -9,9 +9,12 @@
 
         <p><a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="fa fa-bars"></i></a>
         <b>&nbsp;&nbsp;&nbsp;AMS</b> | Clínica </p>
-        <p-tabMenu class="ui-tabmenu" [model]="items" [activeItem]="items[0]" 
-        [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')"></p-tabMenu>
-        <p-tabMenu class="ui-tabmenu" [model]="itemsUsuario" [activeItem]="items[0]" [style]="{'color': 'red'}"
+        <p-tabMenu class="ui-tabmenu" [model]="itemsFuncionario" [activeItem]="itemsFuncionario[0]" [style]="{'color': 'red'}"
+        *ngIf="auth.temPermissao('ROLE_USUARIO') && auth.temPermissao('ROLE_FUNCIONARIO') && !auth.temPermissao('ROLE_MEDICO') 
+        && !auth.temPermissao('ROLE_ADMINISTRADOR')" ></p-tabMenu>
+        <p-tabMenu class="ui-tabmenu" [model]="itemsMedico" [activeItem]="itemsMedico[0]" 
+        [hidden]="!auth.temPermissao('ROLE_MEDICO')"></p-tabMenu>
+        <p-tabMenu class="ui-tabmenu" [model]="itemsUsuario" [activeItem]="itemsUsuario[0]" [style]="{'color': 'red'}"
         [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')"></p-tabMenu>
       </div>
     </div>
@@ -22,34 +25,32 @@
      <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/agendas" (click)="exibindoMenu = !exibindoMenu">Agendas</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/solicitacoes" (click)="exibindoMenu = !exibindoMenu">Solicitações</a></li>
+      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/solicitacoes/nova" (click)="exibindoMenu = !exibindoMenu">Solicitações</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/lancamentos" (click)="exibindoMenu = !exibindoMenu">Lançamentos</a></li>
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/lancamentos" (click)="exibindoMenu = !exibindoMenu">Lançamentos</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_ADMINISTRADOR')"><a routerLink="/pessoas/nova" (click)="exibindoMenu = !exibindoMenu">Cadastro - Endereço e Pessoa</a></li>
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/pessoas/nova" (click)="exibindoMenu = !exibindoMenu">Cadastro - Endereço e Pessoa</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/usuarios" (click)="exibindoMenu = !exibindoMenu">Usuários</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/funcionarios" (click)="exibindoMenu = !exibindoMenu">Funcionários</a></li>
-      <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_ADMINISTRADOR')"><a routerLink="/perfis" (click)="exibindoMenu = !exibindoMenu">Perfis - Gerenciar</a></li>
+      <li class="navbar-menuitem" routerLinkActive="ativo"
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/funcionarios" (click)="exibindoMenu = !exibindoMenu">Funcionários</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/pacientes" (click)="exibindoMenu = !exibindoMenu">Pacientes</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/prontuarios" (click)="exibindoMenu = !exibindoMenu">Prontuários</a></li>
+      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/medicos" (click)="exibindoMenu = !exibindoMenu">Médicos</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/medicos" (click)="exibindoMenu = !exibindoMenu">Médicos</a></li>
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/prontuarios" (click)="exibindoMenu = !exibindoMenu">Prontuários</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/receitas" (click)="exibindoMenu = !exibindoMenu">Receitas</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/exames" (click)="exibindoMenu = !exibindoMenu">Exames</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Painel</a></li>
+      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Painel</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/relatorios/agendas" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
   </ul>
 
 </nav>
-
-

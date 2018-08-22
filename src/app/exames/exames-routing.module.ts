@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'novo',
     component: ExameCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_FUNCIONARIO'] }
+    data: { roles: ['ROLE_MEDICO']}
   },
   {
     path: ':codigo',

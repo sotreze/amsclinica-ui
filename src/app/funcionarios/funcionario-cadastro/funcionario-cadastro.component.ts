@@ -99,7 +99,7 @@ export class FuncionarioCadastroComponent implements OnInit {
     this.pessoaService.listarTodas()
       .then(pessoas => {
         this.pessoas = pessoas
-          .map(p => ({ label: p.cpf, value: p.codigo }));
+          .map(p => ({ label: p.rg, value: p.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

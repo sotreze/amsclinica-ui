@@ -8,7 +8,7 @@ import { environment } from './../../environments/environment';
 import { Pessoa, Estado, Cidade  } from './../core/model';
 
 export class PessoaFiltro {
-  nome: string;
+  rg: string;
   pagina = 0;
   itensPorPagina = 10;
 }
@@ -32,8 +32,8 @@ export class PessoaService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.nome) {
-      params.set('nome', filtro.nome);
+    if (filtro.rg) {
+      params.set('rg', filtro.rg);
     }
 
     return this.http.get(`${this.pessoasUrl}`, { search: params })

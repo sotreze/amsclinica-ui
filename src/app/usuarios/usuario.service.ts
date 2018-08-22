@@ -9,6 +9,7 @@ import { Usuario} from './../core/model';
 
 export class UsuarioFiltro {
   primeiroNome: string;
+  sobrenome: string;
   pagina = 0;
   itensPorPagina = 10;
 }
@@ -30,6 +31,10 @@ export class UsuarioService {
 
     if (filtro.primeiroNome) {
       params.set('primeiroNome', filtro.primeiroNome);
+    }
+
+    if (filtro.sobrenome) {
+      params.set('sobrenome', filtro.sobrenome);
     }
 
     return this.http.get(`${this.usuariosUrl}`, { search: params })

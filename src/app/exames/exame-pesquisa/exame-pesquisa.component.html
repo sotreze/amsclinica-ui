@@ -65,7 +65,7 @@
       </p-table>
     </div>
 
-    <div class="ui-g-12">
+    <div class="ui-g-12"  [hidden]="!auth.temPermissao('ROLE_MEDICO')">
       <a pButton label="Novo Exame" routerLink="/exames/novo"></a>
     </div>
 

@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'nova',
     component: ReceitaCadastroComponent,
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_FUNCIONARIO'] }
+    data: { roles: ['ROLE_MEDICO'] }
   },
   {
     path: ':codigo',

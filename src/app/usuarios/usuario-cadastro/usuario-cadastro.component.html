@@ -69,7 +69,8 @@
             && passwordsForm.controls['confirmeSenha'].value !== passwordsForm.controls['senha'].value || f.invalid"></button>
             <button pButton type="button" label="Novo" class="ui-button-info"
             (click)="novo(f)"></button>
-            <a routerLink="/usuarios">Voltar para a pesquisa</a>
+            <button pButton  routerLink="/usuarios" label="Pesquisar" pTooltip="Pesquisar usuários" 
+            tooltipPosition="top"></button>
         </div>
     </form>
   </div>

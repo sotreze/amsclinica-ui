@@ -21,13 +21,13 @@
       </div>-->
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>CPF</label>
-        <p-inputMask name="cpf" mask="999.999.999-99"
-          [(ngModel)]="pessoa.cpf"
-          #cpf="ngModel" required></p-inputMask>
+        <label>RG</label>
+        <p-inputMask name="rg" mask="99.999.999-*?"
+          [(ngModel)]="pessoa.rg"
+          #rg="ngModel" required></p-inputMask>
 
-        <app-message [control]="cpf" error="required"
-          text="Informe o CPF"></app-message>
+        <app-message [control]="rg" error="required"
+          text="Informe o RG"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
@@ -106,7 +106,8 @@
         <label>Telefone</label>
 
         <p-inputMask name="telefone" [(ngModel)]="pessoa.telefone"
-          mask="(99) 99999-999?9"></p-inputMask>
+        mask="(99)9999-9999?9"></p-inputMask>
+
     </div>
 
 

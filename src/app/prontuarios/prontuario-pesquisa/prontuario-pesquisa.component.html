@@ -8,7 +8,7 @@
       </div>
 
       <div class="ui-g-12 ui-fluid">
-        <label>Paciente</label>
+        <label>Paciente:</label>
         <input pInputText type="text" name="paciente"
           [(ngModel)]="filtro.paciente">
       </div>
@@ -62,7 +62,7 @@
       </p-table>
     </div>
 
-    <div class="ui-g-12">
+    <div class="ui-g-12" [hidden]="!auth.temPermissao('ROLE_MEDICO')">
       <a pButton label="Novo Prontuário" routerLink="/prontuarios/novo"></a>
     </div>
 
