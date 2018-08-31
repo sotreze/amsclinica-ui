@@ -1,17 +1,17 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
 
+import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import {SelectItem} from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { AuthService } from 'app/seguranca/auth.service';
-import { AgendaService } from './../agenda.service';
+import { AgendaFiltro, AgendaService } from './../agenda.service';
 import { MedicoService } from './../../medicos/medico.service';
-// import { HorarioService } from './../../horarios/horario.service';
 import { PacienteService } from './../../pacientes/paciente.service';
 import { Agenda, Medico, Paciente } from './../../core/model';
 
@@ -25,12 +25,9 @@ export class AgendaCadastroComponent implements OnInit {
 
   medicos = [];
   pacientes = [];
-  // horarios = [];
   medico = new Medico();
   paciente = new Paciente();
   agenda = new Agenda();
-  // horario = new this.horario();
-  // horario = new Horario();
 
   dataLimite = new Date();
   diaSeguinte = new Date();
@@ -47,18 +44,25 @@ export class AgendaCadastroComponent implements OnInit {
   imagens: any[];
 
 
+totalRegistros = 0;
+filtro = new AgendaFiltro();
+agendas = [];
+
 
   constructor(
+    private renderer: Renderer2,
     private medicoService: MedicoService,
     private pacienteService: PacienteService,
-    private auth: AuthService,
+    public auth: AuthService,
     private agendaService: AgendaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title
-  ) { }
+  ) {
+    this.renderer.setStyle(document.body, 'background-color', '#FAFAFA');
+   }
 
   ngOnInit() {
 
@@ -142,15 +146,6 @@ export class AgendaCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  /*carregarHorarios() {
-    this.horarioService.listarTodos()
-      .then(horarios => {
-        this.horarios = horarios
-          .map(h => ({ label: h.hora, value: h.hora }));
-      })
-      .catch(erro => this.errorHandler.handle(erro));
-  }*/
-
   nova(form: FormControl) {
     form.reset();
 
@@ -204,6 +199,24 @@ export class AgendaCadastroComponent implements OnInit {
         {label: '18:00', value: '18:00'},
     ];
 }
+
+
+pesquisar(pagina = 0) {
+  this.filtro.pagina = pagina;
+
+  this.agendaService.pesquisar(this.filtro)
+    .then(resultado => {
+      this.totalRegistros = resultado.total;
+      this.agendas = resultado.agendas;
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+}
+
+aoMudarPagina(event: LazyLoadEvent) {
+  const pagina = event.first / event.rows;
+  this.pesquisar(pagina);
+}
+
 
 }
 

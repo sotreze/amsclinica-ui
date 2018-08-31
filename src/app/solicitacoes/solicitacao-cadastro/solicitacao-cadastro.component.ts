@@ -8,7 +8,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { SolicitacaoService } from './../solicitacao.service';
 import { PacienteService } from './../../pacientes/paciente.service';
-//import { AgendaService } from './../../agendas/agenda.service';
+import { AuthService } from 'app/seguranca/auth.service';
 import { Solicitacao } from './../../core/model';
 
 
@@ -33,7 +33,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
   today = new Date();
 
   constructor(
-    //private agendaService: AgendaService,
+    public auth: AuthService,
     private pacienteService: PacienteService,
     private solicitacaoService: SolicitacaoService,
     private toasty: ToastyService,
@@ -186,7 +186,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  novo() {
+  nova() {
     this.formulario.reset();
 
     setTimeout(function() {

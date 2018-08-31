@@ -23,7 +23,7 @@ export class ExamePesquisaComponent implements OnInit  {
   constructor(
     private exameService: ExameService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService,
+    public auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
     private title: Title

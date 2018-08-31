@@ -1,12 +1,22 @@
-<div class="container">
-  <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
+<div  class="container" style="max-width: 800px; margin: 02% auto">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
-      <div class="ui-g-12">
+      <div id="h2" class="ui-g-10">
         <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Perfis - AMS Clínica </h2>
       </div>
 
-      <div class="ui-g-12 ui-md-8 ui-fluid">
+      <div class="ui-g-10 ui-md-8 ui-fluid">
+        <label>Código</label>
+        <input pInputText type="number" name="codigo"
+          [(ngModel)]="perfil.codigo"
+          #codigo="ngModel" required>
+
+        <app-message [control]="codigo" error="required"
+          text="Informe o codigo"></app-message>
+      </div>
+
+      <div class="ui-g-10 ui-md-8 ui-fluid">
         <label>Usuário</label>
         <p-dropdown name="usuario" [options]="usuarios"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
@@ -14,7 +24,7 @@
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-8 ui-fluid">
+      <div class="ui-g-10 ui-md-8 ui-fluid">
         <label>Permissão</label>
         <p-dropdown name="permissao" [options]="permissoes"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
@@ -22,7 +32,7 @@
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-12">
+      <div class="ui-g-10">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
         <button pButton  routerLink="/perfis" label="Pesquisar" pTooltip="Pesquisar perfis" 

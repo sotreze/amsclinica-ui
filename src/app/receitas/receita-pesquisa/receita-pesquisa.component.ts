@@ -23,7 +23,7 @@ export class ReceitaPesquisaComponent implements OnInit  {
   constructor(
     private receitaService: ReceitaService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService,
+    public auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
     private title: Title

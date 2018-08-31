@@ -31,6 +31,7 @@
 
         <ng-template pTemplate="header">
             <tr>
+              <th  class="col-data-header">Código</th>
               <th  class="col-data-header">RG</th>
               <th  class="col-data-header">Cidade</th>
               <th  class="col-data-header">Estado</th>
@@ -68,6 +69,7 @@
 
           <ng-template pTemplate="body" let-pessoa>
               <tr>
+                <td class="col-data-header">{{ pessoa.codigo }}</td>
                 <td class="col-data-header">{{ pessoa.rg }}</td>
                 <td class="col-data-header">{{ pessoa.endereco.cidade?.nome }}</td>
                 <td class="col-data-header">{{ pessoa.endereco.cidade?.estado.nome }}</td>

@@ -22,7 +22,7 @@ export class UsuarioPesquisaComponent implements OnInit {
   @ViewChild('tabela') grid;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private usuarioService: UsuarioService,
     private errorHandler: ErrorHandlerService,
     private confirmation: ConfirmationService,

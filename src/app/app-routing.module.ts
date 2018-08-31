@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule' },
   { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
 
-  { path: '', redirectTo: 'agendas', pathMatch: 'full' },
+  { path: '', redirectTo: 'agendas/nova', pathMatch: 'full' },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: '**', redirectTo: 'pagina-nao-encontrada' }

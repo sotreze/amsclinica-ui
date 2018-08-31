@@ -8,7 +8,7 @@
       <div class="ui-g-12  ui-fluid">
 
         <p><a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"><i class="fa fa-bars"></i></a>
-        <b>&nbsp;&nbsp;&nbsp;AMS</b> | Clínica </p>
+        <b>&nbsp;&nbsp;&nbsp;AMS</b> | Clínica  </p>
         <p-tabMenu class="ui-tabmenu" [model]="itemsFuncionario" [activeItem]="itemsFuncionario[0]" [style]="{'color': 'red'}"
         *ngIf="auth.temPermissao('ROLE_USUARIO') && auth.temPermissao('ROLE_FUNCIONARIO') && !auth.temPermissao('ROLE_MEDICO') 
         && !auth.temPermissao('ROLE_ADMINISTRADOR')" ></p-tabMenu>
@@ -20,10 +20,11 @@
     </div>
   </div>
 
-  <ul class="navbar-menu" [hidden]="!exibindoMenu">
-     <li class="navbar-usuario">Olá {{ auth.jwtPayload?.nome }}&nbsp;&nbsp;&nbsp;<i class="fa fa-window-close" (click)="exibindoMenu = !exibindoMenu"></i></li>
+  <ul class="navbar-menu" [hidden]="!exibindoMenu">  
+     <li class="navbar-usuario">Olá {{ auth.jwtPayload?.nome }} &nbsp;&nbsp;&nbsp;<i class="fa fa-window-close" (click)="exibindoMenu = !exibindoMenu"></i></li>
+     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
      <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/agendas" (click)="exibindoMenu = !exibindoMenu">Agendas</a></li>
+      *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/agendas/nova" (click)="exibindoMenu = !exibindoMenu">Agendas</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/solicitacoes/nova" (click)="exibindoMenu = !exibindoMenu">Solicitações</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
@@ -50,7 +51,6 @@
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Painel</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/relatorios/agendas" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
-    <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
   </ul>
 
 </nav>

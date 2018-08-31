@@ -30,7 +30,7 @@
           #tabela>
           <ng-template pTemplate="header">
             <tr>
-              <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th>
+              <th>Paciente</th>
               <th>Descrição</th>
               <!--<th class="col-data-header">Data</th>-->
               <th class="col-acoes-header"></th>
@@ -55,7 +55,7 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="2">
+            <td colspan="3">
               Nenhuma solicitacao encontrada
             </td>
           </tr>

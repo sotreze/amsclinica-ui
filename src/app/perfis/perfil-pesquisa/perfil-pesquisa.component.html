@@ -7,10 +7,10 @@
         <h2>Pesquisar Perfis</h2>
       </div>
 
-      <div class="ui-g-12 ui-fluid">
-        <label>Perfil</label>
-        <input pInputText type="text" name="usuario"
-          [(ngModel)]="filtro.usuario">
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Código do perfil:</label>
+        <input pInputText type="text" name="codigo"
+          [(ngModel)]="filtro.codigo">
       </div>
 
       <div class="ui-g-12">
@@ -30,6 +30,7 @@
           #tabela>
           <ng-template pTemplate="header">
             <tr>
+              <th>Código</th>
               <th>Usuario</th>
               <th>Permissão</th>
               <th class="col-acoes-header"></th>
@@ -37,6 +38,7 @@
           </ng-template>
         <ng-template pTemplate="body" let-perfil>
           <tr>
+            <td>{{ perfil.codigo }}</td>
             <td>{{ perfil.usuario.primeiroNome }} {{ perfil.usuario.sobrenome }}</td>
             <td>{{ perfil.permissao.descricao }}</td>
             <td class="col-acoes">

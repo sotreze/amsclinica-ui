@@ -15,7 +15,7 @@ export class AgendaFiltro {
   dataAgendada: Date;
   horaAgendada: string;
   pagina = 0;
-  itensPorPagina = 10;
+  itensPorPagina = 1;
 }
 
 @Injectable()

@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit {
 ];
 
     this.itemsUsuario = [
-      {label: 'Agenda', routerLink: ['agendas'], icon: 'far fa-address-book'},
+      {label: 'Agenda', routerLink: ['agendas/nova'], icon: 'far fa-address-book'},
       {label: 'Médico', routerLink: ['medicos'], icon: 'fas fa-user-md'},
       {label: 'Solicita', routerLink: ['solicitacoes/nova'], icon: 'far fa-plus-square'},
 ];

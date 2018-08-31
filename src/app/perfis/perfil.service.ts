@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 import { Perfil } from './../core/model';
 
 export class PerfilFiltro {
-  usuario: string;
+  codigo: string;
   pagina = 0;
   itensPorPagina = 10;
 }
@@ -29,8 +29,8 @@ export class PerfilService {
     params.set('page', filtro.pagina.toString());
     params.set('size', filtro.itensPorPagina.toString());
 
-    if (filtro.usuario) {
-      params.set('usuario', filtro.usuario);
+    if (filtro.codigo) {
+      params.set('codigo', filtro.codigo);
     }
 
     return this.http.get(`${this.perfisUrl}`, { search: params })

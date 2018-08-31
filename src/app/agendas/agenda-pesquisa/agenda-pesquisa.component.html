@@ -15,38 +15,16 @@
 
         <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Data:</label>
-          <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="diaSeguinte" [maxDate]="dataLimite"
+          <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
           [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
           placeholder="Selecione" #data="ngModel" readonlyInput="true" showIcon="true"
           [(ngModel)]="filtro.dataAgendada"></p-calendar>
         </div>
 
-        <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+        <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Hora:</label>
           <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel"
           [filter]="true"  [autoWidth]="false" showClear="true" [dropdownIcon]="relogio"></p-dropdown>
-        </div>-->
-
-        <!--<div class="ui-g-12 ui-md-3 ui-fluid">
-          <p-dropdown name="car" [options]="cars" [(ngModel)]="selectedCar" [autoWidth]="false">
-            <ng-template let-option pTemplate="item">
-                <div>
-                    <div (click)="onClick(option.disabled)" [ngStyle]="option.disabled? {'color': '#ccc', 'cursor': 'default'} : ''"> {{option.label}} </div>
-                </div>
-            </ng-template>
-          </p-dropdown>
-        </div>-->
-
-        <div class="ui-g-12 ui-md-3 ui-fluid">
-          <label>Hora:</label>
-          <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel" [autoWidth]="false"
-          showClear="true" [dropdownIcon]="relogio">
-            <ng-template let-option pTemplate="item">
-                <div>
-                    <div (click)="onClick(option.disabled)" [ngStyle]="option.disabled? {'color': '#ccc', 'cursor': 'default'} : ''"> {{option.label}} </div>
-                </div>
-            </ng-template>
-          </p-dropdown>
         </div>
 
         <div class="ui-g-12">
@@ -65,13 +43,11 @@
             (onLazyLoad)="aoMudarPagina($event)"
             #tabela>
             <ng-template pTemplate="header">
-              <!--<tr><th colspan="5" [hidden]="agenda !== null">Horários indisponíveis</th></tr>-->
               <tr>
                 <th>Médico</th>
                 <th class="col-data-header">Data</th>
                 <th  class="col-data-header">Hora</th>
                 <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th> 
-                <!--<th>Descriçao</th>-->
                 <th class="col-acoes-header"></th>
               </tr>
             </ng-template>
@@ -81,7 +57,6 @@
               <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
               <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
               <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ agenda.paciente.nome }}</td>
-              <!--<td [innerHTML]="receita.descricao">{{ exame.descricao }}</td>-->
               <td class="col-acoes">
                 <button pButton icon="fa-pencil" pTooltip="Editar"
                   tooltipPosition="top"
@@ -97,13 +72,12 @@
         
           <ng-template pTemplate="emptymessage" let-agenda>
             <tr>
-              <td colspan="4">
-                Não existe agendamento para o período solicitado
+              <td colspan="5" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
+                Não existe agendamento cadastrado
               </td>
-              <!--<td colspan="1">
-                <button pButton icon="fa-pencil" pTooltip="Editar" tooltipPosition="top"
-                [routerLink]="['/agendas/nova']"></button>
-              </td>-->
+              <td colspan="4"[hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
+                Não existe agendamento cadastrado
+              </td>
             </tr>
           </ng-template>
         </p-table>
@@ -111,8 +85,6 @@
       
       <div class="ui-g-12">
         <a pButton label="Nova Agenda" routerLink="/agendas/nova"></a>
-        <!--TODO 
-        <p>{{today | date:'hh:mm:ss a':'-0300'}}</p>-->
       </div>
     </div>
   

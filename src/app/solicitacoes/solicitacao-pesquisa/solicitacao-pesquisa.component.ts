@@ -23,7 +23,7 @@ export class SolicitacaoPesquisaComponent implements OnInit {
   constructor(
     private solicitacaoService: SolicitacaoService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService,
+    public auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
     private title: Title

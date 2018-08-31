@@ -23,7 +23,7 @@ export class PacientePesquisaComponent implements OnInit  {
   constructor(
     private pacienteService: PacienteService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService,
+    public auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
     private title: Title

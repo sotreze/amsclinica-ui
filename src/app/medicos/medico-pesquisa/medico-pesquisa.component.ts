@@ -26,7 +26,7 @@ export class MedicoPesquisaComponent implements OnInit  {
   constructor(
     private medicoService: MedicoService,
     private errorHandler: ErrorHandlerService,
-    private auth: AuthService,
+    public auth: AuthService,
     private confirmation: ConfirmationService,
     private toasty: ToastyService,
     private route: ActivatedRoute,

@@ -66,11 +66,11 @@ export class PerfilCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
-    if (this.editando) {
-      this.atualizarPerfil(form);
-    } else {
+    //if (this.editando) {
+      //this.atualizarPerfil(form);
+    //} else {
       this.adicionarPerfil(form);
-    }
+   // }
   }
 
   adicionarPerfil(form: FormControl) {
@@ -97,7 +97,7 @@ export class PerfilCadastroComponent implements OnInit {
     this.usuarioService.listarTodos()
       .then(usuarios => {
         this.usuarios = usuarios
-          .map(u => ({ label: u.primeiroNome, value: u.codigo }));
+          .map(u => ({ label: u.primeiroNome + " " + u.sobrenome, value: u.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

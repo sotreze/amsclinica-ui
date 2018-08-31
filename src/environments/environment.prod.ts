@@ -1,5 +1,6 @@
 export const environment = {
-  production: false,
+  production: true,
+      apiUrl: 'https://amsclinica-api.cfapps.io'
       // apiUrl: 'https://amsclinica-api.herokuapp.com'
-       apiUrl: 'http://localhost:8080'
+      // apiUrl: 'http://localhost:8080'
 };
