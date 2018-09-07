@@ -85,17 +85,17 @@ export class MedicoPesquisaComponent implements OnInit  {
       .catch(erro => this.errorHandler.handle(erro));
   }
 
-  /*alternarStatus(medico: any): void {
+  alternarStatus(medico: any): void {
     const novoStatus = !medico.ativo;
 
     this.medicoService.mudarStatus(medico.codigo, novoStatus)
       .then(() => {
-        const acao = novoStatus ? 'ativada' : 'desativada';
+        const acao = novoStatus ? 'ativado' : 'desativado';
 
         medico.ativo = novoStatus;
-        this.toasty.success(`Funcionário ${acao} com sucesso!`);
+        this.toasty.success(`Médico ${acao} com sucesso!`);
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }*/
+  }
 
 }

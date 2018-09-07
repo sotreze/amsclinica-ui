@@ -7,10 +7,10 @@ app.get('/*', function(req, res) {
   res.sendFile(__dirname + '/dist/index.html');
 });
 
-  app.listen(process.env.PORT || 4200);
-  console.log('API AMS is running on https://amsclinica.cfapps.io')
+  //app.listen(process.env.PORT || 4200);
+  //console.log('API AMS is running on https://amsclinica.cfapps.io')
 
-  //app.listen(4200);
-  //console.log('API AMS is running on http://localhost:4200')
+  app.listen(4200);
+  console.log('API AMS is running on http://localhost:4200')
 
 

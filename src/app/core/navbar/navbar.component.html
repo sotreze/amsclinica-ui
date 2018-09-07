@@ -28,8 +28,6 @@
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_USUARIO')"><a routerLink="/solicitacoes/nova" (click)="exibindoMenu = !exibindoMenu">Solicitações</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
-      *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/lancamentos" (click)="exibindoMenu = !exibindoMenu">Lançamentos</a></li>
-      <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/pessoas/nova" (click)="exibindoMenu = !exibindoMenu">Cadastro - Endereço e Pessoa</a></li>
       <li class="navbar-menuitem" routerLinkActive="ativo"
       *ngIf="auth.temPermissao('ROLE_FUNCIONARIO')"><a routerLink="/usuarios" (click)="exibindoMenu = !exibindoMenu">Usuários</a></li>

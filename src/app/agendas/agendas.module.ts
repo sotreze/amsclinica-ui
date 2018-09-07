@@ -16,6 +16,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PanelModule } from 'primeng/panel';
 
 import { Ng2OrderModule } from 'ng2-order-pipe';
 
@@ -33,6 +34,7 @@ import { AgendaCadastroComponent } from './agenda-cadastro/agenda-cadastro.compo
 
     Ng2OrderModule,
 
+    PanelModule,
     ScheduleModule,
     InputTextModule,
     CalendarModule,

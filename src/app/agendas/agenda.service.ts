@@ -15,7 +15,7 @@ export class AgendaFiltro {
   dataAgendada: Date;
   horaAgendada: string;
   pagina = 0;
-  itensPorPagina = 1;
+  itensPorPagina = 3;
 }
 
 @Injectable()
@@ -53,12 +53,6 @@ export class AgendaService {
     if (filtro.horaAgendada) {
       params.set('hora', filtro.horaAgendada);
     }
-
-    /*if (filtro.horaAgendada) {
-      params.set('hora',
-      moment(filtro.horaAgendada).format('HH:MM'));
-
-    }*/
 
     return this.http.get(`${this.agendasUrl}`, { search: params })
       .toPromise()

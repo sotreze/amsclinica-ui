@@ -4,7 +4,6 @@
     <div class="ui-g">
       <div class="ui-g-12">
         <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Funcionário</h2>
-        <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
       </div>
 
       <div class="ui-g-12 ui-md-5 ui-fluid">
@@ -42,8 +41,6 @@
           [(ngModel)]="funcionario.cargo"
           #cargo="ngModel" required>
 
-        <!--<app-message [control]="cargo" error="required"
-          text="Informe o cargo"></app-message>-->
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
@@ -52,22 +49,11 @@
         [(ngModel)]="funcionario.setor" #setor="ngModel">
       </div>
 
-      <!--<div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Data de Admissão</label>
-        <p-calendar name="dataAdmissao" dateFormat="dd/mm/yy" [locale]="pt_BR"
-          [inline]="false" [readonlyInput]="false" [showIcon]="false"
-          [(ngModel)]="funcionario.dataAdmissao"
-          #dataadmissao="ngModel" required></p-calendar>
-
-        <app-message [control]="dataadmissao" error="required"
-          text="Informe a data de admissão"></app-message>
-      </div>-->
-
-        <div class="ui-g-12 ui-md-3 ui-fluid">
-          <label>Data de Admissão</label>
-          <p-calendar name="dataAdmissao" dateFormat="dd/mm/yy"  [locale]="pt_BR"
+        <p-calendar name="dataAdmissao" dateFormat="dd/mm/yy"  [locale]="pt_BR"
           [(ngModel)]="funcionario.dataAdmissao" #dataadmissao="ngModel" required></p-calendar>
-        </div>
+      </div>
 
 
       <div class="ui-g-12">

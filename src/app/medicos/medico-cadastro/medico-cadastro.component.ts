@@ -23,7 +23,6 @@ export class MedicoCadastroComponent implements OnInit {
   pessoa = new Pessoa();
   pt_BR: any;
 
-
   constructor(
     private medicoService: MedicoService,
     private pessoaService: PessoaService,
@@ -51,10 +50,6 @@ export class MedicoCadastroComponent implements OnInit {
   get editando() {
     return Boolean(this.medico.codigo)
   }
-
-  /* get classificando() {
-    return Boolean(this.pessoa.classe)
-  }*/
 
   carregarMedico(codigo: number) {
     this.medicoService.buscarPorCodigo(codigo)
@@ -113,7 +108,6 @@ export class MedicoCadastroComponent implements OnInit {
   }
 
   atualizarTituloEdicao() {
-    // this.title.setTitle(`Edição de funcionários: ${this.pessoa.nome}`);
     this.title.setTitle(`Edição de médicos: ${this.pessoa.nome}`);
   }
 }

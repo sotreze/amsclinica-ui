@@ -18,7 +18,6 @@ import { FuncionarioService } from './../funcionarios/funcionario.service';
 import { PacienteService } from './../pacientes/paciente.service';
 import { PerfilService } from './../perfis/perfil.service';
 import { UsuarioService } from './../usuarios/usuario.service';
-import { LancamentoService } from './../lancamentos/lancamento.service';
 import { TipoExameService } from './../tipos-exames/tipo-exame.service';
 import { CategoriaService } from './../categorias/categoria.service';
 import { PermissaoService } from './../permissoes/permissao.service';
@@ -65,7 +64,6 @@ registerLocaleData(localePt);
 
   ],
   providers: [
-    LancamentoService,
     PessoaService,
     CategoriaService,
     PerfilService,

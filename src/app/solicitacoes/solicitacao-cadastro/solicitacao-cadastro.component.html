@@ -107,8 +107,8 @@
   
         <div class="ui-g-12">
           <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid || uploadEmAndamento"></button>
-          <button pButton type="button" label="Nova" class="ui-button-info"
-          (click)="nova()"></button>
+          <!--<button pButton type="button" label="Nova" class="ui-button-info"
+          (click)="nova()"></button>-->
           <button pButton  routerLink="/solicitacoes" label="Pesquisar" pTooltip="Pesquisar solicitações" tooltipPosition="top" 
           [disabled]="!auth.temPermissao('ROLE_FUNCIONARIO')"></button>
           <button pButton type="button" routerLink="/agendas/nova" label="Agendar" pTooltip="Nova agenda" tooltipPosition="top"></button>

@@ -3,14 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 import { PaginaNaoEncontradaComponent } from './core/pagina-nao-encontrada.component';
-// import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
-// import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/lancamento-cadastro.component';
-// import { LancamentoPesquisaComponent } from './lancamentos/lancamento-pesquisa/lancamento-pesquisa.component';
-// import { ProntuarioCadastroComponent } from './prontuarios/prontuario-cadastro/prontuario-cadastro.component';
-// import { ProntuarioPesquisaComponent } from './prontuarios/prontuario-pesquisa/prontuario-pesquisa.component';
-// import { MedicoPesquisaComponent } from './medicos/medico-pesquisa/medico-pesquisa.component';
-// import { ExamePesquisaComponent } from './exames/exame-pesquisa/exame-pesquisa.component';
-// import { ExameCadastroComponent } from './exames/exame-cadastro/exame-cadastro.component';
 
 
 const routes: Routes = [
@@ -28,7 +20,6 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule'},
   { path: 'relatorios', loadChildren: 'app/relatorios/relatorios.module#RelatoriosModule' },
   { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule' },
-  { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
 
   { path: '', redirectTo: 'agendas/nova', pathMatch: 'full' },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },

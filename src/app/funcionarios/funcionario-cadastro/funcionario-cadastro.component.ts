@@ -23,7 +23,6 @@ export class FuncionarioCadastroComponent implements OnInit {
   pessoa = new Pessoa();
   pt_BR: any;
 
-  // selectedValue: string = 'FISICA';
 
   constructor(
     private funcionarioService: FuncionarioService,
@@ -54,9 +53,6 @@ export class FuncionarioCadastroComponent implements OnInit {
     return Boolean(this.funcionario.codigo)
   }
 
-  /* get classificando() {
-    return Boolean(this.pessoa.classe)
-  }*/
 
   carregarFuncionario(codigo: number) {
     this.funcionarioService.buscarPorCodigo(codigo)
@@ -115,7 +111,6 @@ export class FuncionarioCadastroComponent implements OnInit {
   }
 
   atualizarTituloEdicao() {
-    // this.title.setTitle(`Edição de funcionários: ${this.pessoa.nome}`);
     this.title.setTitle(`Edição de funcionários: ${this.pessoa.nome}`);
   }
 

@@ -22,7 +22,6 @@ export class AgendaPesquisaComponent implements OnInit  {
   dataLimite = new Date();
   diaSeguinte = new Date();
   today = new Date();
-  //horas: SelectItem[];
   selectedHora: string;
   relogio = 'fa fa-fw fa-clock-o';
 
@@ -53,13 +52,8 @@ export class AgendaPesquisaComponent implements OnInit  {
 
     this.calendarPtbr();
 
-    //this.horarios();
-
-    //TODO this.newTeste();
-
     this.dataLimite.setDate(this.dataLimite.getDate() + 90);  
 
-    //TODO
     this.diaSeguinte.setDate(this.diaSeguinte.getDate() + 1);
 
     this.title.setTitle('Pesquisa de agendas');
@@ -70,27 +64,34 @@ export class AgendaPesquisaComponent implements OnInit  {
       this.horas = [];
       this.horas.push({label: 'Selecione', value: 'Selecione'});
       this.horas.push({label: '08:00', value: '08:00'});
-      this.horas.push({label: '08:30', value: '08:30'});
+      this.horas.push({label: '08:20', value: '08:20'});
+      this.horas.push({label: '08:40', value: '08:40'});
       this.horas.push({label: '09:00', value: '09:00'});
-      this.horas.push({label: '09:30', value: '09:30'});
+      this.horas.push({label: '09:20', value: '09:20'});
+      this.horas.push({label: '09:40', value: '09:40'});
       this.horas.push({label: '10:00', value: '10:00'});
-      this.horas.push({label: '10:30', value: '10:30'});
+      this.horas.push({label: '10:20', value: '10:20'});
+      this.horas.push({label: '10:40', value: '10:40'});
       this.horas.push({label: '11:00', value: '11:00'});
-      this.horas.push({label: '11:30', value: '11:30'});
+      this.horas.push({label: '11:20', value: '11:20'});
+      this.horas.push({label: '11:40', value: '11:40'});
       this.horas.push({label: '12:00', value: '12:00'});
       this.horas.push({label: '13:00', value: '13:00'});
-      this.horas.push({label: '13:30', value: '13:30'});
+      this.horas.push({label: '13:20', value: '13:20'});
+      this.horas.push({label: '13:40', value: '13:40'});
       this.horas.push({label: '14:00', value: '14:00'});
-      this.horas.push({label: '14:30', value: '14:30'});
+      this.horas.push({label: '14:20', value: '14:20'});
+      this.horas.push({label: '14:40', value: '14:40'});
       this.horas.push({label: '15:00', value: '15:00'});
-      this.horas.push({label: '15:30', value: '15:30'});
+      this.horas.push({label: '15:20', value: '15:20'});
+      this.horas.push({label: '15:40', value: '15:40'});
       this.horas.push({label: '16:00', value: '16:00'});
-      this.horas.push({label: '16:30', value: '16:30'});
+      this.horas.push({label: '16:20', value: '16:20'});
+      this.horas.push({label: '16:40', value: '16:40'});
       this.horas.push({label: '17:00', value: '17:00'});
-      this.horas.push({label: '17:30', value: '17:30'});
+      this.horas.push({label: '17:20', value: '17:20'});
+      this.horas.push({label: '17:40', value: '17:40'});
       this.horas.push({label: '18:00', value: '18:00'});
-
-      //TODO  , disabled: this.newTeste
 
   }
 
@@ -154,7 +155,7 @@ export class AgendaPesquisaComponent implements OnInit  {
     dayNamesMin: [  'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
     monthNames: [ 'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro' ],
     monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-    today: 'Próxima',
+    today: 'Hoje',
     clear: 'Limpar'
     }
   }

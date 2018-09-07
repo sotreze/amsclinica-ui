@@ -4,7 +4,7 @@
       <form autocomplete="off" (ngSubmit)="pesquisar()">
   
         <div id="title" class="ui-g-12">
-          <h2>Agendamento de Consultas - Pesquisa de médicos</h2>
+          <h2>Consultas cadastradas- AMS | Clínica</h2>
         </div>
   
         <div class="ui-g-12 ui-md-6 ui-fluid">
@@ -46,8 +46,10 @@
               <tr>
                 <th>Médico</th>
                 <th class="col-data-header">Data</th>
-                <th  class="col-data-header">Hora</th>
+                <th class="col-data-header">Hora</th>
                 <th [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Paciente</th> 
+                <th class="col-data-header" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Data de Agend.</th> 
+                <th class="col-data-header" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">Hora de Agend.</th> 
                 <th class="col-acoes-header"></th>
               </tr>
             </ng-template>
@@ -57,6 +59,8 @@
               <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
               <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
               <td [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ agenda.paciente.nome }}</td>
+              <td class="col-data" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ agenda.dataAgendamento | date:'dd/MM/yyyy' }}</td>
+              <td class="col-data" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">{{ agenda.horaAgendamento }}</td>
               <td class="col-acoes">
                 <button pButton icon="fa-pencil" pTooltip="Editar"
                   tooltipPosition="top"
@@ -72,10 +76,10 @@
         
           <ng-template pTemplate="emptymessage" let-agenda>
             <tr>
-              <td colspan="5" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
+              <td colspan="7" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
                 Não existe agendamento cadastrado
               </td>
-              <td colspan="4"[hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
+              <td colspan="4" [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
                 Não existe agendamento cadastrado
               </td>
             </tr>

@@ -34,6 +34,7 @@
               <th>Nome</th>
               <th>Especialização</th>
               <th>Crm</th>
+              <th  class="col-data-header">Status</th>
               <th class="col-acoes-header"></th>
             </tr>
           </ng-template>
@@ -42,7 +43,14 @@
             <td>{{ medico.nome }}</td>
             <td>{{ medico.especializacao }}</td>
             <td>{{ medico.crm }}</td>
-            <!--<td class="col-data">{{ medico.horarioDisponivel | date:'dd/MM/yyyy' }}</td>-->
+            <td class="col-data">
+              <a href="javascript:;"
+                [pTooltip]="medico.ativo ? 'Desativar' : 'Ativar'"
+                tooltipPosition="top"
+                (click)="alternarStatus(medico)">
+                {{ medico.ativo ? 'Ativo' : 'Inativo' }}
+              </a>
+            </td>
             <td class="col-acoes">
               <button pButton icon="fa-pencil" pTooltip="Editar"
                 tooltipPosition="top"

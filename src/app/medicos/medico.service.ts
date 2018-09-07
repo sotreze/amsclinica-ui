@@ -39,22 +39,6 @@ export class MedicoService {
       params.set('nome', filtro.nome);
     }
 
-
-    /*return this.http.get(`${this.medicosUrl}?resumo`,
-        { search: params })
-      .toPromise()
-      .then(response => {
-        const responseJson = response.json();
-        const medicos = responseJson.content;
-
-        const resultado = {
-          medicos,
-          total: responseJson.totalElements
-        };
-
-        return resultado;
-      });*/
-
     return this.http.get(`${this.medicosUrl}`, { search: params })
       .toPromise()
       .then(response => {
@@ -78,6 +62,12 @@ export class MedicoService {
 
   excluir(codigo: number): Promise<void> {
     return this.http.delete(`${this.medicosUrl}/${codigo}`)
+      .toPromise()
+      .then(() => null);
+  }
+
+  mudarStatus(codigo: number, ativo: boolean): Promise<void> {
+    return this.http.put(`${this.medicosUrl}/${codigo}/ativo`, ativo)
       .toPromise()
       .then(() => null);
   }

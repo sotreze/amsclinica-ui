@@ -83,10 +83,6 @@ export class Categoria {
   codigo: number;
 }
 
-export class Horario {
-  codigo: number;
-}
-
 export class Agenda {
   codigo: number;
   ativo = true;
@@ -115,6 +111,7 @@ export class Exame {
 
 export class Medico {
   codigo: number;
+  ativo = false;
   pessoa = new Pessoa();
   nome: string;
   cpf: string;
@@ -138,20 +135,6 @@ export class Paciente {
   nome: string;
   cpf: string;
   categoria = new Categoria();
-}
-
-export class Lancamento {
-  codigo: number;
-  descricao: string;
-  dataConsulta: Date;
-  dataExame: Date;
-  valor: number;
-  tipo = 'CONSULTA';
-  observacao: string;
-  pessoa = new Pessoa();
-  exame = new Exame();
-  anexo: string;
-  urlAnexo: string;
 }
 
 
