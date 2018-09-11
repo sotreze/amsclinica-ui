@@ -8,304 +8,139 @@
 } 
 </style>-->
 
-<!--
 
-<div  class="container" style="max-width: 800px; margin: 02% auto">
-    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
-  
-      <div class="ui-g-12">
-        <div id="h2" class="ui-g-10">
-          <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Consultas Médicas - AMS Clínica </h2>
-        </div>
-  
-        <div class="ui-g-12 ui-md-10 ui-fluid">
-          <label>Paciente:</label>
-          <p-dropdown name="paciente" [options]="pacientes"
-            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-            [(ngModel)]="agenda.paciente.codigo"
-            required></p-dropdown>
-        </div>
-  
-        <div class="ui-g-12 ui-md-10 ui-fluid">
-          <label>Email</label>
-          <input pInputText type="email" name="email"
-           placeholder="E-mail"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="agenda.email"
-           #email="ngModel" required>
-  
-           <app-message [control]="email" error="required"
-           text=" O email é obrigatório!"></app-message>
-  
-        </div>
-  
-        <div class="ui-g-12 ui-md-10 ui-fluid">
-          <label>Médico:</label>
-          <p-dropdown name="medico" [options]="medicos"
-            placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-            [(ngModel)]="agenda.medico.codigo"
-            required></p-dropdown>
-        </div>
-  
-        <div class="ui-g-12 ui-md-5 ui-fluid">
-          <label>Data:</label>
-          <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="today" [maxDate]="dataLimite"
-          [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
-          placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
-        </div>
-  
-        <div class="ui-g-12 ui-md-5 ui-fluid">
-          <label>Hora:</label>
-          <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
-          [filter]="true" [showClear]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
-        </div>
-  
-      
-      <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
-      </div>
-      </div>
-    </form>
-  
-  </div> -->
-  
-  <!--Sera exibido para o perfil usuario-->
-  <!--
-  <div class="ui-g-12" [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
-  
-      <div class="container" style="max-width: 800px; margin: 02% auto">
-  
-        <form autocomplete="off" (ngSubmit)="pesquisar()">
-  
-          <div id="h2" class="ui-g-12 ui-md-8 ui-fluid">
-            <h2>Pesquisa de médicos</h2>
+<div class="container">
+  <div class="ui-g">
+
+    <div class="ui-g-12 ui-md-6">
+
+
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+        <div class="ui-g-12">
+          <div id="h2" class="ui-g-12">
+            <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Consultas Médicas - AMS</h2>
           </div>
-  
-          <div class="ui-g-12 ui-md-10 ui-fluid">
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Paciente:</label>
+            <p-dropdown name="paciente" [options]="pacientes" placeholder="Selecione" [autoWidth]="false" [filter]="true"
+              [(ngModel)]="agenda.paciente.codigo" required></p-dropdown>
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Email</label>
+            <input pInputText type="email" name="email" placeholder="E-mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              [(ngModel)]="agenda.email" #email="ngModel" required>
+
+            <app-message [control]="email" error="required" text=" O email é obrigatório!"></app-message>
+
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
             <label>Médico:</label>
-            <input pInputText type="text" name="medico"
-              [(ngModel)]="filtro.medico">
+            <p-dropdown name="medico" [options]="medicos" placeholder="Selecione" [autoWidth]="false" [filter]="true"
+              [(ngModel)]="agenda.medico.codigo" required></p-dropdown>
           </div>
-  
-          <div class="ui-g-12 ui-md-5 ui-fluid">
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
             <label>Data:</label>
             <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
-            [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
-            placeholder="Selecione" #data="ngModel" readonlyInput="true" showIcon="true"
-            [(ngModel)]="filtro.dataAgendada"></p-calendar>
+              [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
+              placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
           </div>
-  
-          <div class="ui-g-12 ui-md-5 ui-fluid">
-              <label>Hora:</label>
-              <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel"
-              [filter]="true"  [autoWidth]="false" [showClear]="true" [dropdownIcon]="relogio"></p-dropdown>
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Hora:</label>
+            <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel" [filter]="true"
+              [showClear]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
           </div>
-  
-  
+
+
+          <div class="ui-g-12">
+            <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+            <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+
+
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
+
+        <div class="ui-g-12">
+
+          <div id="h2" class="ui-g-12 ui-fluid">
+            <h2>Pesquisa de médicos</h2>
+          </div>
+
+          <div class="ui-g-12 ui-fluid">
+            <label>Médico:</label>
+            <input pInputText type="text" name="medico" [(ngModel)]="filtro.medico">
+          </div>
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Data:</label>
+            <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
+              [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass placeholder="Selecione"
+              #data="ngModel" readonlyInput="true" showIcon="true" [(ngModel)]="filtro.dataAgendada"></p-calendar>
+          </div>
+
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+            <label>Hora:</label>
+            <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel" [filter]="true"
+              [autoWidth]="false" [showClear]="true" [dropdownIcon]="relogio"></p-dropdown>
+          </div>
+
+
           <div class="ui-g-10">
             <button pButton type="submit" label="Pesquisar"></button>
           </div>
-        </form>
-  
-      </div>
-  
-      <div class="container" style="max-width: 800px; margin: 02% auto">
-        <div class="ui-g-10">
-          <p-table [value]="agendas" [responsive]="true"
-              emptyMessage="Nenhuma agenda encontrada"
-              [paginator]="true" [rows]="filtro.itensPorPagina"
-              [lazy]="true" [totalRecords]="totalRegistros"
-              (onLazyLoad)="aoMudarPagina($event)"
-              #tabela>
-              <ng-template pTemplate="header">
-                <tr>
-                  <th>Médico</th>
-                  <th class="col-data-header">Data</th>
-                  <th  class="col-data-header">Hora</th>
-                  <th class="col-aviso-header">Aviso</th>
-                </tr>
-              </ng-template>
-            <ng-template pTemplate="body" let-agenda>
-              <tr>
-                <td>{{ agenda.medico.nome }}</td>
-                <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
-                <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
-                <td class="col-aviso-header" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'" [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
-                    Agenda indisponível!
-                </td>
-              </tr>
-            </ng-template>
-          
-            <ng-template pTemplate="emptymessage" let-agenda>
-              <tr>
-                <td colspan="4" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
-                  Não existe agendamento cadastrado
-                </td>
-                <td colspan="4"[hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
-                  Não existe agendamento cadastrado
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
+
         </div>
-    
-  
-    </div>
-  </div> -->
-  <!--fim-->
+      </form>
 
+      <div class="ui-g-12">
+        <p-table [value]="agendas" [responsive]="true" emptyMessage="Nenhuma agenda encontrada" [paginator]="true"
+          [rows]="filtro.itensPorPagina" [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
+          #tabela>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Médico</th>
+              <th class="col-data-header">Data</th>
+              <th class="col-data-header">Hora</th>
+              <th class="col-aviso-header">Aviso</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-agenda>
+            <tr>
+              <td>{{ agenda.medico.nome }}</td>
+              <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
+              <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
+              <td class="col-aviso-header" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">
+                Agenda indisponível!
+              </td>
+            </tr>
+          </ng-template>
 
-  <div class="container">
-    <div class="ui-g">
-      <!--<div class="ui-g-12">
-        <h1>Agendas AMS | Clínica</h1>
-      </div>-->
-  
-      <div class="ui-g-12 ui-md-6">
-        
-
-            <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
-  
-                <div class="ui-g-12">
-                  <div id="h2" class="ui-g-10">
-                    <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Consultas Médicas - AMS</h2>
-                  </div>
-            
-                  <div class="ui-g-12 ui-md-10 ui-fluid">
-                    <label>Paciente:</label>
-                    <p-dropdown name="paciente" [options]="pacientes"
-                      placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-                      [(ngModel)]="agenda.paciente.codigo"
-                      required></p-dropdown>
-                  </div>
-            
-                  <div class="ui-g-12 ui-md-10 ui-fluid">
-                    <label>Email</label>
-                    <input pInputText type="email" name="email"
-                     placeholder="E-mail"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="agenda.email"
-                     #email="ngModel" required>
-            
-                     <app-message [control]="email" error="required"
-                     text=" O email é obrigatório!"></app-message>
-            
-                  </div>
-            
-                  <div class="ui-g-12 ui-md-10 ui-fluid">
-                    <label>Médico:</label>
-                    <p-dropdown name="medico" [options]="medicos"
-                      placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-                      [(ngModel)]="agenda.medico.codigo"
-                      required></p-dropdown>
-                  </div>
-            
-                  <div class="ui-g-12 ui-md-5 ui-fluid">
-                    <label>Data:</label>
-                    <p-calendar name="data" dateFormat="dd/mm/yy"   [locale]="pt_BR"  [minDate]="today" [maxDate]="dataLimite"
-                    [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass showIcon="true"
-                    placeholder="Selecione" [(ngModel)]="agenda.data" #data="ngModel" readonlyInput="true" required></p-calendar>
-                  </div>
-            
-                  <div class="ui-g-12 ui-md-5 ui-fluid">
-                    <label>Hora:</label>
-                    <p-dropdown name="hora" [options]="horas" [(ngModel)]="agenda.hora" #hora="ngModel"
-                    [filter]="true" [showClear]="true" [autoWidth]="false" [dropdownIcon]="relogio"></p-dropdown>
-                  </div>
-            
-                
-                <div class="ui-g-12">
-                  <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-                  <button pButton type="button" label="Nova" class="ui-button-info" (click)="nova(f)"></button>
-                </div>
-                </div>
-              </form>
-
-         
+          <ng-template pTemplate="emptymessage" let-agenda>
+            <tr>
+              <td colspan="4" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
+                Não existe agendamento cadastrado
+              </td>
+              <td colspan="4" [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
+                Não existe agendamento cadastrado
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
-  
-      <div class="ui-g-12 ui-md-6">
-        
 
-         <!-- <div class="ui-g-12" [hidden]="auth.temPermissao('ROLE_FUNCIONARIO')"> -->
-  
-              <div class="container" style="max-width: 800px; margin: 02% auto">
-          
-                <form autocomplete="off" (ngSubmit)="pesquisar()">
-          
-                  <div id="h2" class="ui-g-12 ui-md-8 ui-fluid">
-                    <h2>Pesquisa de médicos</h2>
-                  </div>
-          
-                  <div class="ui-g-12 ui-md-10 ui-fluid">
-                    <label>Médico:</label>
-                    <input pInputText type="text" name="medico"
-                      [(ngModel)]="filtro.medico">
-                  </div>
-          
-                  <div class="ui-g-12 ui-md-5 ui-fluid">
-                    <label>Data:</label>
-                    <p-calendar name="data" dateFormat="dd/mm/yy" [locale]="pt_BR" [minDate]="today" [maxDate]="dataLimite"
-                    [disabledDays]="[0,6]" showButtonBar="true" todayButtonStyleClass clearButtonStyleClass
-                    placeholder="Selecione" #data="ngModel" readonlyInput="true" showIcon="true"
-                    [(ngModel)]="filtro.dataAgendada"></p-calendar>
-                  </div>
-          
-                  <div class="ui-g-12 ui-md-5 ui-fluid">
-                      <label>Hora:</label>
-                      <p-dropdown name="hora" [options]="horas" [(ngModel)]="filtro.horaAgendada" #hora="ngModel"
-                      [filter]="true"  [autoWidth]="false" [showClear]="true" [dropdownIcon]="relogio"></p-dropdown>
-                  </div>
-          
-          
-                  <div class="ui-g-10">
-                    <button pButton type="submit" label="Pesquisar"></button>
-                  </div>
-                </form>
-          
-              </div>
-          
-              <div class="container" style="max-width: 800px; margin: 02% auto">
-                <div class="ui-g-10">
-                  <p-table [value]="agendas" [responsive]="true"
-                      emptyMessage="Nenhuma agenda encontrada"
-                      [paginator]="true" [rows]="filtro.itensPorPagina"
-                      [lazy]="true" [totalRecords]="totalRegistros"
-                      (onLazyLoad)="aoMudarPagina($event)"
-                      #tabela>
-                      <ng-template pTemplate="header">
-                        <tr>
-                          <th>Médico</th>
-                          <th class="col-data-header">Data</th>
-                          <th  class="col-data-header">Hora</th>
-                          <th class="col-aviso-header">Aviso</th>
-                        </tr>
-                      </ng-template>
-                    <ng-template pTemplate="body" let-agenda>
-                      <tr>
-                        <td>{{ agenda.medico.nome }}</td>
-                        <td class="col-data">{{ agenda.data | date:'dd/MM/yyyy' }}</td>
-                        <td class="col-data" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">{{ agenda.hora }}
-                        <td class="col-aviso-header" [style.color]="agenda.ativo == '1' ? 'red' : 'blue'">
-                            Agenda indisponível!
-                        </td>
-                      </tr>
-                    </ng-template>
-                  
-                    <ng-template pTemplate="emptymessage" let-agenda>
-                      <tr>
-                        <td colspan="4" [hidden]="!auth.temPermissao('ROLE_FUNCIONARIO')">
-                          Não existe agendamento cadastrado
-                        </td>
-                        <td colspan="4"[hidden]="auth.temPermissao('ROLE_FUNCIONARIO')">
-                          Não existe agendamento cadastrado
-                        </td>
-                      </tr>
-                    </ng-template>
-                  </p-table>
-                </div>
-            
-          
-            </div>
-        <!--  </div> -->
-      </div>
-  
     </div>
+
   </div>
+</div>

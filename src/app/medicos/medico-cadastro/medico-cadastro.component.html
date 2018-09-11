@@ -1,22 +1,23 @@
+
 <div class="container">
     <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
   
       <div class="ui-g">
-        <div class="ui-g-12">
+        <div id="h2" class="ui-g-10">
           <h2>{{ editando ? 'Edição de ' : 'Novo ' }}Médico</h2>
         </div>
   
 
-        <div class="ui-g-12 ui-md-5 ui-fluid">
-          <label>RG</label>
+        <div class="ui-g-10 ui-md-4 ui-fluid">
+          <label>RG:</label>
           <p-dropdown name="pessoa" [options]="pessoas"
             placeholder="Selecione" [autoWidth]="false"  [filter]="true"
             [(ngModel)]="medico.pessoa.codigo"
             required></p-dropdown>
         </div>
   
-        <div class="ui-g-12 ui-md-8 ui-fluid">
-          <label>Nome</label>
+        <div class="ui-g-10 ui-md-6 ui-fluid">
+          <label>Nome:</label>
           <input pInputText type="text" name="nome"
             [(ngModel)]="medico.nome"
             #nome="ngModel" required>
@@ -25,8 +26,8 @@
             text="Informe o nome do médico"></app-message>
         </div>
   
-        <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>CPF</label>
+        <div class="ui-g-10 ui-md-4 ui-fluid">
+          <label>CPF:</label>
           <p-inputMask name="cpf" mask="999.999.999-99"
             [(ngModel)]="medico.cpf"
             #cpf="ngModel" required></p-inputMask>
@@ -35,20 +36,20 @@
             text="Informe o CPF"></app-message>
         </div>
   
-        <div class="ui-g-12 ui-md-8 ui-fluid">
-          <label>Especialização</label>
+        <div class="ui-g-10 ui-md-6 ui-fluid">
+          <label>Especialização:</label>
           <input pInputText type="text" name="especializacao"
             [(ngModel)]="medico.especializacao"
             #especializacao="ngModel" required>
         </div>
   
-        <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>CRM</label>
+        <div class="ui-g-10 ui-md-4 ui-fluid">
+          <label>CRM:</label>
           <input pInputText type="text" name="crm"
           [(ngModel)]="medico.crm" #crm="ngModel">
         </div> 
   
-        <div class="ui-g-12">
+        <div class="ui-g-10">
           <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
           <button pButton type="button" label="Novo" class="ui-button-info"
           (click)="novo(f)"></button>
@@ -58,5 +59,6 @@
       </div>
   
     </form>
-  </div>
   
+
+</div>

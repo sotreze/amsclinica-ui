@@ -80,9 +80,6 @@ export class PessoaCadastroComponent implements OnInit {
     return Boolean(this.pessoa.codigo)
   }
 
-  /*get classificando() {
-    return Boolean(this.pessoa.tipo)
-  }*/
 
   carregarPessoa(codigo: number) {
     this.pessoaService.buscarPorCodigo(codigo)

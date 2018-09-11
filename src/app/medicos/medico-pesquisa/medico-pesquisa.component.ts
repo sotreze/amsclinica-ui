@@ -38,11 +38,29 @@ export class MedicoPesquisaComponent implements OnInit  {
 
     this.images = [];
     this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/70716dc2-3f52-460a-9ffb-c0e3dd01b7f4_1.jpg', 
-    alt:'Dr. Pedro', 
-    title:'Dr. Pedro - Ginecologista'});
+    alt:'Dr. Pedro Santos', 
+    title:'Ginecologista - Doutorado em Obstetrícia e Ginecologia'});
     this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/173704ed-b946-40d6-bb27-e08034b13f51_2.jpg', 
-    alt:'Dra. Isabela', 
-    title:'Dra. Isabela - Dermatologista'});
+    alt:'Dra. Isabela Victorino', 
+    title:'Infectologista - UNF'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/6493bc3e-ad02-4e95-a910-8c7c62efb170_3.jpg',
+    alt:'Dra. Sandra Gonçalves', 
+    title:'Pediatra - especialista em pneumologia'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/16be792c-c5d3-4ebe-af36-81d574fe6847_4.jpg',
+    alt:'Dra. Andréia Pires', 
+    title:'Urologista - Faculdade de medicina - USP'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/29f58699-2351-4c1b-8b18-50f6a1919350_5.jpg',
+    alt:'Dr. Sandro Dantas', 
+    title:'Clínica Geral'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/6122c574-3b96-4624-b139-6641ca5d3632_6.jpg',
+    alt:'Dra. Cláudia Loureiro Alves', 
+    title:'Cirurgiã Plástica '});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/f9941d79-9d52-41da-9655-c840752d69d1_7.jpg',
+    alt:'Dr. Paulo Lima', 
+    title:'Ortopedia e Traumatologia'});
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/58cd7382-2b23-4727-819f-8b1b9f4a7a44_8.jpg',
+    alt:'Dr. Antônio Brito Alves', 
+    title:'Geriatra '});
   }
 
   pesquisar(pagina = 0) {

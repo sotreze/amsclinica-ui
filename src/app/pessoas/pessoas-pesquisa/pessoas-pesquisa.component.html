@@ -3,7 +3,7 @@
 
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
-      <div id="title"  class="ui-g-12">
+      <div id="h2"  class="ui-g-12">
         <h2>Registros: Visualização de Pessoas</h2>
       </div>
 
@@ -39,33 +39,6 @@
               <th  class="col-acoes-header"></th>
             </tr>
           </ng-template>
-
-          <!--<p-column field="nome" header="Nome"></p-column>
-          <p-column field="endereco.cidade" header="Cidade"></p-column>
-          <p-column field="endereco.estado" header="Estado"></p-column>
-          <p-column field="tipo" header="Tipo"></p-column>
-          <p-column field="ativo" header="Status">
-
-            <ng-template let-pes="rowData" pTemplate="body">
-                <a href="javascript:;"
-                    [pTooltip]="pes.ativo ? 'Desativar' : 'Ativar'"
-                    tooltipPosition="top"
-                    (click)="alternarStatus(pes)">
-                  {{ pes.ativo ? 'Ativo' : 'Inativo' }}
-                </a>
-            </ng-template>
-          </p-column>
-
-          <p-column styleClass="col-acoes">
-            <ng-template let-pes="rowData" pTemplate="body">
-              <a pButton icon="fa-pencil" pTooltip="Editar"
-              tooltipPosition="top"
-              [routerLink]="['/pessoas', pes.codigo]"></a>
-              <button pButton icon="fa-trash"
-                pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmarExclusao(pes)"></button>
-            </ng-template>
-          </p-column>-->
 
           <ng-template pTemplate="body" let-pessoa>
               <tr>

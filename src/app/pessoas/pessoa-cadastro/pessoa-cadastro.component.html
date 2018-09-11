@@ -2,26 +2,12 @@
   <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
-      <div class="ui-g-12">
-        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pessoa e Endereço</h2>
-        <!--<h2>{{ classificando ? : 'Cliente' : 'Funcionário' }}</h2>-->
+      <div id="h2" class="ui-g-12">
+        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pessoa (RG) e Endereço</h2>
       </div>
 
-
-      <!--<div class="ui-g-12 ui-fluid">
-        <label>Nome</label>
-        <input pInputText type="text" name="nome"
-          [(ngModel)]="pessoa.nome"
-          #nome="ngModel" required minlength="5">
-
-        <app-message [control]="nome" error="required"
-          text="Informe o nome"></app-message>
-        <app-message [control]="nome" error="minlength"
-          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
-      </div>-->
-
       <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>RG</label>
+        <label>RG:</label>
         <p-inputMask name="rg" mask="99.999.999-*?"
           [(ngModel)]="pessoa.rg"
           #rg="ngModel" required></p-inputMask>
@@ -31,7 +17,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
-        <label>Logradouro</label>
+        <label>Logradouro:</label>
         <input pInputText type="text" name="logradouro"
           [(ngModel)]="pessoa.endereco.logradouro"
           #logradouro="ngModel" required>
@@ -41,7 +27,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Número</label>
+        <label>Número:</label>
         <input pInputText type="text" name="numero"
           [(ngModel)]="pessoa.endereco.numero"
           #numero="ngModel" required>
@@ -51,13 +37,13 @@
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>Complemento</label>
+        <label>Complemento:</label>
         <input pInputText type="text" name="complemento"
         [(ngModel)]="pessoa.endereco.complemento">
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>Bairro</label>
+        <label>Bairro:</label>
         <input pInputText type="text" name="bairro"
           [(ngModel)]="pessoa.endereco.bairro"
           #bairro="ngModel" required>
@@ -67,7 +53,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>CEP</label>
+        <label>CEP:</label>
         <p-inputMask name="cep" mask="99.999-999"
           [(ngModel)]="pessoa.endereco.cep"
           #cep="ngModel" required></p-inputMask>
@@ -77,7 +63,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Estado</label>
+        <label>Estado:</label>
 
         <p-dropdown placeholder="Selecione..." [autoWidth]="false"
           [filter]="true" [options]="estados"
@@ -90,7 +76,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Cidade</label>
+        <label>Cidade:</label>
         
         <p-dropdown placeholder="Selecione..." [autoWidth]="false"
           [filter]="true" [options]="cidades"
@@ -103,7 +89,7 @@
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Telefone</label>
+        <label>Telefone:</label>
 
         <p-inputMask name="telefone" [(ngModel)]="pessoa.telefone"
         mask="(99)9999-9999?9"></p-inputMask>

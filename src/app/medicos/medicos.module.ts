@@ -22,6 +22,7 @@ import { MedicosRoutingModule } from './medicos-routing.module';
 import { SharedModule } from './../shared/shared.module';
 import { MedicoCadastroComponent } from './medico-cadastro/medico-cadastro.component';
 import { MedicoPesquisaComponent } from './medico-pesquisa/medico-pesquisa.component';
+import { PessoasModule } from './../pessoas/pessoas.module';
 
 @NgModule({
   imports: [

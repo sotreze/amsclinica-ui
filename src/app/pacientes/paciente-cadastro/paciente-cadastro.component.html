@@ -2,20 +2,20 @@
   <form #f="ngForm" autocomplete="on" (ngSubmit)="salvar(f)">
 
     <div class="ui-g">
-      <div class="ui-g-12">
+      <div id="h2" class="ui-g-10">
         <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pacientes - AMS Clínica </h2>
       </div>
 
-      <div class="ui-g-12 ui-md-5 ui-fluid">
-        <label>RG</label>
+      <div class="ui-g-10 ui-md-4 ui-fluid">
+        <label>RG:</label>
         <p-dropdown name="pessoa" [options]="pessoas"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
           [(ngModel)]="paciente.pessoa.codigo"
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-8 ui-fluid">
-        <label>Nome</label>
+      <div class="ui-g-10 ui-md-6 ui-fluid">
+        <label>Nome:</label>
         <input pInputText type="text" name="nome"
           [(ngModel)]="paciente.nome"
           #nome="ngModel" required>
@@ -24,8 +24,8 @@
           text="Informe o nome do paciente"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-4 ui-fluid">
-        <label>CPF</label>
+      <div class="ui-g-10 ui-md-4 ui-fluid">
+        <label>CPF:</label>
         <p-inputMask name="cpf" mask="999.999.999-99"
           [(ngModel)]="paciente.cpf"
           #cpf="ngModel" required></p-inputMask>
@@ -34,15 +34,15 @@
           text="Informe o CPF"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-8 ui-fluid">
-        <label>Categoria</label>
+      <div class="ui-g-10 ui-md-10 ui-fluid">
+        <label>Categoria:</label>
         <p-dropdown name="categoria" [options]="categorias"
           placeholder="Selecione" [autoWidth]="false"  [filter]="true"
           [(ngModel)]="paciente.categoria.codigo"
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-12">
+      <div class="ui-g-10">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
         <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
         <button pButton  routerLink="/pacientes" label="Pesquisar" pTooltip="Pesquisar pacientes" tooltipPosition="top"></button>

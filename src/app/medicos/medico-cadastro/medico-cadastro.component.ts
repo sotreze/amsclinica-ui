@@ -110,4 +110,5 @@ export class MedicoCadastroComponent implements OnInit {
   atualizarTituloEdicao() {
     this.title.setTitle(`Edição de médicos: ${this.pessoa.nome}`);
   }
+
 }
