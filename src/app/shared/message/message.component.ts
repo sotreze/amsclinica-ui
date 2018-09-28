@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Component, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-message',
   template: `
@@ -25,4 +26,5 @@ export class MessageComponent {
   temErro(): boolean {
     return this.control.hasError(this.error) && this.control.dirty;
   }
+
 }

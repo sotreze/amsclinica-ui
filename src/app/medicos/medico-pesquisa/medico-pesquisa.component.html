@@ -66,7 +66,7 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="4">
+            <td colspan="5">
               Nenhum médico encontrado
             </td>
           </tr>
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <div class="ui-g-12" style="margin: 03% auto" 
+  <!--<div class="ui-g-12" style="margin: 03% auto" 
   [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
     <p-scrollPanel [style]="{width: '100%', height: '150px'}" styleClass="custom">
         <p-panel>
@@ -95,12 +95,43 @@
             que poderão auxiliar você na busca dos seus objetivos:
         </p-panel>
     </p-scrollPanel>
-  </div>
+  </div>-->
 
-  <div class="container" style="max-width: 600px; margin: 06% auto" 
+ <!-- <div class="container" style="max-width: 600px; margin: 06% auto" 
   [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
     <p-galleria [images]="images" panelWidth="500" panelHeight="313" [showCaption]="true" [effectDuration]="100"></p-galleria>
-  </div>
-
+  </div>-->
 </div>
+
+<div class="container">
+  <div class="ui-g">
+
+    <!-- style="margin: 03% auto" style="max-width: 600px; margin: 06% auto"  class="container"    -->
+
+    <div id="box-texto" class="ui-g-12 ui-md-6 ui-fluid" style="max-height: 500px; margin: 06% auto"
+    [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
+            <p-panel [style]="{width: '100%', height: '100%'}" styleClass="custom">
+                <p-header>
+                    Equipe Médica da AMS | Clínica
+                </p-header>
+                Pensar nas pessoas e em suas necessidades. O perfil do profissional que trabalha na 
+                AMS - Clínica está voltado para esta missão. Temos profissionais 
+                altamente especializados e com a formação profissional voltada para o atendimento humanitário. 
+                Sabemos o que representa para cada cliente a busca por um atendimento médico de qualidade. 
+                Por isso, a AMS - Clínica dedica os seus esforçoes para que o cliente tenho um atendimento dígno e 
+                que seja atendido dentro das condições previamente estabelecidas.  Estes são os profissionas
+                que poderão auxiliar você na busca dos seus objetivos.
+            </p-panel>
+    </div>
+
+    <div id="box-imagem" class="ui-g-12 ui-md-6 ui-fluid" style="margin: 06% auto"
+    [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">
+    <!--<div class="ui-g-12 ui-md-6 ui-fluid" style="margin: 07% auto" 
+      [hidden]="auth.temPermissao('ROLE_ADMINISTRADOR') || auth.temPermissao('ROLE_FUNCIONARIO')">-->
+        <p-galleria [images]="images" [showCaption]="true" [effectDuration]="100"></p-galleria>
+    </div>
+
+  </div>
+</div>
+
 

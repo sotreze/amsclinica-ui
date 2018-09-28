@@ -9,6 +9,10 @@ b {
   font-weight: bold;
 }
 
+.pb {
+  color: #fff;
+}
+
 .p2, a {
   font-size: 15px;
   color: #fff;
@@ -19,3 +23,20 @@ b {
   color: #1e94d2;
 }
 
+.login-box-msg {
+  color: #1e94d2;
+}
+
+.container-login {
+  margin: 10% auto;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+  opacity: 0.95;
+  filter: alpha(opacity=50);
+  text-align: center;
+}
+.titulo {
+text-align: center;
+}

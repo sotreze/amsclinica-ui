@@ -17,14 +17,6 @@
           required></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>Médico:</label>
-        <p-dropdown name="medico" [options]="medicos"
-          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
-          [(ngModel)]="exame.medico.codigo"
-          required></p-dropdown>
-      </div>
-
       <div class="ui-g-12 ui-md-8 ui-fluid">
         <label>Exame:</label>
         <p-dropdown name="tipoExame" [options]="tiposexames"
@@ -85,6 +77,14 @@
       <div class="ui-g-12 ui-fluid">
         <label>Data:</label>
         <p>{{today | date:'dd/MM/yyyy'}}</p> 
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Médico:</label>
+        <p-dropdown name="medico" [options]="medicos"
+          placeholder="Selecione" [autoWidth]="false"  [filter]="true"
+          [(ngModel)]="exame.medico.codigo"
+          required></p-dropdown>
       </div>
       
     </div>

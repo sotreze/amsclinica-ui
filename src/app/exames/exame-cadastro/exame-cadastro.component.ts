@@ -66,7 +66,8 @@ export class ExameCadastroComponent implements OnInit  {
     
     let doc = new jsPDF({
       orientation: 'landscape',
-      format: [216, 279]});
+      //format: [216, 279]});
+      format: [150, 216]});
     let specialElementHandlers = {
       '#editor': function(element, renderer) {
         return true;
@@ -74,36 +75,49 @@ export class ExameCadastroComponent implements OnInit  {
     };
     let content = this.content.nativeElement;
 
-    doc.line(0, 30, 280, 30);
-    doc.line(0, 190, 280, 190);
+    doc.line(0, 30, 216, 30);
+    doc.line(0, 130, 216, 130);
 
-    doc.setFontSize(22);
+    doc.setFontSize(16);
     doc.setFont("courier");
     doc.setFontType("bold");
-    doc.text(130, 20, 'AMS Clínica - Especialidades Integradas', null, null, 'center');
+    doc.setTextColor(51, 122, 183);
+    doc.text(100, 10, 'AMS Clínica - Especialidades Integradas', null, null, 'center');
 
     doc.setFont("times");
     doc.setFontType("normal");
-    doc.setFontSize(16);
-    doc.text(130, 200, 'Rua Adolpho Setúbal , 235 - Parque Bela Vista - CEP 13214-820 - Jundiaí - SP', null, null, 'center');
+    doc.setFontSize(12);
+    doc.text(100, 17, 'mamografia  raio x  teste ergométrico  ultrassom medicina do trabalho', null, null, 'center');
+
+    
+    doc.setFont("times");
+    doc.setFontType("normal");
+    doc.setFontSize(12);
+    doc.text(100, 21, 'densitometria óssea  doppler  eletrocardiograma  endoscopia  colonoscopia', null, null, 'center');
 
     doc.setFont("times");
     doc.setFontType("normal");
-    doc.setFontSize(14);
-    doc.text(130, 210, 'amsclinica.herokuapp.com', null, null, 'center');
-    doc.fromHTML(content.innerHTML, 50, 50, {
-      'width': 190,
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.text(100, 140, 'Rua Adolpho Setúbal , 235 - Parque Bela Vista - CEP 13214-820 - Jundiaí - SP', null, null, 'center');
+
+
+    doc.setFont("times");
+    doc.setFontType("normal");
+    doc.setFontSize(12);
+    doc.setTextColor(51, 122, 183);
+    doc.text(100, 145, 'https://amsclinica.cfapps.io/login', null, null, 'center');
+
+    doc.setFontSize(20);
+    doc.fromHTML(content.innerHTML, 30, 40, {
+      'width': 130,
       'font': 'courier',
+      'size':40,
       'elementHandlers': specialElementHandlers
     });
 
     doc.save('exame.pdf');
 
-    //const doc = new jsPDF();
-    //doc.text(105, 80, 'This is centred text.', null, null, 'center');
-    //doc.text('"paciente.nome"', 10, 10);
-
-    //doc.save('Teste.pdf');
   }
 
   get editando() {

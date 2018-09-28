@@ -4,8 +4,10 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToastyService } from 'ng2-toasty';
+import {MenuItem} from 'primeng/api';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
+import { AuthService } from './../../seguranca/auth.service';
 import { PessoaService } from './../pessoa.service';
 import { Pessoa } from './../../core/model';
 
@@ -16,19 +18,21 @@ import { Pessoa } from './../../core/model';
 })
 export class PessoaCadastroComponent implements OnInit {
 
-  tipos = [
+  /*tipos = [
     { label: 'Paciente', value: 'PACIENTE' },
     { label: 'Funcionário', value: 'FUNCIONARIO' },
-  ];
+  ];*/
 
+ 
   pessoa = new Pessoa();
   estados: any[];
   cidades: any[];
   estadoSelecionado: number;
 
-  // selectedValue: string = 'FISICA';
+  items: MenuItem[];
 
   constructor(
+    public auth: AuthService,
     private pessoaService: PessoaService,
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
@@ -49,6 +53,16 @@ export class PessoaCadastroComponent implements OnInit {
     if (codigoPessoa) {
       this.carregarPessoa(codigoPessoa);
     }
+
+
+    this.items = [
+
+      /*{label: 'Angular.io', icon: 'fa fa-link', url: 'http://angular.io'},*/
+      {label: 'Médico', url: 'https://amsclinica.cfapps.io/medicos/novo', icon: 'fas fa-user-md'},
+      {label: 'Paciente', url: 'https://amsclinica.cfapps.io/pacientes/novo', icon: 'far fa-address-book'},
+      {label: 'Funcionário', url: 'https://amsclinica.cfapps.io/funcionarios/novo', icon: 'fa fa-link'}
+  ];
+
 
   }
 
@@ -111,6 +125,7 @@ export class PessoaCadastroComponent implements OnInit {
       .then(pessoaAdicionada => {
         this.toasty.success('Pessoa adicionada com sucesso!');
         this.router.navigate(['/pessoas', pessoaAdicionada.codigo]);
+        this.toasty.info('Atribuir pelo RG o perfil desejado');
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

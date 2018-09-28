@@ -50,20 +50,6 @@ export class PessoaService {
         return resultado;
       })
 
-    /*return this.http.get(`${this.pessoasUrl}?resumo`,
-      { search: params })
-    .toPromise()
-    .then(response => {
-      const responseJson = response.json();
-      const pessoas = responseJson.content;
-
-      const resultado = {
-        pessoas,
-        total: responseJson.totalElements
-      };
-
-      return resultado;
-    });*/
   }
 
   listarTodas(): Promise<any> {

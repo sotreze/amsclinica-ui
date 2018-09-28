@@ -46,16 +46,16 @@ export class MedicoPesquisaComponent implements OnInit  {
     this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/6493bc3e-ad02-4e95-a910-8c7c62efb170_3.jpg',
     alt:'Dra. Sandra Gonçalves', 
     title:'Pediatra - especialista em pneumologia'});
-    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/16be792c-c5d3-4ebe-af36-81d574fe6847_4.jpg',
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/4224fc3c-bd40-4a4f-b848-af90038bfc34_4.jpg',
     alt:'Dra. Andréia Pires', 
     title:'Urologista - Faculdade de medicina - USP'});
     this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/29f58699-2351-4c1b-8b18-50f6a1919350_5.jpg',
     alt:'Dr. Sandro Dantas', 
     title:'Clínica Geral'});
-    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/6122c574-3b96-4624-b139-6641ca5d3632_6.jpg',
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/bd61d23b-14d7-4e1d-82a9-00befe39e30f_6.jpg',
     alt:'Dra. Cláudia Loureiro Alves', 
     title:'Cirurgiã Plástica '});
-    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/f9941d79-9d52-41da-9655-c840752d69d1_7.jpg',
+    this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/08da04c5-dfa3-443d-b172-61a2c3aad4ad_7.jpg',
     alt:'Dr. Paulo Lima', 
     title:'Ortopedia e Traumatologia'});
     this.images.push({source:'https://s3.amazonaws.com/server-ams-arquivos/58cd7382-2b23-4727-819f-8b1b9f4a7a44_8.jpg',

@@ -6,15 +6,15 @@
         <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Perfis - AMS Clínica </h2>
       </div>
 
-      <div class="ui-g-10 ui-md-8 ui-fluid">
+      <!--<div class="ui-g-10 ui-md-8 ui-fluid">
         <label>Código</label>
         <input pInputText type="number" name="codigo"
-          [(ngModel)]="perfil.codigo"
+          [(ngModel)]="perfil.codigo" placeholder="Informe o próximo código da sequência"
           #codigo="ngModel" required>
 
         <app-message [control]="codigo" error="required"
-          text="Informe o codigo"></app-message>
-      </div>
+          text="Informe o código. Pesquise o último código inserido."></app-message>
+      </div>-->
 
       <div class="ui-g-10 ui-md-8 ui-fluid">
         <label>Usuário</label>

@@ -11,6 +11,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {MessageModule} from 'primeng/message';
 
 import { PessoasRoutingModule } from './pessoas-routing.module';
 import { SharedModule } from './../shared/shared.module';
@@ -31,6 +33,8 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     InputMaskModule,
     SelectButtonModule,
     DropdownModule,
+    SplitButtonModule,
+    MessageModule,
 
     SharedModule,
     PessoasRoutingModule

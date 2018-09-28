@@ -11,7 +11,7 @@
                 <input pInputText type="text" formControlName="primeiroNome" class="form-control" id="primeiroNome"
                 placeholder="Digite o primeiro nome"
                 [(ngModel)]="usuario.primeiroNome"
-                required minlength="5">
+                required minlength="1">
             </div>
           <div class="alert alert-danger ui-message ui-messages-error" *ngIf="!passwordsForm.controls['primeiroNome']
           .valid && passwordsForm.controls['primeiroNome'].touched">
@@ -24,7 +24,7 @@
               <input pInputText type="text" formControlName="sobrenome" class="form-control" id="sobrenome"
               placeholder="Digite o sobrenome"
               [(ngModel)]="usuario.sobrenome"
-              required minlength="5">
+              required minlength="1">
           </div>
         <div class="alert alert-danger ui-message ui-messages-error" *ngIf="!passwordsForm.controls['sobrenome']
         .valid && passwordsForm.controls['sobrenome'].touched">

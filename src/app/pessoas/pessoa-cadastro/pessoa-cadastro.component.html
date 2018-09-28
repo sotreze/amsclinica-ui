@@ -3,7 +3,9 @@
 
     <div class="ui-g">
       <div id="h2" class="ui-g-12">
-        <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pessoa (RG) e Endereço</h2>
+            <h2>{{ editando ? 'Edição de ' : 'Cadastro de ' }} Pessoa (RG) e Endereço</h2>
+            <button pButton  routerLink="/pessoas" label="Pesquisar" pTooltip="Pesquisar pessoas" 
+            tooltipPosition="top"></button>
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
@@ -98,11 +100,10 @@
 
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info"
+        <button pButton type="submit" label="Salvar" pTooltip="Atribuir perfil após salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Nova" class="ui-button-info"
         (click)="nova(f)"></button>
-        <button pButton  routerLink="/pessoas" label="Pesquisar" pTooltip="Pesquisar pessoas" 
-        tooltipPosition="top"></button>
+        <p-splitButton label="Atribuir a:" icon="pi pi-check" [model]="items" styleClass="ui-button-info" *ngIf="pessoa.codigo"></p-splitButton>
       </div>
     </div>
 

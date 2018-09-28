@@ -32,6 +32,9 @@ export class AgendaCadastroComponent implements OnInit {
   dataLimite = new Date();
   diaSeguinte = new Date();
 
+  invalidDates: Array<Date>;
+
+  numeroDias: number;
 
   disableHorarioDropdown: boolean;
   horas: SelectItem[];
@@ -66,10 +69,16 @@ agendas = [];
 
   ngOnInit() {
 
+    let today = new Date();
+
     this.calendarPtbr();
 
     this.dataLimite.setDate(this.dataLimite.getDate() + 90);
     this.diaSeguinte.setDate(this.diaSeguinte.getDate() + 1);
+
+    let invalidDate = new Date();
+    invalidDate.setDate(today.getDate() + this.numeroDias );
+    this.invalidDates = [invalidDate];
 
     this.horarios();
 
